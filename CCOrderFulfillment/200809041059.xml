@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmldata>
+  <Orders>
+    <OrderID>69008</OrderID>
+    <CustomerID>10</CustomerID>
+    <PaymentMethodID>6</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>5858 Main St</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Elkridge</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>Mary</ShipFirstName>
+    <ShipLastName>Wojewodzki</ShipLastName>
+    <ShippingMethodID>901</ShippingMethodID>
+    <ShipPostalCode>21075</ShipPostalCode>
+    <ShipState>MD</ShipState>
+    <OrderDetails>
+      <OrderDetailID>15</OrderDetailID>
+      <OrderID>69008</OrderID>
+      <ProductCode>202</ProductCode>
+      <ProductID>60</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>69009</OrderID>
+    <CustomerID>11</CustomerID>
+    <PaymentMethodID>5</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>113 Fox Ridge Road</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Shelby</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>Evelyn</ShipFirstName>
+    <ShipLastName>Ribadeneyra</ShipLastName>
+    <ShippingMethodID>901</ShippingMethodID>
+    <ShipPostalCode>28152</ShipPostalCode>
+    <ShipState>NC</ShipState>
+    <OrderDetails>
+      <OrderDetailID>16</OrderDetailID>
+      <OrderID>69009</OrderID>
+      <ProductCode>202</ProductCode>
+      <ProductID>60</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>17</OrderDetailID>
+      <OrderID>69009</OrderID>
+      <ProductCode>SOT</ProductCode>
+      <ProductID>74</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>18</OrderDetailID>
+      <OrderID>69009</OrderID>
+      <ProductCode>DSC-5</ProductCode>
+      <ProductID>93</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>69010</OrderID>
+    <CustomerID>12</CustomerID>
+    <PaymentMethodID>5</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>j76 sheffield place</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>cartersville</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>jennifer</ShipFirstName>
+    <ShipLastName>worthington</ShipLastName>
+    <ShippingMethodID>900</ShippingMethodID>
+    <ShipPostalCode>30121</ShipPostalCode>
+    <ShipState>GA</ShipState>
+    <OrderDetails>
+      <OrderDetailID>19</OrderDetailID>
+      <OrderID>69010</OrderID>
+      <ProductCode>101</ProductCode>
+      <ProductID>59</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>69011</OrderID>
+    <CustomerID>13</CustomerID>
+    <PaymentMethodID>6</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>623 N. Main Street</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Glen Ellyn</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>Jane </ShipFirstName>
+    <ShipLastName>Erickson</ShipLastName>
+    <ShippingMethodID>900</ShippingMethodID>
+    <ShipPostalCode>60137</ShipPostalCode>
+    <ShipState>IL</ShipState>
+    <OrderDetails>
+      <OrderDetailID>20</OrderDetailID>
+      <OrderID>69011</OrderID>
+      <ProductCode>BKT</ProductCode>
+      <ProductID>76</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>69012</OrderID>
+    <CustomerID>14</CustomerID>
+    <PaymentMethodID>2</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>4705 Hamburg Ave.</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Saint Louis</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>Felicia </ShipFirstName>
+    <ShipLastName>Isbell</ShipLastName>
+    <ShippingMethodID>900</ShippingMethodID>
+    <ShipPostalCode>63123</ShipPostalCode>
+    <ShipState>MO</ShipState>
+    <OrderDetails>
+      <OrderDetailID>21</OrderDetailID>
+      <OrderID>69012</OrderID>
+      <ProductCode>BKT</ProductCode>
+      <ProductID>76</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>69013</OrderID>
+    <CustomerID>15</CustomerID>
+    <PaymentMethodID>6</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>100 Wintergreen Ave</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Sicklerville</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>tiffiny </ShipFirstName>
+    <ShipLastName>hladczuk</ShipLastName>
+    <ShippingMethodID>901</ShippingMethodID>
+    <ShipPostalCode>08081</ShipPostalCode>
+    <ShipState>NJ</ShipState>
+    <OrderDetails>
+      <OrderDetailID>22</OrderDetailID>
+      <OrderID>69013</OrderID>
+      <ProductCode>202</ProductCode>
+      <ProductID>60</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>69014</OrderID>
+    <CustomerID>17</CustomerID>
+    <PaymentMethodID>6</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>1829 E. Mary Ave.</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Visalia</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>Connie </ShipFirstName>
+    <ShipLastName>Dennis</ShipLastName>
+    <ShippingMethodID>901</ShippingMethodID>
+    <ShipPostalCode>93292</ShipPostalCode>
+    <ShipState>CA</ShipState>
+    <OrderDetails>
+      <OrderDetailID>23</OrderDetailID>
+      <OrderID>69014</OrderID>
+      <ProductCode>202</ProductCode>
+      <ProductID>60</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>69015</OrderID>
+    <CustomerID>18</CustomerID>
+    <PaymentMethodID>6</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>11 Central Ave</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>south hadley</ShipCity>
+    <ShipCompanyName />
+    <ShipFirstName>cecilia</ShipFirstName>
+    <ShipLastName>poirier</ShipLastName>
+    <ShippingMethodID>901</ShippingMethodID>
+    <ShipPostalCode>01075</ShipPostalCode>
+    <ShipState>MA</ShipState>
+    <OrderDetails>
+      <OrderDetailID>24</OrderDetailID>
+      <OrderID>69015</OrderID>
+      <ProductCode>202</ProductCode>
+      <ProductID>60</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>25</OrderDetailID>
+      <OrderID>69015</OrderID>
+      <ProductCode>SOT</ProductCode>
+      <ProductID>74</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>26</OrderDetailID>
+      <OrderID>69015</OrderID>
+      <ProductCode>DSC-5</ProductCode>
+      <ProductID>93</ProductID>
+      <Quantity>1</Quantity>
+    </OrderDetails>
+  </Orders>
+</xmldata>

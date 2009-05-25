@@ -1,0 +1,12 @@
+orderid,po#,shipcompanyname,shipfirstname,shiplastname,shipaddress1,shipaddress2,shipcity,shipstate,shippostalcode,shipcountry,shippingmethodid,productcode,quantity
+,,,,,,,,,,,,,
+69008,,,Mary,Wojewodzki,5858 Main St,,Elkridge,MD,21075,United States,US Mail,202,1
+69009,,,Evelyn,Ribadeneyra,113 Fox Ridge Road,,Shelby,NC,28152,United States,US Mail,202,1
+69009,,,Evelyn,Ribadeneyra,113 Fox Ridge Road,,Shelby,NC,28152,United States,US Mail,SOT,1
+69010,,,jennifer,worthington,76 sheffield place,,cartersville,GA,30121,United States,US Mail,101,1
+69011,,,Jane ,Erickson,623 N. Main Street,,Glen Ellyn,IL,60137,United States,US Mail,BKT,1
+69012,,,Felicia ,Isbell,4705 Hamburg Ave.,,Saint Louis,MO,63123,United States,US Mail,BKT,1
+69013,,,tiffiny ,hladczuk,100 Wintergreen Ave,,Sicklerville,NJ,8081,United States,US Mail,202,1
+69014,,,Connie ,Dennis,1829 E. Mary Ave.,,Visalia,CA,93292,United States,US Mail,202,1
+69015,,,cecilia,poirier,11 Central Ave,,south hadley,MA,1075,United States,US Mail,202,1
+69015,,,cecilia,poirier,11 Central Ave,,south hadley,MA,1075,United States,US Mail,SOT,1
