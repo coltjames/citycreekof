@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
@@ -47,6 +48,7 @@ public class OrderFulfillment {
 			setup(args);
 			readOrderXml();
 			readCustomerXml();
+			removeDuplicates();
 			final String csvFile = writeCsv();
 			ftpCsv(csvFile);
 		} catch (Throwable e) {
@@ -233,6 +235,75 @@ public class OrderFulfillment {
 		}
 	}
 
+	private static void removeDuplicates() {
+		final String columnsProperty = props.getRequired(AppProperties.XML_DUPLICATE_COLUMNS);
+		final String[] columns = columnsProperty.split(",");
+
+		// For each order, look to see if the current order is the same as the previous.
+		final List<String> removals = new ArrayList<String>();
+		PropertiesUtil prevOrder = null;
+		for (PropertiesUtil order : orders) {
+			if (prevOrder == null) {
+				prevOrder = order;
+				continue; // skip first one
+			}
+
+			// For each column, check to see if they all match
+			boolean eq = true;
+			String prevId = null;
+			String currId = null;
+			for (String col : columns) {
+				final String colName = col.trim();
+				if (!LangUtil.hasValue(colName)) {
+					continue; // skip these empty columns
+				}
+				final String prev = prevOrder.getOptional(colName);
+				final String curr = order.getOptional(colName);
+				// Duplicates have sequential order id's
+				if (colName.equals("OrderID")) {
+					prevId = prev;
+					currId = curr;
+					try {
+						final long lPrev = Long.parseLong(prev);
+						final long lCurr = Long.parseLong(curr);
+						if (lPrev == lCurr) {
+							eq = false;
+							break; // same order just different order id
+						}
+						if (lPrev != (lCurr - 1)) {
+							eq = false;
+							break; // not sequential
+						}
+					} catch (NumberFormatException e) {
+						log.log(Level.WARNING, "Unable to parse OrderId=" + prev + "," + curr + e.getMessage(), e);
+					}
+					continue; // sequential so possibly, lets check more fields
+				}
+				if (!LangUtil.equals(prev, curr)) {
+					eq = false;
+					break; // not equal so not duplicate
+				}
+			} // for each column
+
+			// Must be equal
+			if (eq && (prevId != null)) {
+				removals.add(prevId);
+				info("DUPLICATE: " + prevId + " equals " + currId);
+			}
+
+			prevOrder = order;
+		} // for each order
+
+		// Remove orders
+		for (Iterator<PropertiesUtil> iter = orders.iterator(); iter.hasNext();) {
+			final PropertiesUtil order = iter.next();
+			final String orderId = order.getOptional("OrderID");
+			if (removals.contains(orderId)) {
+				iter.remove();
+			}
+		}
+	}
+
 	private static String writeCsv() throws IOException {
 		info("Creating CSV file...");
 		boolean first = true;
@@ -274,7 +345,8 @@ public class OrderFulfillment {
 				}
 				csv.append("\"");
 				if (colName.equals(CsvSpecialColumns.SHIP_NAME)) {
-					parseShipName(csv, order);
+					final String name = parseShipName(order);
+					csv.append(name);
 				} else if (colName.equals(CsvSpecialColumns.SHIP_METHOD)) {
 					parseShipMethod(csv, order);
 				} else {
@@ -345,14 +417,14 @@ public class OrderFulfillment {
 		}
 	}
 
-	private static void parseShipName(StringBuilder csv, PropertiesUtil order) {
+	private static String parseShipName(PropertiesUtil order) {
 		final String firstColName = props.getRequired(AppProperties.CSV_SHIPNAME_FIRST);
 		final String lastColName = props.getRequired(AppProperties.CSV_SHIPNAME_LAST);
 
 		// First and last name
 		final String first = order.getRequired(firstColName);
 		final String last = order.getRequired(lastColName);
-		csv.append(first).append(" ").append(last);
+		return first + " " + last;
 	}
 
 	private static void ftpCsv(String csvFile) throws IOException {

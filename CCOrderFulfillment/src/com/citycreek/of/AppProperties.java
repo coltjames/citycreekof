@@ -29,4 +29,5 @@ public interface AppProperties {
 	String FTP_URL = "ftp.url";
 	String EXCLUDE_FILTER_COLUMN = "csv.excludeFilterColumn";
 	String EXCLUDE_FILTER_VALUES = "csv.excludeFilterValues";
+	String XML_DUPLICATE_COLUMNS = "xml.duplicate.columns";
 }

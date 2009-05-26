@@ -38,6 +38,11 @@ public class CustomerXmlTransformer implements IXmlTransformer {
 					}
 					final String oKey = child.getNodeName();
 					final String v = child.getTextContent();
+					if (LangUtil.equals(v, "anonymous_user")) {
+						// skip anonymous users
+						customerId = null;
+						break;
+					}
 					customerDetails.setProperty(oKey, v);
 					if (oKey.equals("CustomerID")) {
 						customerId = v;

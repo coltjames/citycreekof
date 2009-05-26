@@ -501,4 +501,41 @@
       <Quantity>1</Quantity> 
     </OrderDetails> 
   </Orders> 
+  <Orders> 
+    <OrderID>69592</OrderID> 
+    <CustomerID>9</CustomerID> 
+    <PaymentMethodID>13</PaymentMethodID> 
+    <PONum>P-9000869</PONum> 
+    <ShipAddress1>1990 S. A Street</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Perris</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Pinacate Middle</ShipFirstName> 
+    <ShipLastName>School</ShipLastName> 
+    <ShippingMethodID>904</ShippingMethodID> 
+    <ShipPostalCode>92570</ShipPostalCode> 
+    <ShipState>CA</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1274</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>404</ProductCode> 
+      <ProductID>72</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1275</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>SOT</ProductCode> 
+      <ProductID>74</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1276</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>DSC-5</ProductCode> 
+      <ProductID>93</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
 </xmldata>
