@@ -33,7 +33,7 @@ public class OrderFulfillment {
 
 	private static final Logger log = Logger.getLogger(OrderFulfillment.class.getName());
 
-	private static final String VERSION = new Date(1220927361826L).toString();
+	private static final String VERSION = new Date(1245109514873L).toString();
 
 	public static final String ORDER_DETAILS = "OrderDetails";
 
