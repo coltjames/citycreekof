@@ -17,7 +17,7 @@ public class CustomerXmlTransformer implements IXmlTransformer {
 
 	private interface Xml {
 
-		String ROOT = "xmldata";
+//		String ROOT = "xmldata";
 		String CUSTOMERS = "Customers";
 	}
 

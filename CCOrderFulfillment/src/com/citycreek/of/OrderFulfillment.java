@@ -48,21 +48,36 @@ public class OrderFulfillment {
 			setup(args);
 			readOrderXml();
 			readCustomerXml();
-			removeDuplicates();
+			final List<String> removeDuplicates = removeDuplicates();
 			final String csvFile = writeCsv();
 			ftpCsv(csvFile);
+
+			// Print dups at the end.
+			info("*************************************************************************");
+			for (String dup : removeDuplicates) {
+				info(dup);
+			}
 		} catch (Throwable e) {
-			info("ERROR:  " + e.getMessage());
-			log.log(Level.SEVERE, e.toString(), e);
+			info("Unknown serious error", e);
 		}
+		info("*************************************************************************");
 		info("DONE!");
 		info("*************************************************************************");
 		System.exit(0);
 	}
 
 	private static void info(String msg) {
-		log.info(msg);
-		System.out.println(msg);
+		info(msg, null);
+	}
+
+	private static void info(String msg, Throwable e) {
+		if (e != null) {
+			log.log(Level.WARNING, msg, e);
+			System.out.println("ERROR: " + msg + "; " + e.getMessage());
+		} else {
+			log.info(msg);
+			System.out.println(msg);
+		}
 	}
 
 	/**
@@ -83,10 +98,10 @@ public class OrderFulfillment {
 			try {
 				AppUtil.readConfig(loggingFilename);
 			} catch (IOException e) {
-				log.log(Level.WARNING, "Unable to read logging properties, using VM defaults.", e);
+				info("Unable to read logging properties, using VM defaults.", e);
 			}
 		} else {
-			log.config("Unable to read logging properties, using VM defaults.");
+			info("Unable to read logging properties, using VM defaults.");
 		}
 		Format42.use(props.getProperties());
 
@@ -109,9 +124,8 @@ public class OrderFulfillment {
 
 		info("*************************************************************************");
 		info("** CityCreek Order Fulfillment");
-		info("** " + new Date(1220927361826L).toString());
+		info("** " + VERSION);
 		info("*************************************************************************");
-		log.config("VERSION=" + VERSION);
 		log.config("currentTimeMillis=" + System.currentTimeMillis());
 		props.dumpProperties(log, Level.CONFIG);
 		log.config("shipMethodMap=" + shipMethodMap);
@@ -235,12 +249,16 @@ public class OrderFulfillment {
 		}
 	}
 
-	private static void removeDuplicates() {
+	/**
+	 * @return duplicates messages
+	 */
+	private static List<String> removeDuplicates() {
 		final String columnsProperty = props.getRequired(AppProperties.XML_DUPLICATE_COLUMNS);
 		final String[] columns = columnsProperty.split(",");
 
 		// For each order, look to see if the current order is the same as the previous.
 		final List<String> removals = new ArrayList<String>();
+		final List<String> removalLogs = new ArrayList<String>();
 		PropertiesUtil prevOrder = null;
 		for (PropertiesUtil order : orders) {
 			if (prevOrder == null) {
@@ -275,7 +293,7 @@ public class OrderFulfillment {
 							break; // not sequential
 						}
 					} catch (NumberFormatException e) {
-						log.log(Level.WARNING, "Unable to parse OrderId=" + prev + "," + curr + e.getMessage(), e);
+						info("Unable to parse OrderId=" + prev + "," + curr, e);
 					}
 					continue; // sequential so possibly, lets check more fields
 				}
@@ -288,7 +306,7 @@ public class OrderFulfillment {
 			// Must be equal
 			if (eq && (prevId != null)) {
 				removals.add(prevId);
-				info("DUPLICATE: " + prevId + " equals " + currId);
+				removalLogs.add("DUPLICATE: +" + currId + " equals -" + prevId);
 			}
 
 			prevOrder = order;
@@ -302,6 +320,7 @@ public class OrderFulfillment {
 				iter.remove();
 			}
 		}
+		return removalLogs;
 	}
 
 	private static String writeCsv() throws IOException {
@@ -411,7 +430,7 @@ public class OrderFulfillment {
 			String method = shipMethodMap.getOptional(methodId);
 			if (!LangUtil.hasValue(method)) {
 				method = methodId;
-				log.log(Level.WARNING, "Missing shipping method id: " + methodId);
+				info("Missing shipping method id: " + methodId);
 			}
 			csv.append(method);
 		}

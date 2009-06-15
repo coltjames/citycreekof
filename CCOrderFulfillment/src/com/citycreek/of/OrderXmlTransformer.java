@@ -20,7 +20,7 @@ public class OrderXmlTransformer implements IXmlTransformer {
 
 	private interface Xml {
 
-		String ROOT = "xmldata";
+		// String ROOT = "xmldata";
 		String ORDERS = "Orders";
 		String ORDER_DETAILS = OrderFulfillment.ORDER_DETAILS;
 	}
