@@ -33,10 +33,10 @@ public class Columizer {
 	 */
 	static public StringBuffer stripDups(final StringBuffer one, final StringBuffer two, final char[] delims) {
 		final StringBuffer r = new StringBuffer(two.length());
-		final ArrayList t1 = tokenize(one, delims);
-		final ArrayList t2 = tokenize(two, delims);
-		final Iterator iter1 = t1.iterator();
-		final Iterator iter2 = t2.iterator();
+		final ArrayList<String> t1 = tokenize(one, delims);
+		final ArrayList<String> t2 = tokenize(two, delims);
+		final Iterator<String> iter1 = t1.iterator();
+		final Iterator<String> iter2 = t2.iterator();
 		int len = 0; // how many spaces to pad
 		while (iter2.hasNext() && iter1.hasNext()) {
 			final String s1 = (String) iter1.next();
@@ -66,10 +66,10 @@ public class Columizer {
 	 */
 	static public StringBuffer columize(final StringBuffer one, final StringBuffer two, final char[] delims) {
 		final StringBuffer r = new StringBuffer(two.length());
-		final ArrayList t1 = tokenize(one, delims);
-		final ArrayList t2 = tokenize(two, delims);
-		final Iterator iter1 = t1.iterator();
-		final Iterator iter2 = t2.iterator();
+		final ArrayList<String> t1 = tokenize(one, delims);
+		final ArrayList<String> t2 = tokenize(two, delims);
+		final Iterator<String> iter1 = t1.iterator();
+		final Iterator<String> iter2 = t2.iterator();
 		int len = 0; // how many spaces to pad
 		while (iter2.hasNext() && iter1.hasNext()) {
 			final String s1 = (String) iter1.next();
@@ -100,8 +100,8 @@ public class Columizer {
 	 * @param delims to utilize for breaking tokens up
 	 * @return an ArrayList of strings (tokens), delims are not included
 	 */
-	static public ArrayList tokenize(final StringBuffer sb, final char[] delims) {
-		final ArrayList tokens = new ArrayList();
+	static public ArrayList<String> tokenize(final StringBuffer sb, final char[] delims) {
+		final ArrayList<String> tokens = new ArrayList<>();
 		int fs = 0;
 		int fe = 0; // end of field
 		final int oneLen = sb.length();

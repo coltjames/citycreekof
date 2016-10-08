@@ -25,8 +25,7 @@ public class OrderXmlTransformer implements IXmlTransformer {
 		String ORDER_DETAILS = OrderFulfillment.ORDER_DETAILS;
 	}
 
-	public Object fromXml(Object target, Node parent) throws Exception {
-		final List<PropertiesUtil> orders = (List<PropertiesUtil>) target;
+	public List<PropertiesUtil> fromXml(List<PropertiesUtil> orders, Node parent) throws Exception {
 		final NodeList rootNodes = parent.getChildNodes();
 		final Element e = (Element) rootNodes.item(0);
 		if (e != null) {
@@ -36,7 +35,7 @@ public class OrderXmlTransformer implements IXmlTransformer {
 				orders.addAll(newOrders);
 			}
 		}
-		return target;
+		return orders;
 	}
 
 	private List<PropertiesUtil> fromXmlOrder(Element order) {

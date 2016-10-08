@@ -65,25 +65,4 @@ public class LangUtil {
 		}
 		return props;
 	}
-
-	/**
-	 * Provides a null-safe way to compare two Comparable objects.
-	 * 
-	 * @param c1 The first comparable... can be null
-	 * @param c2 The second comparable (of the same class as the first)... can be null
-	 * @param nullsHigh - true when nulls should be considered greater than everything else, otherwise null sorts lowest
-	 * @return
-	 */
-	public static int compare(Comparable c1, Comparable c2, boolean nullsHigh) {
-		if (c1 == null) {
-			return (c2 == null) ? 0 : (nullsHigh ? +1 : -1);
-		} else if (c2 == null) {
-			return nullsHigh ? -1 : +1;
-		}
-		return c1.compareTo(c2);
-	}
-
-	public static boolean equals(Comparable c1, Comparable c2) {
-		return compare(c1, c2, true) == 0;
-	}
 }

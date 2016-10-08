@@ -1,6 +1,7 @@
 package com.citycreek.of;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
 import org.w3c.dom.Document;
@@ -21,8 +22,7 @@ public class CustomerXmlTransformer implements IXmlTransformer {
 		String CUSTOMERS = "Customers";
 	}
 
-	public Object fromXml(Object target, Node parent) throws Exception {
-		final List<PropertiesUtil> orders = (List<PropertiesUtil>) target;
+	public List<PropertiesUtil> fromXml(List<PropertiesUtil> orders, Node parent) throws Exception {
 		final NodeList rootNodes = parent.getChildNodes();
 		final Element e = (Element) rootNodes.item(0);
 		if (e != null) {
@@ -38,7 +38,7 @@ public class CustomerXmlTransformer implements IXmlTransformer {
 					}
 					final String oKey = child.getNodeName();
 					final String v = child.getTextContent();
-					if (LangUtil.equals(v, "anonymous_user")) {
+					if (Objects.equals(v, "anonymous_user")) {
 						// skip anonymous users
 						customerId = null;
 						break;
@@ -53,7 +53,7 @@ public class CustomerXmlTransformer implements IXmlTransformer {
 				}
 			}
 		}
-		return target;
+		return orders;
 	}
 
 	private void merge(String customerId, PropertiesUtil customerDetails, List<PropertiesUtil> orders) {

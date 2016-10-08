@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +29,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.cjc.util.PropertiesUtil;
 
 /**
  * XmlTool is a utility class for working with xml files.
@@ -131,7 +134,7 @@ public class XmlTool {
 	 * @return the populated target (possibly a new instance)
 	 * @throws Exception
 	 */
-	public static Object fromXml(final File xmlFile, Object target, final IXmlTransformer transformer) throws Exception {
+	public static List<PropertiesUtil> fromXml(final File xmlFile, List<PropertiesUtil> target, final IXmlTransformer transformer) throws Exception {
 		final FileInputStream in = new FileInputStream(xmlFile);
 		try {
 			target = fromXml(in, target, transformer);
@@ -150,7 +153,7 @@ public class XmlTool {
 	 * @return the populated target (possibly a new instance)
 	 * @throws Exception
 	 */
-	public static Object fromXml(final InputStream in, final Object target, final IXmlTransformer transformer)
+	public static List<PropertiesUtil> fromXml(final InputStream in, final List<PropertiesUtil> target, final IXmlTransformer transformer)
 			throws Exception {
 		// parse
 		final Document document = parseDocument(in);
@@ -227,7 +230,7 @@ public class XmlTool {
 	 * @return the populated target (possibly a new instance)
 	 * @throws Exception
 	 */
-	public static Object transformFieldFromXml(final Field field, final Element parent, final Object target)
+	public static List<PropertiesUtil> transformFieldFromXml(final Field field, final Element parent, final List<PropertiesUtil> target)
 			throws Exception {
 		final XmlTransformer xt = field.getAnnotation(XmlTransformer.class);
 		if (xt != null) {

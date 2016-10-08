@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
@@ -297,7 +298,7 @@ public class OrderFulfillment {
 					}
 					continue; // sequential so possibly, lets check more fields
 				}
-				if (!LangUtil.equals(prev, curr)) {
+				if (!Objects.equals(prev, curr)) {
 					eq = false;
 					break; // not equal so not duplicate
 				}
@@ -391,12 +392,9 @@ public class OrderFulfillment {
 		final String filename = LangUtil.getDateTimeString(new Date(), format) + ".csv";
 		final String csvFile = props.getOptional(AppProperties.CSV_DIR, "csv") + "/" + filename;
 		// write to disk
-		FileChannel fc = null;
-		try {
-			fc = new FileOutputStream(csvFile).getChannel();
+		try (FileOutputStream fs = new FileOutputStream(csvFile)) {
+			FileChannel fc = fs.getChannel();
 			fc.write(ByteBuffer.wrap(csv.toString().getBytes()));
-		} finally {
-			IOUtil.close(fc);
 		}
 		info("  Excluded: " + csvExcludeFilterValues);
 		info("  Orders:   " + orderIds);
