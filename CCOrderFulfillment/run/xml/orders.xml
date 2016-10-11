@@ -1,0 +1,541 @@
+<xmldata> 
+  <Orders> 
+    <OrderID>69575</OrderID> 
+    <CustomerID>1</CustomerID> 
+    <PaymentMethodID>7</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>3410 Cedar Creek Dr. NW</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Anoka</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Judy</ShipFirstName> 
+    <ShipLastName>Liautaud</ShipLastName> 
+    <ShippingMethodID>501</ShippingMethodID> 
+    <ShipPostalCode>55303</ShipPostalCode> 
+    <ShipState>MN</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1244</OrderDetailID> 
+      <OrderID>69575</OrderID> 
+      <ProductCode>GFT</ProductCode> 
+      <ProductID>1</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69576</OrderID> 
+    <CustomerID>497</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>5987 W Dorado Dr</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Littleton</ShipCity> 
+    <ShipCompanyName>Blue Heron Elementary</ShipCompanyName> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Judy</ShipFirstName> 
+    <ShipLastName>Mead</ShipLastName> 
+    <ShippingMethodID>906</ShippingMethodID> 
+    <ShipPostalCode>80123</ShipPostalCode> 
+    <ShipState>CO</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1245</OrderDetailID> 
+      <OrderID>69576</OrderID> 
+      <ProductCode>404</ProductCode> 
+      <ProductID>72</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1246</OrderDetailID> 
+      <OrderID>69576</OrderID> 
+      <ProductCode>303</ProductCode> 
+      <ProductID>71</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1247</OrderDetailID> 
+      <OrderID>69576</OrderID> 
+      <ProductCode>SOT</ProductCode> 
+      <ProductID>74</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1248</OrderDetailID> 
+      <OrderID>69576</OrderID> 
+      <ProductCode>DSC-5</ProductCode> 
+      <ProductID>93</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69577</OrderID> 
+    <CustomerID>498</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>5606 Claybeck Lane</ShipAddress1> 
+    <ShipAddress2>xxx</ShipAddress2> 
+    <ShipCity>kATY</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Kelly</ShipFirstName> 
+    <ShipLastName>Molloy</ShipLastName> 
+    <ShippingMethodID>9011</ShippingMethodID> 
+    <ShipPostalCode>77494</ShipPostalCode> 
+    <ShipState>TX</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1249</OrderDetailID> 
+      <OrderID>69577</OrderID> 
+      <ProductCode>707</ProductCode> 
+      <ProductID>63</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69578</OrderID> 
+    <CustomerID>82</CustomerID> 
+    <PaymentMethodID>1</PaymentMethodID> 
+    <ShipAddress1>P.O.Box 611</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Dundee</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>South Africa</ShipCountry> 
+    <ShipFirstName>Heidemarie </ShipFirstName> 
+    <ShipLastName>Swanepoel</ShipLastName> 
+    <ShippingMethodID>501</ShippingMethodID> 
+    <ShipPostalCode>3000</ShipPostalCode> 
+    <ShipState>KZN</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1250</OrderDetailID> 
+      <OrderID>69578</OrderID> 
+      <ProductCode>SOTNOWPC</ProductCode> 
+      <ProductID>96</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1251</OrderDetailID> 
+      <OrderID>69578</OrderID> 
+      <ProductCode>ABTEBOOK</ProductCode> 
+      <ProductID>104</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1252</OrderDetailID> 
+      <OrderID>69578</OrderID> 
+      <ProductCode>DSC-20</ProductCode> 
+      <ProductID>105</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69579</OrderID> 
+    <CustomerID>499</CustomerID> 
+    <PaymentMethodID>6</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>4334 Byron Center, S.W.</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Wyoming</ShipCity> 
+    <ShipCompanyName>Huntington Woods Elementary School</ShipCompanyName> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Sally</ShipFirstName> 
+    <ShipLastName>Kwekel</ShipLastName> 
+    <ShippingMethodID>900</ShippingMethodID> 
+    <ShipPostalCode>49519</ShipPostalCode> 
+    <ShipState>MI</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1253</OrderDetailID> 
+      <OrderID>69579</OrderID> 
+      <ProductCode>FCT</ProductCode> 
+      <ProductID>81</ProductID> 
+      <Quantity>2</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69580</OrderID> 
+    <CustomerID>500</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>p.o. box 510</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>mccleary</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>laurie </ShipFirstName> 
+    <ShipLastName>easter</ShipLastName> 
+    <ShippingMethodID>900</ShippingMethodID> 
+    <ShipPostalCode>98557</ShipPostalCode> 
+    <ShipState>WA</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1254</OrderDetailID> 
+      <OrderID>69580</OrderID> 
+      <ProductCode>BKT</ProductCode> 
+      <ProductID>76</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1255</OrderDetailID> 
+      <OrderID>69580</OrderID> 
+      <ProductCode>BKA</ProductCode> 
+      <ProductID>53</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69581</OrderID> 
+    <CustomerID>502</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>216 W. Maple St.</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Lombard</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Tamara</ShipFirstName> 
+    <ShipLastName>Urish</ShipLastName> 
+    <ShippingMethodID>9012</ShippingMethodID> 
+    <ShipPostalCode>60148</ShipPostalCode> 
+    <ShipState>IL</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1256</OrderDetailID> 
+      <OrderID>69581</OrderID> 
+      <ProductCode>SOT</ProductCode> 
+      <ProductID>74</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1257</OrderDetailID> 
+      <OrderID>69581</OrderID> 
+      <ProductCode>ADT</ProductCode> 
+      <ProductID>75</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1258</OrderDetailID> 
+      <OrderID>69581</OrderID> 
+      <ProductCode>BKT</ProductCode> 
+      <ProductID>76</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69582</OrderID> 
+    <CustomerID>503</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>4028 ivygrove ln</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>mason</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>yen</ShipFirstName> 
+    <ShipLastName>tran</ShipLastName> 
+    <ShippingMethodID>900</ShippingMethodID> 
+    <ShipPostalCode>45040</ShipPostalCode> 
+    <ShipState>OH</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1259</OrderDetailID> 
+      <OrderID>69582</OrderID> 
+      <ProductCode>BKT</ProductCode> 
+      <ProductID>76</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69583</OrderID> 
+    <CustomerID>504</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>familiajordan@hotmail.com</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Grovetown</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Rafael</ShipFirstName> 
+    <ShipLastName>Jordan</ShipLastName> 
+    <ShippingMethodID>900</ShippingMethodID> 
+    <ShipPostalCode>30813</ShipPostalCode> 
+    <ShipState>GA</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1260</OrderDetailID> 
+      <OrderID>69583</OrderID> 
+      <ProductCode>SOT</ProductCode> 
+      <ProductID>74</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69584</OrderID> 
+    <CustomerID>505</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>809 Spring Forrest Rd.</ShipAddress1> 
+    <ShipAddress2>Suite 300</ShipAddress2> 
+    <ShipCity>Raleigh </ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Jennier</ShipFirstName> 
+    <ShipLastName>Byrd</ShipLastName> 
+    <ShippingMethodID>900</ShippingMethodID> 
+    <ShipPostalCode>27609</ShipPostalCode> 
+    <ShipState>NC</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1261</OrderDetailID> 
+      <OrderID>69584</OrderID> 
+      <ProductCode>RUL</ProductCode> 
+      <ProductID>89</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69585</OrderID> 
+    <CustomerID>273</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>500 Keokuk St</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Petaluma</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Maureen</ShipFirstName> 
+    <ShipLastName>Kennedy</ShipLastName> 
+    <ShippingMethodID>900</ShippingMethodID> 
+    <ShipPostalCode>94952</ShipPostalCode> 
+    <ShipState>CA</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1262</OrderDetailID> 
+      <OrderID>69585</OrderID> 
+      <ProductCode>FCA</ProductCode> 
+      <ProductID>55</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1263</OrderDetailID> 
+      <OrderID>69585</OrderID> 
+      <ProductCode>FCS</ProductCode> 
+      <ProductID>70</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69586</OrderID> 
+    <CustomerID>506</CustomerID> 
+    <PaymentMethodID>8</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>1707 W. 4th St.</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Red Wing</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Kelly</ShipFirstName> 
+    <ShipLastName>Hanson</ShipLastName> 
+    <ShippingMethodID>901</ShippingMethodID> 
+    <ShipPostalCode>55066</ShipPostalCode> 
+    <ShipState>MN</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1264</OrderDetailID> 
+      <OrderID>69586</OrderID> 
+      <ProductCode>FCD</ProductCode> 
+      <ProductID>65</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1265</OrderDetailID> 
+      <OrderID>69586</OrderID> 
+      <ProductCode>BKT</ProductCode> 
+      <ProductID>76</ProductID> 
+      <Quantity>3</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69587</OrderID> 
+    <CustomerID>507</CustomerID> 
+    <PaymentMethodID>7</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>123 Ledgewood Rd. #204</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Groton</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Amy</ShipFirstName> 
+    <ShipLastName>Willis</ShipLastName> 
+    <ShippingMethodID>9011</ShippingMethodID> 
+    <ShipPostalCode>06340</ShipPostalCode> 
+    <ShipState>CT</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1266</OrderDetailID> 
+      <OrderID>69587</OrderID> 
+      <ProductCode>PSA</ProductCode> 
+      <ProductID>56</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1267</OrderDetailID> 
+      <OrderID>69587</OrderID> 
+      <ProductCode>BKA</ProductCode> 
+      <ProductID>53</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1268</OrderDetailID> 
+      <OrderID>69587</OrderID> 
+      <ProductCode>ADA</ProductCode> 
+      <ProductID>52</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69588</OrderID> 
+    <CustomerID>508</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>23912 Via Danza</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Valencia</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Kristen</ShipFirstName> 
+    <ShipLastName>Julian</ShipLastName> 
+    <ShippingMethodID>901</ShippingMethodID> 
+    <ShipPostalCode>91355</ShipPostalCode> 
+    <ShipState>CA</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1269</OrderDetailID> 
+      <OrderID>69588</OrderID> 
+      <ProductCode>202</ProductCode> 
+      <ProductID>60</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69589</OrderID> 
+    <CustomerID>509</CustomerID> 
+    <PaymentMethodID>5</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>5 Meera ct</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Mansfield</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Sarena</ShipFirstName> 
+    <ShipLastName>Carreon</ShipLastName> 
+    <ShippingMethodID>501</ShippingMethodID> 
+    <ShipPostalCode>76063</ShipPostalCode> 
+    <ShipState>TX</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1270</OrderDetailID> 
+      <OrderID>69589</OrderID> 
+      <ProductCode>SOTNOWPC</ProductCode> 
+      <ProductID>96</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69590</OrderID> 
+    <CustomerID>510</CustomerID> 
+    <PaymentMethodID>6</PaymentMethodID> 
+    <PONum /> 
+    <ShipAddress1>8137 103 Ave.</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Peace River</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>Canada</ShipCountry> 
+    <ShipFirstName>Tammy</ShipFirstName> 
+    <ShipLastName>Miller</ShipLastName> 
+    <ShippingMethodID>902</ShippingMethodID> 
+    <ShipPostalCode>T8S 1M9</ShipPostalCode> 
+    <ShipState>AB</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1271</OrderDetailID> 
+      <OrderID>69590</OrderID> 
+      <ProductCode>808</ProductCode> 
+      <ProductID>64</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1272</OrderDetailID> 
+      <OrderID>69590</OrderID> 
+      <ProductCode>SOT</ProductCode> 
+      <ProductID>74</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1273</OrderDetailID> 
+      <OrderID>69590</OrderID> 
+      <ProductCode>DSC-5</ProductCode> 
+      <ProductID>93</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69591</OrderID> 
+    <CustomerID>9</CustomerID> 
+    <PaymentMethodID>13</PaymentMethodID> 
+    <PONum>P-9000869</PONum> 
+    <ShipAddress1>1990 S. A Street</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Perris</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Pinacate Middle</ShipFirstName> 
+    <ShipLastName>School</ShipLastName> 
+    <ShippingMethodID>904</ShippingMethodID> 
+    <ShipPostalCode>92570</ShipPostalCode> 
+    <ShipState>CA</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1274</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>404</ProductCode> 
+      <ProductID>72</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1275</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>SOT</ProductCode> 
+      <ProductID>74</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1276</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>DSC-5</ProductCode> 
+      <ProductID>93</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+  <Orders> 
+    <OrderID>69592</OrderID> 
+    <CustomerID>9</CustomerID> 
+    <PaymentMethodID>13</PaymentMethodID> 
+    <PONum>P-9000869</PONum> 
+    <ShipAddress1>1990 S. A Street</ShipAddress1> 
+    <ShipAddress2 /> 
+    <ShipCity>Perris</ShipCity> 
+    <ShipCompanyName /> 
+    <ShipCountry>United States</ShipCountry> 
+    <ShipFirstName>Pinacate Middle</ShipFirstName> 
+    <ShipLastName>School</ShipLastName> 
+    <ShippingMethodID>904</ShippingMethodID> 
+    <ShipPostalCode>92570</ShipPostalCode> 
+    <ShipState>CA</ShipState> 
+    <OrderDetails> 
+      <OrderDetailID>1274</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>404</ProductCode> 
+      <ProductID>72</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1275</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>SOT</ProductCode> 
+      <ProductID>74</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+    <OrderDetails> 
+      <OrderDetailID>1276</OrderDetailID> 
+      <OrderID>69591</OrderID> 
+      <ProductCode>DSC-5</ProductCode> 
+      <ProductID>93</ProductID> 
+      <Quantity>1</Quantity> 
+    </OrderDetails> 
+  </Orders> 
+</xmldata>

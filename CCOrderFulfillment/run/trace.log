@@ -1,0 +1,94 @@
+[10.10.16 20:22:48.355  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  *************************************************************************
+[10.10.16 20:22:48.357  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  ** CityCreek Order Fulfillment
+[10.10.16 20:22:48.357  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  ** Mon Jun 15 18:45:14 CDT 2009
+[10.10.16 20:22:48.357  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  *************************************************************************
+[10.10.16 20:22:48.357  CONFIG  main                  com.citycreek.of.OrderFulfillment.setup           ]  currentTimeMillis=1476148968357
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  awt.toolkit=sun.awt.windows.WToolkit
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  csv.ShipMethod=ShippingMethodID
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  csv.ShipMethodMap=105=UPS 2nd Day Air A.M. &106=UPS 2nd Day Air &107=UPS 3 Day Select &108=UPS Ground &104=UPS Next Day Air Saver &102=UPS Next Day Air &101=UPS Next Day Air Early A.M. &109=UPS Standard &113=UPS World Wide Saver &112=UPS Worldwide Expedited &111=UPS Worldwide Express Plus &110=UPS Worldwide Express &204=USPS Parcel &205=USPS Priority Box &211=PMI &214=EMI &501=US Mail &502=UPS &900=US Mail &901=US Mail &902=UPS &903=UPS &904=UPS &905=UPS &906=UPS &907=UPS &908=UPS &909=UPS &910=UPS &911=UPS &912=UPS &913=UPS &914=UPS &915=UPS &916=UPS &917=US Mail Intl &918=US Mail Intl &919=US Mail Intl &920=US Mail Intl &921=US Mail Intl &922=US Mail Intl &923=US Mail Intl &924=US Mail Intl &925=US Mail Intl &926=US Mail Intl &927=US Mail Intl &9001=Priority Mail &9011=Priority Mail &9012=UPS
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  csv.ShipName.first=ShipFirstName
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  csv.ShipName.last=ShipLastName
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  csv.columns=OrderID,PONum,[ShipName],ShipCompanyName,ShipAddress1,ShipAddress2,ShipCity,ShipState,ShipPostalCode,ShipCountry,[ShipMethod],ProductCode,Quantity,EmailAddress
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  csv.excludeFilterColumn=ProductCode
+[10.10.16 20:22:48.360  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  csv.excludeFilterValues=DSC-5,DSC-16,DSC-17,SOTNOWMAC,SOTNOWPC,DSC-14,DSC-15,DSC-00,DSC-18,ABTEBOOK,DSC-20,DSC-21,GFT,DSC-22,DSC-3, DSC-24, DSC-23, DSC-25, CAT, DSC-27, DSC-13, DSC-28
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  file.encoding=Cp1252
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  file.encoding.pkg=sun.io
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  file.separator=\
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  ftp.enabled=false
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  ftp.url=ftp://felwin:01eaitf30@localhost/
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.awt.printerjob=sun.awt.windows.WPrinterJob
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.class.path=D:\Colt\Documents\workspace\citycreekof\CCOrderFulfillment\bin
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.class.version=52.0
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.endorsed.dirs=C:\Program Files\Java\jre1.8.0_31\lib\endorsed
+[10.10.16 20:22:48.361  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.ext.dirs=C:\Program Files\Java\jre1.8.0_31\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.home=C:\Program Files\Java\jre1.8.0_31
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.io.tmpdir=C:\Users\Ephia\AppData\Local\Temp\
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.library.path=C:\Program Files\Java\jre1.8.0_31\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_31/bin/server;C:/Program Files/Java/jre1.8.0_31/bin;C:/Program Files/Java/jre1.8.0_31/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files (x86)\Skype\Phone\;D:\Colt\Applications\Git\cmd;C:\Users\Ephia\AppData\Local\Microsoft\WindowsApps;;D:\Colt\Applications\eclipse;;.
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.runtime.name=Java(TM) SE Runtime Environment
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.runtime.version=1.8.0_31-b13
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.specification.name=Java Platform API Specification
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.specification.vendor=Oracle Corporation
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.specification.version=1.8
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vendor=Oracle Corporation
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vendor.url=http://java.oracle.com/
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+[10.10.16 20:22:48.362  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.version=1.8.0_31
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vm.info=mixed mode
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vm.specification.name=Java Virtual Machine Specification
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vm.specification.vendor=Oracle Corporation
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vm.specification.version=1.8
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vm.vendor=Oracle Corporation
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  java.vm.version=25.31-b07
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  line.separator=
+
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  os.arch=amd64
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  os.name=Windows 8.1
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  os.version=6.3
+[10.10.16 20:22:48.363  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  path.separator=;
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.arch.data.model=64
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.boot.class.path=C:\Program Files\Java\jre1.8.0_31\lib\resources.jar;C:\Program Files\Java\jre1.8.0_31\lib\rt.jar;C:\Program Files\Java\jre1.8.0_31\lib\sunrsasign.jar;C:\Program Files\Java\jre1.8.0_31\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_31\lib\jce.jar;C:\Program Files\Java\jre1.8.0_31\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_31\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_31\classes
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.boot.library.path=C:\Program Files\Java\jre1.8.0_31\bin
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.cpu.endian=little
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.cpu.isalist=amd64
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.desktop=windows
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.io.unicode.encoding=UnicodeLittle
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.java.command=com.citycreek.of.OrderFulfillment
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.java.launcher=SUN_STANDARD
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.jnu.encoding=Cp1252
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  sun.os.patch.level=
+[10.10.16 20:22:48.364  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.country=US
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.dir=D:\Colt\Documents\workspace\citycreekof\CCOrderFulfillment\run
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.home=C:\Users\Ephia
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.language=en
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.name=Ephia
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.script=
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.timezone=America/Chicago
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  user.variant=
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  xml.customer.file=customers.xml
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  xml.customer.url=http://www.citycreek.com/net/WebService.aspx?Login={0}&EncryptedPassword={1}&EDI_Name=Generic\Customers&SELECT_Columns={2}&WHERE_Column=AccessKey&WHERE_Value=C
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  xml.customer.url.columns=CustomerID,AccessKey,EmailAddress
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  xml.duplicate.columns=OrderID,PONum,ShipFirstName,ShipLastName,ShipCompanyName,ShipAddress1,ShipAddress2,ShipCity,ShipState,ShipPostalCode,ShipCountry
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  xml.order.file=orders.xml
+[10.10.16 20:22:48.365  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  xml.order.url=http://www.citycreek.com/net/WebService.aspx?Login={0}&EncryptedPassword={1}&EDI_Name=Generic\Orders&SELECT_Columns={2}
+[10.10.16 20:22:48.366  CONFIG  main                  com.cjc.util.PropertiesUtil.dumpProperties        ]  xml.order.url.columns=o.OrderID,o.PONum,o.ShipAddress1,o.ShipAddress2,o.ShipCity,o.ShipCompanyName,o.ShipFirstName,o.ShipLastName,o.ShippingMethodID,o.ShipPostalCode,o.ShipCountry,o.ShipState,od.ProductCode,od.Quantity
+[10.10.16 20:22:48.366  CONFIG  main                  com.citycreek.of.OrderFulfillment.setup           ]  shipMethodMap=com.cjc.util.PropertiesUtil@7f31245a
+[10.10.16 20:22:48.366  CONFIG  main                  com.citycreek.of.OrderFulfillment.setup           ]  csvExcludeFilterColumn=ProductCode
+[10.10.16 20:22:48.366  CONFIG  main                  com.citycreek.of.OrderFulfillment.setup           ]  csvExcludeFilterValues=[DSC-23, DSC-24, DSC-13, DSC-21, DSC-00, DSC-22, DSC-16, SOTNOWPC, DSC-27, DSC-17, SOTNOWMAC, DSC-28, DSC-14, DSC-25, DSC-15, DSC-20, ABTEBOOK, GFT, CAT, DSC-5, DSC-18, DSC-3]
+[10.10.16 20:22:48.366  CONFIG  main                  com.citycreek.of.OrderFulfillment.setup           ]  *************************************************************************
+[10.10.16 20:22:48.366  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  Retrieving ORDERS XML file...
+[10.10.16 20:22:48.366  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]    Read from file, xml/orders.xml
+[10.10.16 20:22:48.396  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  Retrieving CUSTOMERS XML file...
+[10.10.16 20:22:48.397  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]    Read from file, xml/customers.xml
+[10.10.16 20:22:48.405  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  Creating CSV file...
+[10.10.16 20:22:48.411  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]    Excluded: [DSC-23, DSC-24, DSC-13, DSC-21, DSC-00, DSC-22, DSC-16, SOTNOWPC, DSC-27, DSC-17, SOTNOWMAC, DSC-28, DSC-14, DSC-25, DSC-15, DSC-20, ABTEBOOK, GFT, CAT, DSC-5, DSC-18, DSC-3]
+[10.10.16 20:22:48.411  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]    Orders:   [69576, 69577, 69579, 69580, 69581, 69582, 69583, 69584, 69585, 69586, 69587, 69588, 69590, 69592]
+[10.10.16 20:22:48.412  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]    Wrote 25 lines to csv/201610102022.csv
+[10.10.16 20:22:48.412  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  FTP Disabled
+[10.10.16 20:22:48.412  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  *************************************************************************
+[10.10.16 20:22:48.412  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  DUPLICATE: +69592 equals -69591
+[10.10.16 20:22:48.413  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  *************************************************************************
+[10.10.16 20:22:48.413  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  DONE!
+[10.10.16 20:22:48.413  INFO    main                  com.citycreek.of.OrderFulfillment.info            ]  *************************************************************************

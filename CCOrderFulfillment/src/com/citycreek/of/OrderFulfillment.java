@@ -136,37 +136,32 @@ public class OrderFulfillment {
 	}
 
 	public static void readOrderXml() throws Exception {
-		{
-			info("Retrieving ORDERS XML file...");
-			String xmlFile = props.getOptional(AppProperties.XML_ORDER_FILE);
-			if (LangUtil.hasValue(xmlFile)) {
-				xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + xmlFile;
-				info("  Read from file, " + xmlFile);
-				final File file = new File(xmlFile);
-				if (file.length() > 0) {
-					XmlTool.fromXml(file, orders, new OrderXmlTransformer());
-				}
-			} else {
-				readOrdersFromUrl();
+		info("Retrieving ORDERS XML file...");
+		String xmlFile = props.getOptional(AppProperties.XML_ORDER_FILE);
+		if (LangUtil.hasValue(xmlFile)) {
+			xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + xmlFile;
+			info("  Read from file, " + xmlFile);
+			final File file = new File(xmlFile);
+			if (file.length() > 0) {
+				XmlTool.fromXml(file, orders, new OrderXmlTransformer());
 			}
+		} else {
+			readOrdersFromUrl();
 		}
 	}
 
 	public static void readCustomerXml() throws Exception {
-
-		{
-			info("Retrieving CUSTOMERS XML file...");
-			String xmlFile = props.getOptional(AppProperties.XML_CUSTOMER_FILE);
-			if (LangUtil.hasValue(xmlFile)) {
-				xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + xmlFile;
-				info("  Read from file, " + xmlFile);
-				final File file = new File(xmlFile);
-				if (file.length() > 0) {
-					XmlTool.fromXml(file, orders, new CustomerXmlTransformer());
-				}
-			} else {
-				readCustomersFromUrl();
+		info("Retrieving CUSTOMERS XML file...");
+		String xmlFile = props.getOptional(AppProperties.XML_CUSTOMER_FILE);
+		if (LangUtil.hasValue(xmlFile)) {
+			xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + xmlFile;
+			info("  Read from file, " + xmlFile);
+			final File file = new File(xmlFile);
+			if (file.length() > 0) {
+				XmlTool.fromXml(file, orders, new CustomerXmlTransformer());
 			}
+		} else {
+			readCustomersFromUrl();
 		}
 	}
 

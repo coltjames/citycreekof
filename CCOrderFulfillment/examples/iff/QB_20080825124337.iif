@@ -1,0 +1,238 @@
+!CUST	NAME	BADDR1	BADDR2	BADDR3	BADDR4	BADDR5	SADDR1	SADDR2	SADDR3	SADDR4	SADDR5	PHONE1	PHONE2	FAXNUM	EMAIL	NOTE	CONT1	CONT2	CTYPE	TERMS	TAXABLE	LIMIT	RESALENUM	REP	TAXITEM	NOTEPAD	SALUTATION	COMPANYNAME	FIRSTNAME	MIDINIT	LASTNAME
+!TRNS	TRNSID	TRNSTYPE	DATE	ACCNT	NAME	CLASS	AMOUNT	DOCNUM	MEMO	CLEAR	TOPRINT	PONUM	ADDR1	ADDR2	ADDR3	ADDR4	ADDR5	SADDR1	SADDR2	SADDR3	SADDR4	SADDR5	TERMS	SHIPVIA								
+!SPL	SPLID	TRNSTYPE	DATE	ACCNT	NAME	CLASS	AMOUNT	DOCNUM	MEMO	CLEAR	QNTY	PRICE	INVITEM	TAXABLE	EXTRA																
+!ENDTRNS
+CUST	"Bentley, Alycia K"	"Alycia Bentley"	"5520 Sedalia Trl Apt 513"	"Benbrook, TX 76126"	""		"Alycia Bentley"	"5520 Sedalia Trl Apt 513"	"Benbrook, TX 76126"			8172444749			alyciabentley@sbcglobal.net		Alycia Bentley				N								Alycia		Bentley
+TRNS		INVOICE	08/15/08	Accounts Receivable	"Bentley, Alycia K"	website	22.95	11072		N	Y		"Alycia Bentley"	"5520 Sedalia Trl Apt 513"	"Benbrook, TX 76126"			"Alycia Bentley"	"5520 Sedalia Trl Apt 513"	"Benbrook, TX 76126"			Creditcard	USPS								
+SPL		INVOICE	08/15/08	Sales CDT			-17.95		Songs to Remember Times	N	-1	17.95	CDT	Y																	
+SPL		INVOICE	08/15/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/15/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11072		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Wieckhorst, Cindy"	"Cindy Wieckhorst"	"2426 Farnam St."	"Davenport, IA 52803"	""		"Cindy Wieckhorst"	"2426 Farnam St."	"Davenport, IA 52803"			563-326-4137			wieckhorstdc5@mchsi.com		Cindy Wieckhorst				N								Cindy		Wieckhorst
+TRNS		INVOICE	08/15/08	Accounts Receivable	"Wieckhorst, Cindy"	website	53.95	11073		N	Y	2426	"Cindy Wieckhorst"	"2426 Farnam St."	"Davenport, IA 52803"			"Cindy Wieckhorst"	"2426 Farnam St."	"Davenport, IA 52803"			Net 30	USPS								
+SPL		INVOICE	08/15/08	Sales SOT			-48.95		Times Alive CD-ROM	N	-1	48.95	SOT	Y																	
+SPL		INVOICE	08/15/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/15/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11073		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Entz, Tina"	"Tina Entz"	"Apple Creek Academy"	"12430 N 127 E"	"Valley Center, KS 67147"	""	"Tina Entz"	"Apple Creek Academy"	"12430 N 127 E"	"Valley Center, KS 67147"		316-799-2978			joshua.24.fifteen@juno.com		Tina Entz				N								Tina		Entz
+TRNS		INVOICE	08/16/08	Accounts Receivable	"Entz, Tina"	website	53.95	11074		N	Y		"Tina Entz"	"Apple Creek Academy"	"12430 N 127 E"	"Valley Center, KS 67147"		"Tina Entz"	"Apple Creek Academy"	"12430 N 127 E"	"Valley Center, KS 67147"		Creditcard	USPS								
+SPL		INVOICE	08/16/08	Sales SOT			-48.95		Times Alive CD-ROM	N	-1	48.95	SOT	Y																	
+SPL		INVOICE	08/16/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/16/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11074		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Strauss, Sherri"	"sherri strauss"	"9504 S. La Rosa Dr."	"Tempe, AZ 85284"	""		"Sherri Strauss"	"9504 S. La Rosa Dr."	"Tempe, AZ 85284"			480-940-9865			sbstrauss@cox.net		sherri strauss				N								sherri		strauss
+TRNS		INVOICE	08/16/08	Accounts Receivable	"Strauss, Sherri"	website	14.95	11075		N	Y		"sherri strauss"	"9504 S. La Rosa Dr."	"Tempe, AZ 85284"			"Sherri Strauss"	"9504 S. La Rosa Dr."	"Tempe, AZ 85284"			Creditcard	USPS								
+SPL		INVOICE	08/16/08	Sales WBA			-9.95		Addition Student Workbook	N	-1	9.95	WBA	Y																	
+SPL		INVOICE	08/16/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/16/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11075		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Landreth, Jamie"	"David & Jamie Landreth"	"3463 Concetta Way"	"Sacramento, CA 95821"	""		"David & Jamie Landreth"	"3463 Concetta Way"	"Sacramento, CA 95821"			916-676-2639			landrethfive@hotmail.com		David & Jamie Landreth				N								David	&	Landreth
+TRNS		INVOICE	08/16/08	Accounts Receivable	"Landreth, Jamie"	website	34.9	11076		N	Y		"David & Jamie Landreth"	"3463 Concetta Way"	"Sacramento, CA 95821"			"David & Jamie Landreth"	"3463 Concetta Way"	"Sacramento, CA 95821"			Creditcard	USPS								
+SPL		INVOICE	08/16/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/16/08	Sales WBT			-9.95		Times Student Workbook	N	-1	9.95	WBT	Y																	
+SPL		INVOICE	08/16/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/16/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11076		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Ticknor, Evellen L"	"Evellen Ticknor"	"River Eves ES"	"300 Abbotts Close"	"John's Creek, GA 30005"	""	"Evellen Ticknor"	"River Eves ES"	"300 Abbotts Close"	"John's Creek, GA 30005"		404-272-7094			TicknorE@fultonschools.org		Evellen Ticknor				N								Evellen		Ticknor
+TRNS		INVOICE	08/16/08	Accounts Receivable	"Ticknor, Evellen L"	website	64.74	11077		N	Y		"Evellen Ticknor"	"River Eves ES"	"300 Abbotts Close"	"John's Creek, GA 30005"		"Evellen Ticknor"	"River Eves ES"	"300 Abbotts Close"	"John's Creek, GA 30005"		Creditcard	USPS								
+SPL		INVOICE	08/16/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/16/08	Sales BKA			-19.95		Addition Book for Kids	N	-1	19.95	BKA	Y																	
+SPL		INVOICE	08/16/08	Sales SPT			-18.95		Story Problems the Fun Way	N	-1	18.95	SPT	Y																	
+SPL		INVOICE	08/16/08	Sales Shipping			-5.89		Shipping Charge	N	-1	5.89	Shipping	Y																	
+SPL		INVOICE	08/16/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11077		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Lapp, Jeneen"	"Jeneen Lapp"	"2161 Thoroughbred Drive"	"Wadsworth, OH 44258"	""		"Jeneen Lapp"	"2161 Thoroughbred Drive"	"Wadsworth, OH 44258"			330-239-0452			jjalapp@roadrunner.com		Jeneen Lapp				N								Jeneen		Lapp
+TRNS		INVOICE	08/17/08	Accounts Receivable	"Lapp, Jeneen"	website	91.17	11078		N	Y		"Jeneen Lapp"	"2161 Thoroughbred Drive"	"Wadsworth, OH 44258"			"Jeneen Lapp"	"2161 Thoroughbred Drive"	"Wadsworth, OH 44258"			Creditcard	UPS								
+SPL		INVOICE	08/17/08	Sales Kits			-69.93		Deluxe Kit 707	N	-1	69.93	Kit 707	Y																	
+SPL		INVOICE	08/17/08	Sales ADA			-12.95		Addition Audio Book on CD	N	-1	12.95	ADA	Y																	
+SPL		INVOICE	08/17/08	Sales Shipping			-8.29		Shipping Charge	N	-1	8.29	Shipping	Y																	
+SPL		INVOICE	08/17/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11078		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"McMurtrie, Jennifer D"	"Jennifer McMurtrie"	"823 Thistledown Dr."	"Rock Hill, SC 29730"	""		"Jennifer McMurtrie"	"823 Thistledown Dr."	"Rock Hill, SC 29730"			803-328-8494			jdmc@comporium.net		Jennifer McMurtrie				N								Jennifer		McMurtrie
+TRNS		INVOICE	08/17/08	Accounts Receivable	"McMurtrie, Jennifer D"	website	166.95	11079		N	Y		"Jennifer McMurtrie"	"823 Thistledown Dr."	"Rock Hill, SC 29730"			"Jennifer McMurtrie"	"823 Thistledown Dr."	"Rock Hill, SC 29730"			Creditcard	UPS								
+SPL		INVOICE	08/17/08	Sales Kits			-57.37		Basic Kit 202	N	-1	57.37	Kit 202	Y																	
+SPL		INVOICE	08/17/08	Sales SOT			-48.95		Times Alive CD-ROM	N	-1	48.95	SOT	Y																	
+SPL		INVOICE	08/17/08	Sales Kits			-69.93		Deluxe Kit 707	N	-1	69.93	Kit 707	Y																	
+SPL		INVOICE	08/17/08	Discounts			24.48		Coupon Code	N		-24.48	Discounts	N																	
+SPL		INVOICE	08/17/08	Sales Shipping			-15.18		Shipping Charge	N	-1	15.18	Shipping	Y																	
+SPL		INVOICE	08/17/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11079		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Vaughn, Diana E"	"Diana Vaughn"	"1549 Colony Drive"	"Wyomissing, PA 19610"	""		"Diana Vaughn"	"1549 Colony Drive"	"Wyomissing, PA 19610"			610-670-3756			dianav@comcast.net		Diana Vaughn				N								Diana		Vaughn
+TRNS		INVOICE	08/17/08	Accounts Receivable	"Vaughn, Diana E"	website	90.02	11080		N	Y		"Diana Vaughn"	"1549 Colony Drive"	"Wyomissing, PA 19610"			"Diana Vaughn"	"1549 Colony Drive"	"Wyomissing, PA 19610"			Creditcard	UPS								
+SPL		INVOICE	08/17/08	Sales Kits			-57.37		Basic Kit 202	N	-1	57.37	Kit 202	Y																	
+SPL		INVOICE	08/17/08	Sales SOT			-48.95		Times Alive CD-ROM	N	-1	48.95	SOT	Y																	
+SPL		INVOICE	08/17/08	Discounts			24.48		Coupon Code	N		-24.48	Discounts	N																	
+SPL		INVOICE	08/17/08	Sales Shipping			-8.18		Shipping Charge	N	-1	8.18	Shipping	Y																	
+SPL		INVOICE	08/17/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11080		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Petricko, Jeana"	"Jeana  Petricko"	"460 Spring St"	"Colorado Springs, CO 80904"	""		"Jeana  Petricko"	"460 Spring St"	"Colorado Springs, CO 80904"			7196325948			jmpetricko@aol.com		Jeana  Petricko				N								Jeana		Petricko
+TRNS		INVOICE	08/18/08	Accounts Receivable	"Petricko, Jeana"	website	30.85	11081		N	Y		"Jeana  Petricko"	"460 Spring St"	"Colorado Springs, CO 80904"			"Jeana  Petricko"	"460 Spring St"	"Colorado Springs, CO 80904"			Creditcard	USPS								
+SPL		INVOICE	08/18/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/18/08	Sales WBT			-9.95		Times Student Workbook	N	-1	9.95	WBT	Y																	
+SPL		INVOICE	08/18/08	Sales FCD			-8.95		Division Flash Cards	N	-1	8.95	FCD	Y																	
+SPL		INVOICE	08/18/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/18/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11081		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Jeffreys, Matthew"	"Matthew Jeffreys"	"P.O. Box 781349"	"San Antonio, TX 78278"	""		"Matthew Jeffreys"	"P.O. Box 781349"	"San Antonio, TX 78278"			210-408-6394			m.jeffreys@att.net		Matthew Jeffreys				N								Matthew		Jeffreys
+TRNS		INVOICE	08/18/08	Accounts Receivable	"Jeffreys, Matthew"	website	24.95	11082		N	Y		"Matthew Jeffreys"	"P.O. Box 781349"	"San Antonio, TX 78278"			"Matthew Jeffreys"	"P.O. Box 781349"	"San Antonio, TX 78278"			Creditcard	USPS								
+SPL		INVOICE	08/18/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/18/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/18/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11082		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Gines, Jolene"	"Jolene Gines"	"238 West 3100 South"	"Bountiful, UT 84010"	""		"Jolene Gines"	"238 West 3100 South"	"Bountiful, UT 84010"			801 2981462			jogines@comcast.net		Jolene Gines				N								Jolene		Gines
+TRNS		INVOICE	08/18/08	Accounts Receivable	"Gines, Jolene"	website	24.95	11083		N	Y		"Jolene Gines"	"238 West 3100 South"	"Bountiful, UT 84010"			"Jolene Gines"	"238 West 3100 South"	"Bountiful, UT 84010"			Creditcard	USPS								
+SPL		INVOICE	08/18/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/18/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/18/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11083		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Glunt, Katherine A"	"Kathy Glunt"	"7122 Wilhelmina Drive"	"Liberty Twp, OH 45044"	""		"Kathy Glunt"	"7122 Wilhelmina Drive"	"Liberty Twp, OH 45044"			513-777-2223			kathyglunt@roadrunner.com		Kathy Glunt				N								Kathy		Glunt
+TRNS		INVOICE	08/19/08	Accounts Receivable	"Glunt, Katherine A"	website	116.57	11084		N	Y		"Kathy Glunt"	"7122 Wilhelmina Drive"	"Liberty Twp, OH 45044"			"Kathy Glunt"	"7122 Wilhelmina Drive"	"Liberty Twp, OH 45044"			Discover	UPS								
+SPL		INVOICE	08/19/08	Sales Kits			-41.22		Basic Kit 101	N	-1	41.22	Kit 101	Y																	
+SPL		INVOICE	08/19/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/19/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/19/08	Sales WBT			-9.95		Times Student Workbook	N	-1	9.95	WBT	Y																	
+SPL		INVOICE	08/19/08	Sales FCD			-8.95		Division Flash Cards	N	-1	8.95	FCD	Y																	
+SPL		INVOICE	08/19/08	Sales SPT			-18.95		Story Problems the Fun Way	N	-1	18.95	SPT	Y																	
+SPL		INVOICE	08/19/08	Sales Shipping			-10.6		Shipping Charge	N	-1	10.6	Shipping	Y																	
+SPL		INVOICE	08/19/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11084		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"DC, Advantage"	"Advantage DC"	"Amazon.com"	"1850 Mercer Drive"	"Lexington, KY 40511"	""	"Advantage DC"	"Amazon.com"	"1850 Mercer Drive"	"Lexington, KY 40511"					judy@citycreek.com		Advantage DC				N								Advantage		DC
+TRNS		INVOICE	08/19/08	Accounts Receivable	"DC, Advantage"	website	546.43	11085		N	Y	Amazon	"Advantage DC"	"Amazon.com"	"1850 Mercer Drive"	"Lexington, KY 40511"		"Advantage DC"	"Amazon.com"	"1850 Mercer Drive"	"Lexington, KY 40511"		Net 30	UPS								
+SPL		INVOICE	08/19/08	Sales BKT			-159.60		Times Book for Kids	N	-8	19.95	BKT	Y																	
+SPL		INVOICE	08/19/08	Sales BKA			-319.20		Addition Book for Kids	N	-16	19.95	BKA	Y																	
+SPL		INVOICE	08/19/08	Sales CDT			-17.95		Songs to Remember Times	N	-1	17.95	CDT	Y																	
+SPL		INVOICE	08/19/08	Sales Shipping			-49.68		Shipping Charge	N	-1	49.68	Shipping	Y																	
+SPL		INVOICE	08/19/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11085		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Gamba, Jennifer"	"Jennifer Gamba"	"10 Sutton Place"	"Florham Park, NJ 07932"	""		"Jennifer Gamba"	"10 Sutton Place"	"Florham Park, NJ 07932"			201-602-2928			jeng11@optonline.net		Jennifer Gamba				N								Jennifer		Gamba
+TRNS		INVOICE	08/19/08	Accounts Receivable	"Gamba, Jennifer"	website	108.45	11087		N	Y		"Jennifer Gamba"	"10 Sutton Place"	"Florham Park, NJ 07932"			"Jennifer Gamba"	"10 Sutton Place"	"Florham Park, NJ 07932"			Creditcard	UPS								
+SPL		INVOICE	08/19/08	Sales Kits			-57.37		Basic Kit 202	N	-1	57.37	Kit 202	Y																	
+SPL		INVOICE	08/19/08	Sales Kits			-41.22		Basic Kit 101	N	-1	41.22	Kit 101	Y																	
+SPL		INVOICE	08/19/08	Sales Shipping			-9.86		Shipping Charge	N	-1	9.86	Shipping	Y																	
+SPL		INVOICE	08/19/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11087		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Barber, Staci"	"Staci Barber"	"1115 Fifth Avenue, #11A"	"New York, NY 10128"	""		"Staci Barber"	"8 Philips lane"	"Rye, NY 10580"			6462501200			stacibarber@nyc.rr.com		Staci Barber				N								Staci		Barber
+TRNS		INVOICE	08/19/08	Accounts Receivable	"Barber, Staci"	website	50.8	11088		N	Y		"Staci Barber"	"1115 Fifth Avenue, #11A"	"New York, NY 10128"			"Staci Barber"	"8 Philips lane"	"Rye, NY 10580"			Creditcard	USPS								
+SPL		INVOICE	08/19/08	Sales FCD			-8.95		Division Flash Cards	N	-1	8.95	FCD	Y																	
+SPL		INVOICE	08/19/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/19/08	Sales WBT			-9.95		Times Student Workbook	N	-1	9.95	WBT	Y																	
+SPL		INVOICE	08/19/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/19/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/19/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11088		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Tuffanelli, Leah"	"Leah Tuffanelli"	"364 School Road"	"San Francisco, CA 94945"	""		"Leah Tuffanelli"	"364 School Road"	"San Francisco, CA 94945"			415 892 1087			ltb@saber.net		Leah Tuffanelli				N								Leah		Tuffanelli
+TRNS		INVOICE	08/19/08	Accounts Receivable	"Tuffanelli, Leah"	website	63.11	11089		N	Y		"Leah Tuffanelli"	"364 School Road"	"San Francisco, CA 94945"			"Leah Tuffanelli"	"364 School Road"	"San Francisco, CA 94945"			Creditcard	USPS								
+SPL		INVOICE	08/19/08	Sales Kits			-57.37		Basic Kit 202	N	-1	57.37	Kit 202	Y																	
+SPL		INVOICE	08/19/08	Sales Shipping			-5.74		Shipping Charge	N	-1	5.74	Shipping	Y																	
+SPL		INVOICE	08/19/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11089		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Koscik, Sharon A"	"Sharon Koscik"	"W329 N4791 Elderwood Dr"	"Nashotah, WI 53029"	""		"Michelle Olson"	"W7873 Amsterdam Prairie Road"	"Holmen, WI 54636"			262-719-1407			skoscik@wi.rr.com		Sharon Koscik				N								Sharon		Koscik
+TRNS		INVOICE	08/20/08	Accounts Receivable	"Koscik, Sharon A"	website	108.45	11090		N	Y		"Sharon Koscik"	"W329 N4791 Elderwood Dr"	"Nashotah, WI 53029"			"Michelle Olson"	"W7873 Amsterdam Prairie Road"	"Holmen, WI 54636"			Creditcard	UPS								
+SPL		INVOICE	08/20/08	Sales Kits			-41.22		Basic Kit 101	N	-1	41.22	Kit 101	Y																	
+SPL		INVOICE	08/20/08	Sales Kits			-57.37		Basic Kit 202	N	-1	57.37	Kit 202	Y																	
+SPL		INVOICE	08/20/08	Sales Shipping			-9.86		Shipping Charge	N	-1	9.86	Shipping	Y																	
+SPL		INVOICE	08/20/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11090		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Elementary, Dyer"	"Stacey Willis"	"Dyer Elementary"	"713 Hi Hope Road"	"Lawrenceville, GA 30043"	""	"Stacey Willis"	"Dyer Elementary"	"713 Hi Hope Road"	"Lawrenceville, GA 30043"		770-963-6214			stacey_willis@gwinnett.k12.ga.us		Stacey Willis				N								Stacey		Willis
+TRNS		INVOICE	08/20/08	Accounts Receivable	"Elementary, Dyer"	website	405.49	11092		N	Y		"Stacey Willis"	"Dyer Elementary"	"713 Hi Hope Road"	"Lawrenceville, GA 30043"		"Stacey Willis"	"Dyer Elementary"	"713 Hi Hope Road"	"Lawrenceville, GA 30043"		Creditcard	UPS								
+SPL		INVOICE	08/20/08	Sales Kits			-177.14		Classroom Kit 606	N	-1	177.14	Kit 606	Y																	
+SPL		INVOICE	08/20/08	Sales SOT			-48.95		Times Alive CD-ROM	N	-1	48.95	SOT	Y																	
+SPL		INVOICE	08/20/08	Sales Kits			-127.12		Classroom Kit 505	N	-1	127.12	Kit 505	Y																	
+SPL		INVOICE	08/20/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/20/08	Sales BKA			-19.95		Addition Book for Kids	N	-1	19.95	BKA	Y																	
+SPL		INVOICE	08/20/08	Discounts			24.48		Coupon Code	N		-24.48	Discounts	N																	
+SPL		INVOICE	08/20/08	Sales Shipping			-36.86		Shipping Charge	N	-1	36.86	Shipping	Y																	
+SPL		INVOICE	08/20/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11092		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Teal, Joan E."	"Joan Teal"	"1455 Tualatin Drive"	"Post Falls, ID 83854"	""		"Joan Teal"	"1455 Tualatin Drive"	"Post Falls, ID 83854"			(208) 819-9414			jteal@idahova.org		Joan Teal				N								Joan		Teal
+TRNS		INVOICE	08/20/08	Accounts Receivable	"Teal, Joan E."	website	49.85	11093		N	Y		"Joan Teal"	"1455 Tualatin Drive"	"Post Falls, ID 83854"			"Joan Teal"	"1455 Tualatin Drive"	"Post Falls, ID 83854"			Creditcard	USPS								
+SPL		INVOICE	08/20/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/20/08	Sales CDT			-17.95		Songs to Remember Times	N	-1	17.95	CDT	Y																	
+SPL		INVOICE	08/20/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/20/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/20/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11093		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Theule, Toby"	"Toby Theule"	"4925 8th Street"	"Carpinteria, CA 93013"	""		"Toby Theule"	"4925 8th Street"	"Carpinteria, CA 93013"			805-566-6694			onekanobe@hotmail.com		Toby Theule				N								Toby		Theule
+TRNS		INVOICE	08/20/08	Accounts Receivable	"Theule, Toby"	website	52.85	11094		N	Y		"Toby Theule"	"4925 8th Street"	"Carpinteria, CA 93013"			"Toby Theule"	"4925 8th Street"	"Carpinteria, CA 93013"			Creditcard	USPS								
+SPL		INVOICE	08/20/08	Sales WBA			-9.95		Addition Student Workbook	N	-1	9.95	WBA	Y																	
+SPL		INVOICE	08/20/08	Sales TMA			-24.95		Addition Teacher's Manual	N	-1	24.95	TMA	Y																	
+SPL		INVOICE	08/20/08	Sales ADA			-12.95		Addition Audio Book on CD	N	-1	12.95	ADA	Y																	
+SPL		INVOICE	08/20/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/20/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11094		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Pump, Heather"	"Heather Pump"	"Homeschool"	"7360 Prythania Park Drive"	"Colorado Springs, CO 80923"	""	"Heather Pump"	"Homeschool"	"7360 Prythania Park Drive"	"Colorado Springs, CO 80923"		719-622-0969			heartgardener4@yahoo.com		Heather Pump				N								Heather		Pump
+TRNS		INVOICE	08/20/08	Accounts Receivable	"Pump, Heather"	website	11.95	11095		N	Y		"Heather Pump"	"Homeschool"	"7360 Prythania Park Drive"	"Colorado Springs, CO 80923"		"Heather Pump"	"Homeschool"	"7360 Prythania Park Drive"	"Colorado Springs, CO 80923"		Creditcard	USPS								
+SPL		INVOICE	08/20/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/20/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/20/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11095		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Lathrop, Susan C"	"Susan Lathrop"	"12 East Maple St."	"Alexandria, VA 22301"	""		"Susan Lathrop"	"12 East Maple St."	"Alexandria, VA 22301"			703-836-8496			susan.lathrop@comcast.net		Susan Lathrop				N								Susan		Lathrop
+TRNS		INVOICE	08/21/08	Accounts Receivable	"Lathrop, Susan C"	website	76.92	11096		N	Y		"Susan Lathrop"	"12 East Maple St."	"Alexandria, VA 22301"			"Susan Lathrop"	"12 East Maple St."	"Alexandria, VA 22301"			Creditcard	UPS								
+SPL		INVOICE	08/21/08	Sales Kits			-69.93		Deluxe Kit 707	N	-1	69.93	Kit 707	Y																	
+SPL		INVOICE	08/21/08	Sales Shipping			-6.99		Shipping Charge	N	-1	6.99	Shipping	Y																	
+SPL		INVOICE	08/21/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11096		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Lee, Jenny"	"Jenny Lee"	"6950 NW Oak Creek Dr."	"Corvallis, OR 97330"	""		"Jenny Lee"	"6950 NW Oak Creek Dr."	"Corvallis, OR 97330"			541-758-6090			timandjenny@comcast.net		Jenny Lee				N								Jenny		Lee
+TRNS		INVOICE	08/21/08	Accounts Receivable	"Lee, Jenny"	website	24.95	11097		N	Y		"Jenny Lee"	"6950 NW Oak Creek Dr."	"Corvallis, OR 97330"			"Jenny Lee"	"6950 NW Oak Creek Dr."	"Corvallis, OR 97330"			Creditcard	USPS								
+SPL		INVOICE	08/21/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/21/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/21/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11097		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"One, Capital"	"maureen venzara"	"NE"	"6598 N State Highway 83"	"Parker, CO 80134"	""	"maureen venzara"	"NE"	"6598 N State Highway 83"	"Parker, CO 80134"		303-349-6523			maureen.venzara@dcsdk12.org		maureen venzara				N								maureen		venzara
+TRNS		INVOICE	08/22/08	Accounts Receivable	"One, Capital"	website	29.95	11098		N	Y		"maureen venzara"	"NE"	"6598 N State Highway 83"	"Parker, CO 80134"		"maureen venzara"	"NE"	"6598 N State Highway 83"	"Parker, CO 80134"		Creditcard	USPS								
+SPL		INVOICE	08/22/08	Sales TMT			-24.95		Times Teacher's Manual	N	-1	24.95	TMT	Y																	
+SPL		INVOICE	08/22/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/22/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11098		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Byrd, Candace"	"Candace Byrd"	"10169 Park Meadows Dr, Apt 314"	"Lone Tree, CO 80124"	""		"Candace Byrd"	"Douglas County Schools/Northeast Elementary"	"6598 N. State Highway 83"	"Parker, CO 80134"		303-387-8600			candace.byrd@dcsdk12.org		Candace Byrd				N								Candace		Byrd
+TRNS		INVOICE	08/22/08	Accounts Receivable	"Byrd, Candace"	website	63.11	11099		N	Y		"Candace Byrd"	"10169 Park Meadows Dr, Apt 314"	"Lone Tree, CO 80124"			"Candace Byrd"	"Douglas County Schools/Northeast Elementary"	"6598 N. State Highway 83"	"Parker, CO 80134"		Creditcard	USPS								
+SPL		INVOICE	08/22/08	Sales Kits			-57.37		Basic Kit 202	N	-1	57.37	Kit 202	Y																	
+SPL		INVOICE	08/22/08	Sales Shipping			-5.74		Shipping Charge	N	-1	5.74	Shipping	Y																	
+SPL		INVOICE	08/22/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11099		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Gedeon, Denise A"	"Denise Gedeon"	"121 River Avenue"	"Sewickley, PA 15143"	""		"Denise Gedeon"	"121 River Avenue"	"Sewickley, PA 15143"			412-749-9277			denisegedeon@comcast.net		Denise Gedeon				N								Denise		Gedeon
+TRNS		INVOICE	08/22/08	Accounts Receivable	"Gedeon, Denise A"	website	83.95	11100		N	Y		"Denise Gedeon"	"121 River Avenue"	"Sewickley, PA 15143"			"Denise Gedeon"	"121 River Avenue"	"Sewickley, PA 15143"			Creditcard	UPS								
+SPL		INVOICE	08/22/08	Sales SPT			-18.95		Story Problems the Fun Way	N	-1	18.95	SPT	Y																	
+SPL		INVOICE	08/22/08	Sales Kits			-57.37		Basic Kit 202	N	-1	57.37	Kit 202	Y																	
+SPL		INVOICE	08/22/08	Sales Shipping			-7.63		Shipping Charge	N	-1	7.63	Shipping	Y																	
+SPL		INVOICE	08/22/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11100		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Weldon, Kaye"	"Kaye Weldon"	"21642 Guadalajara Ave"	"Boca Raton, FL 33433"	""		"Kaye Weldon"	"21642 Guadalajara Ave"	"Boca Raton, FL 33433"			561-393-1986			kayelweldon@hotmail.com		Kaye Weldon				N								Kaye		Weldon
+TRNS		INVOICE	08/22/08	Accounts Receivable	"Weldon, Kaye"	website	41.85	11101		N	Y		"Kaye Weldon"	"21642 Guadalajara Ave"	"Boca Raton, FL 33433"			"Kaye Weldon"	"21642 Guadalajara Ave"	"Boca Raton, FL 33433"			Amex	USPS								
+SPL		INVOICE	08/22/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/22/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/22/08	Sales WBT			-9.95		Times Student Workbook	N	-1	9.95	WBT	Y																	
+SPL		INVOICE	08/22/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/22/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11101		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"sander, elizabeth"	"abby sander"	"3185 St. Charles place"	"ellicott city, MD 21042"	""		"abby sander"	"3185 st charles place"	"ellicott city, MD 21042"			410 4185689			elizabethb@comcast.net		abby sander				N								abby		sander
+TRNS		INVOICE	08/23/08	Accounts Receivable	"sander, elizabeth"	website	54.85	11102		N	Y		"abby sander"	"3185 St. Charles place"	"ellicott city, MD 21042"			"abby sander"	"3185 st charles place"	"ellicott city, MD 21042"			Creditcard	USPS								
+SPL		INVOICE	08/23/08	Sales BKA			-19.95		Addition Book for Kids	N	-1	19.95	BKA	Y																	
+SPL		INVOICE	08/23/08	Sales WBA			-9.95		Addition Student Workbook	N	-1	9.95	WBA	Y																	
+SPL		INVOICE	08/23/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/23/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/23/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11102		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Thomas, Patricia J"	"Patricia Thomas"	"500 Trafalgar Place"	"Matthews, NC 28105"	""		"Patricia Thomas"	"500 Trafalgar Place"	"Matthews, NC 28105"			704-849-6736			patriciaj500@alltel.net		Patricia Thomas				N								Patricia		Thomas
+TRNS		INVOICE	08/23/08	Accounts Receivable	"Thomas, Patricia J"	website	11.95	11103		N	Y		"Patricia Thomas"	"500 Trafalgar Place"	"Matthews, NC 28105"			"Patricia Thomas"	"500 Trafalgar Place"	"Matthews, NC 28105"			Creditcard	USPS								
+SPL		INVOICE	08/23/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/23/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/23/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11103		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Davis, Elaine R."	"Elaine Davis"	"Davis Academy"	"4841 Selwyn Dr."	"Winston-Salem, NC 27104"	""	"Elaine Davis"	"Davis Academy"	"4841 Selwyn Dr."	"Winston-Salem, NC 27104"		336-659-9390			davis8552@bellsouth.net		Elaine Davis				N								Elaine		Davis
+TRNS		INVOICE	08/25/08	Accounts Receivable	"Davis, Elaine R."	website	40.85	11107		N	Y		"Elaine Davis"	"Davis Academy"	"4841 Selwyn Dr."	"Winston-Salem, NC 27104"		"Elaine Davis"	"Davis Academy"	"4841 Selwyn Dr."	"Winston-Salem, NC 27104"		Creditcard	USPS								
+SPL		INVOICE	08/25/08	Sales FCD			-8.95		Division Flash Cards	N	-1	8.95	FCD	Y																	
+SPL		INVOICE	08/25/08	Sales BKT			-19.95		Times Book for Kids	N	-1	19.95	BKT	Y																	
+SPL		INVOICE	08/25/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/25/08	Sales Shipping			-5		Shipping Charge	N	-1	5	Shipping	Y																	
+SPL		INVOICE	08/25/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11107		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
+CUST	"Mattimoe, Derek"	"Lisa Mattimoe"	"159 Christian Ave"	"Stony Brook, NY 11790"	""		"Lisa Mattimoe"	"159 Christian Ave"	"Stony Brook, NY 11790"			6317513699			lmattimo@verizon.net		Lisa Mattimoe				N								Lisa		Mattimoe
+TRNS		INVOICE	08/25/08	Accounts Receivable	"Mattimoe, Derek"	website	116.38	11109		N	Y		"Lisa Mattimoe"	"159 Christian Ave"	"Stony Brook, NY 11790"			"Lisa Mattimoe"	"159 Christian Ave"	"Stony Brook, NY 11790"			Amex	UPS								
+SPL		INVOICE	08/25/08	Sales WBT			-9.95		Times Student Workbook	N	-1	9.95	WBT	Y																	
+SPL		INVOICE	08/25/08	Sales PST			-39.95		Times Posters	N	-1	39.95	PST	Y																	
+SPL		INVOICE	08/25/08	Sales FCT			-6.95		Times Clue Cards	N	-1	6.95	FCT	Y																	
+SPL		INVOICE	08/25/08	Sales SOT			-48.95		Times Alive CD-ROM	N	-1	48.95	SOT	Y																	
+SPL		INVOICE	08/25/08	Sales Shipping			-10.58		Shipping Charge	N	-1	10.58	Shipping	Y																	
+SPL		INVOICE	08/25/08	Sales Tax Payable	Minnesota Dept. of Revenue		-0	11109		N		0.0%	tax exempt	N	AUTOSTAX																
+ENDTRNS
