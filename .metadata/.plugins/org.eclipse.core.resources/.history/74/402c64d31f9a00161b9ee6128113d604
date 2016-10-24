@@ -1,0 +1,45 @@
+package com.citycreek.of;
+
+public class Exporter {
+
+	private int count = 0;
+	private char delimiter;
+	protected final StringBuilder iff = new StringBuilder();
+
+	public Exporter(char delimiter) {
+		this.delimiter = delimiter;
+	}
+
+	public int getCount() {
+		return this.count;
+	}
+
+	public void column(String value, boolean quotes) {
+		if (quotes) {
+			this.iff.append("\"").append(value).append("\"").append(this.delimiter);
+		} else {
+			this.iff.append(value).append(this.delimiter);
+		}
+	}
+
+	public void column(String value) {
+		this.column(value, true;)
+	}
+
+	public void column(Number value) {
+		this.column(value.toString());
+	}
+
+	public void rowEnd() {
+		this.iff.append("\n");
+		this.count++;
+	}
+
+	public void headerRow(String header) {
+		this.iff.append(header).append("\n");
+	}
+
+	public void column() {
+		this.iff.append(this.delimiter);
+	}
+}

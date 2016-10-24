@@ -1,56 +1,48 @@
 package com.citycreek.of;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.net.URLConnection;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.cjc.util.AppUtil;
 import com.cjc.util.Format42;
-import com.cjc.util.IOUtil;
 import com.cjc.util.LangUtil;
 import com.cjc.util.PropertiesUtil;
-import com.cjc.util.xml.XmlTool;
 
 public class OrderFulfillment {
 
 	private static final Logger log = Logger.getLogger(OrderFulfillment.class.getName());
 
-	private static final String VERSION = new Date(1245109514873L).toString();
-
-	public static final String ORDER_DETAILS = "OrderDetails";
+	private static final String VERSION = "v1.1 - 24 October 2016";
 
 	private static PropertiesUtil props = new PropertiesUtil();
-	private static List<PropertiesUtil> orders = new ArrayList<PropertiesUtil>();
-	private static PropertiesUtil shipMethodMap = new PropertiesUtil(new Properties());
-	private static String csvExcludeFilterColumn = null;
-	private static Set<String> csvExcludeFilterValues = new HashSet<String>();
+	private static List<Order> orders = new ArrayList<Order>();
+	private static Map<String, Customer> customers = new HashMap<>();
 
 	public static void main(String[] args) {
 		try {
 			setup(args);
-			readOrderXml();
 			readCustomerXml();
+			readOrderXml();
+			orders.forEach(OrderFulfillment::associateCustomerToOrder);
 			final List<String> removeDuplicates = removeDuplicates();
-			final String csvFile = writeCsv();
+			writeQuickBooksIFF();
+			final Path csvFile = writeCsv();
 			ftpCsv(csvFile);
 
 			// Print dups at the end.
@@ -90,14 +82,12 @@ public class OrderFulfillment {
 		props.setFromAnother(argProps);
 
 		// Load application properties from file
-		final String confFilename = props.getOptional(AppProperties.CONFIG_FILENAME, "config.properties");
-		props.load(confFilename);
+		props.load("config.properties");
 
 		// Logging
-		final String loggingFilename = props.getOptional(AppProperties.LOGGING_CONFIG_FILENAME, "logging.properties");
-		if (LangUtil.hasValue(loggingFilename)) {
+		if (LangUtil.hasValue("logging.properties")) {
 			try {
-				AppUtil.readConfig(loggingFilename);
+				AppUtil.readConfig("logging.properties");
 			} catch (IOException e) {
 				info("Unable to read logging properties, using VM defaults.", e);
 			}
@@ -106,22 +96,7 @@ public class OrderFulfillment {
 		}
 		Format42.use(props.getProperties());
 
-		// Load the shipping method id map
-		final String shipMethodMapValue = props.getRequired(AppProperties.CSV_SHIP_METHOD_MAP);
-		final Properties shipMapProps = LangUtil.fromString(shipMethodMapValue);
-		shipMethodMap.setFromAnother(shipMapProps);
-
-		// Load the exclude column and values
-		csvExcludeFilterColumn = props.getOptional(AppProperties.EXCLUDE_FILTER_COLUMN);
-		if (LangUtil.hasValue(csvExcludeFilterColumn)) {
-			final String values = props.getRequired(AppProperties.EXCLUDE_FILTER_VALUES);
-			final String split[] = values.split(",");
-			for (String exclude : split) {
-				if (LangUtil.hasValue(exclude)) {
-					csvExcludeFilterValues.add(exclude.trim().toUpperCase());
-				}
-			}
-		}
+		OrderDetail.loadShippingExcludedProducts(props);
 
 		info("*************************************************************************");
 		info("** CityCreek Order Fulfillment");
@@ -129,10 +104,16 @@ public class OrderFulfillment {
 		info("*************************************************************************");
 		log.config("currentTimeMillis=" + System.currentTimeMillis());
 		props.dumpProperties(log, Level.CONFIG);
-		log.config("shipMethodMap=" + shipMethodMap);
-		log.config("csvExcludeFilterColumn=" + csvExcludeFilterColumn);
-		log.config("csvExcludeFilterValues=" + csvExcludeFilterValues);
 		log.config("*************************************************************************");
+	}
+
+	public static void associateCustomerToOrder(Order o) {
+		String customerId = o.getCustomerID();
+		if (LangUtil.hasValue(customerId)) {
+			o.setCustomer(customers.get(customerId));
+		} else {
+			log.warning("No customer found for order=" + customerId);
+		}
 	}
 
 	public static void readOrderXml() throws Exception {
@@ -143,7 +124,7 @@ public class OrderFulfillment {
 			info("  Read from file, " + xmlFile);
 			final File file = new File(xmlFile);
 			if (file.length() > 0) {
-				XmlTool.fromXml(file, orders, new OrderXmlTransformer());
+				new OrderXmlTransformer().fromXml(file, orders);
 			}
 		} else {
 			readOrdersFromUrl();
@@ -158,7 +139,7 @@ public class OrderFulfillment {
 			info("  Read from file, " + xmlFile);
 			final File file = new File(xmlFile);
 			if (file.length() > 0) {
-				XmlTool.fromXml(file, orders, new CustomerXmlTransformer());
+				new CustomerXmlTransformer().fromXml(file, customers);
 			}
 		} else {
 			readCustomersFromUrl();
@@ -170,38 +151,27 @@ public class OrderFulfillment {
 		final String password = props.getRequired(AppProperties.VOLUSION_PASSWORD);
 
 		// Determine the XML file URL from properties.
-		String xmlUrl;
+		final String xmlUrl;
 		{
-			final String columns = props.getRequired(AppProperties.XML_ORDER_URL_COLUMNS);
 			final String urlProperty = props.getRequired(AppProperties.XML_ORDER_URL);
+			final String columns = Order.XML_COLUMNS + "," + OrderDetail.XML_COLUMNS;
 			xmlUrl = MessageFormat.format(urlProperty, username, password, columns);
 			info("  Read ORDERS from URL, " + urlProperty);
 		}
 		// Output filename
-		final String format = props.getOptional(AppProperties.FILENAME_TIME_FORMAT, "yyyyMMddHHmm");
-		final String filename = LangUtil.getDateTimeString(new Date(), format);
+		final String filename = LangUtil.getDateTimeString(new Date(), "yyyyMMddHHmm");
 		final String xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + filename + "_order.xml";
 		info("  Write to file, " + xmlFile);
 
 		// Read in the orders from Volution.
-		InputStream in = null;
-		FileOutputStream out = null;
-		try {
-			final URL url = new URL(xmlUrl);
-			out = new FileOutputStream(xmlFile);
-			in = url.openStream();
-			int read;
-			while ((read = in.read()) > 0) {
-				out.write(read);
-			}
-		} finally {
-			IOUtil.close(in);
-			IOUtil.close(out);
+		try (InputStream in = new URL(xmlUrl).openStream()) {
+			Files.copy(in, Paths.get(xmlFile));
 		}
+
 		log.fine("  Parsing XML file...");
 		final File file = new File(xmlFile);
 		if (file.length() > 0) {
-			XmlTool.fromXml(file, orders, new OrderXmlTransformer());
+			new OrderXmlTransformer().fromXml(file, orders);
 		}
 	}
 
@@ -212,36 +182,23 @@ public class OrderFulfillment {
 		// Determine the XML file URL from properties.
 		String xmlUrl;
 		{
-			final String columns = props.getRequired(AppProperties.XML_CUSTOMER_URL_COLUMNS);
 			final String urlProperty = props.getRequired(AppProperties.XML_CUSTOMER_URL);
-			xmlUrl = MessageFormat.format(urlProperty, username, password, columns);
+			xmlUrl = MessageFormat.format(urlProperty, username, password, Customer.XML_COLUMNS);
 			info("  Read CUSTOMERS from URL, " + xmlUrl);
 		}
 		// Output filename
-		final String format = props.getOptional(AppProperties.FILENAME_TIME_FORMAT, "yyyyMMddHHmm");
-		final String filename = LangUtil.getDateTimeString(new Date(), format);
+		final String filename = LangUtil.getDateTimeString(new Date(), "yyyyMMddHHmm");
 		final String xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + filename + "_customer.xml";
 		info("  Write to file, " + xmlFile);
 
 		// Read in the orders from Volution.
-		InputStream in = null;
-		FileOutputStream out = null;
-		try {
-			final URL url = new URL(xmlUrl);
-			out = new FileOutputStream(xmlFile);
-			in = url.openStream();
-			int read;
-			while ((read = in.read()) > 0) {
-				out.write(read);
-			}
-		} finally {
-			IOUtil.close(in);
-			IOUtil.close(out);
+		try (InputStream in = new URL(xmlUrl).openStream()) {
+			Files.copy(in, Paths.get(xmlFile));
 		}
 		log.fine("  Parsing XML file...");
 		final File file = new File(xmlFile);
 		if (file.length() > 0) {
-			XmlTool.fromXml(file, orders, new CustomerXmlTransformer());
+			new CustomerXmlTransformer().fromXml(file, customers);
 		}
 	}
 
@@ -252,47 +209,34 @@ public class OrderFulfillment {
 		final String columnsProperty = props.getRequired(AppProperties.XML_DUPLICATE_COLUMNS);
 		final String[] columns = columnsProperty.split(",");
 
-		// For each order, look to see if the current order is the same as the previous.
-		final List<String> removals = new ArrayList<String>();
-		final List<String> removalLogs = new ArrayList<String>();
-		PropertiesUtil prevOrder = null;
-		for (PropertiesUtil order : orders) {
+		// For each order, look to see if the current order is the same as the
+		// previous.
+		final List<Long> removals = new ArrayList<>();
+		final List<String> removalLogs = new ArrayList<>();
+		Order prevOrder = null;
+		for (Order order : orders) {
 			if (prevOrder == null) {
 				prevOrder = order;
 				continue; // skip first one
 			}
 
+			final long prevOrderId = prevOrder.getOrderID();
+			final long currOrderId = order.getOrderID();
+			if (prevOrderId != (currOrderId - 1)) {
+				prevOrder = order;
+				continue; // not sequential, so not a duplicate, moving on
+			}
+
 			// For each column, check to see if they all match
 			boolean eq = true;
-			String prevId = null;
 			String currId = null;
 			for (String col : columns) {
 				final String colName = col.trim();
 				if (!LangUtil.hasValue(colName)) {
 					continue; // skip these empty columns
 				}
-				final String prev = prevOrder.getOptional(colName);
-				final String curr = order.getOptional(colName);
-				// Duplicates have sequential order id's
-				if (colName.equals("OrderID")) {
-					prevId = prev;
-					currId = curr;
-					try {
-						final long lPrev = Long.parseLong(prev);
-						final long lCurr = Long.parseLong(curr);
-						if (lPrev == lCurr) {
-							eq = false;
-							break; // same order just different order id
-						}
-						if (lPrev != (lCurr - 1)) {
-							eq = false;
-							break; // not sequential
-						}
-					} catch (NumberFormatException e) {
-						info("Unable to parse OrderId=" + prev + "," + curr, e);
-					}
-					continue; // sequential so possibly, lets check more fields
-				}
+				final String prev = prevOrder.getColumnByName(colName);
+				final String curr = order.getColumnByName(colName);
 				if (!Objects.equals(prev, curr)) {
 					eq = false;
 					break; // not equal so not duplicate
@@ -300,171 +244,60 @@ public class OrderFulfillment {
 			} // for each column
 
 			// Must be equal
-			if (eq && (prevId != null)) {
-				removals.add(prevId);
-				removalLogs.add("DUPLICATE: +" + currId + " equals -" + prevId);
+			if (eq) {
+				removals.add(prevOrder.getOrderID());
+				removalLogs.add("DUPLICATE: +" + currId + " equals -" + prevOrder.getOrderID());
 			}
 
 			prevOrder = order;
 		} // for each order
 
 		// Remove orders
-		for (Iterator<PropertiesUtil> iter = orders.iterator(); iter.hasNext();) {
-			final PropertiesUtil order = iter.next();
-			final String orderId = order.getOptional("OrderID");
-			if (removals.contains(orderId)) {
-				iter.remove();
-			}
-		}
+		orders.removeIf((order) -> removals.contains(order.getOrderID()));
+
 		return removalLogs;
 	}
 
-	private static String writeCsv() throws IOException {
-		info("Creating CSV file...");
-		boolean first = true;
-		final StringBuilder csv = new StringBuilder();
-		final String columnsProperty = props.getRequired(AppProperties.CSV_COLUMNS);
-		final String[] columns = columnsProperty.split(",");
+	private static Path writeQuickBooksIFF() throws IOException {
+		info("Creating QuickBooks IIF file...");
+		QuickBooksExporter exporter = new QuickBooksExporter(Paths.get(props.getRequired(AppProperties.IIF_DIR)))
+				.exportOrders(orders);
 
-		// Write Column Header
-		for (String col : columns) {
-			String colName = col.trim();
-			if (!LangUtil.hasValue(colName)) {
-				continue;
-			}
-			if (!first) {
-				csv.append(",");
-			} else {
-				first = false;
-			}
-			colName = colName.replaceAll("\\[", "").replaceAll("\\]", "");
-			csv.append("\"").append(colName).append("\"");
-		}
-		csv.append("\n");
+		exporter.ensureFileExistsWithHeader();
 
-		// Write Values
-		int count = 0;
-		first = true;
-		final Set<String> orderIds = new LinkedHashSet<String>();
-		for (PropertiesUtil order : orders) {
-			if (excludeOrder(order)) {
-				continue;
-			}
-			for (String col : columns) {
-				final String colName = col.trim();
-				if (!LangUtil.hasValue(colName)) {
-					continue;
-				}
-				if (!first) {
-					csv.append(",");
-				}
-				csv.append("\"");
-				if (colName.equals(CsvSpecialColumns.SHIP_NAME)) {
-					final String name = parseShipName(order);
-					csv.append(name);
-				} else if (colName.equals(CsvSpecialColumns.SHIP_METHOD)) {
-					parseShipMethod(csv, order);
-				} else {
-					final String value = order.getOptional(colName);
-					if (LangUtil.hasValue(value)) {
-						if (colName.equals("OrderID")) {
-							orderIds.add(value);
-						}
-						csv.append(value);
-					}
-				}
-				csv.append("\"");
-				first = false;
-			}
-			first = true;
-			count++;
-			csv.append("\n");
-		}
-		csv.append("\n");
-
-		// Output filename
-		final String format = props.getOptional(AppProperties.FILENAME_TIME_FORMAT, "yyyyMMddHHmm");
-		final String filename = LangUtil.getDateTimeString(new Date(), format) + ".csv";
-		final String csvFile = props.getOptional(AppProperties.CSV_DIR, "csv") + "/" + filename;
 		// write to disk
-		try (FileOutputStream fs = new FileOutputStream(csvFile)) {
-			FileChannel fc = fs.getChannel();
-			fc.write(ByteBuffer.wrap(csv.toString().getBytes()));
-		}
-		info("  Excluded: " + csvExcludeFilterValues);
-		info("  Orders:   " + orderIds);
-		info("  Wrote " + count + " lines to " + csvFile);
-		return filename;
+		Path file = exporter.write();
+		info("  Orders:   " + exporter.getOrderIds());
+		info("  Wrote " + exporter.getCount() + " lines to " + file);
+		return file;
 	}
 
-	private static boolean excludeOrder(PropertiesUtil order) {
-		// Quantity more than 0!
-		final int qty = order.getOptionalInt("Quantity", 0);
-		if (qty == 0) {
-			return true; // exclude the order, not enough quantity
-		}
-		if (!LangUtil.hasValue(csvExcludeFilterColumn)) {
-			return false;
-		}
-		final String value = order.getOptional(csvExcludeFilterColumn);
-		if (LangUtil.hasValue(value)) {
-			final boolean exists = csvExcludeFilterValues.contains(value.trim().toUpperCase());
-			if (exists) {
-				return true;
-			}
-		}
-		return false;
+	private static Path writeCsv() throws IOException {
+		info("Creating CSV file...");
+		CSVExporter exporter = new CSVExporter(Paths.get(props.getRequired(AppProperties.CSV_DIR))).exportOrders(orders);
+
+		// write to disk
+		Path file = exporter.write();
+		info("  Excluded: " + OrderDetail.EXCLUDED_PRODUCTS);
+		info("  Orders:   " + exporter.getOrderIds());
+		info("  Wrote " + exporter.getCount() + " lines to " + file);
+		return file;
 	}
 
-	private static void parseShipMethod(StringBuilder csv, PropertiesUtil order) {
-		final String methodColName = props.getRequired(AppProperties.CSV_SHIP_METHOD);
-		final String methodId = order.getOptional(methodColName);
-		if (LangUtil.hasValue(methodId)) {
-			String method = shipMethodMap.getOptional(methodId);
-			if (!LangUtil.hasValue(method)) {
-				method = methodId;
-				info("Missing shipping method id: " + methodId);
-			}
-			csv.append(method);
-		}
-	}
-
-	private static String parseShipName(PropertiesUtil order) {
-		final String firstColName = props.getRequired(AppProperties.CSV_SHIPNAME_FIRST);
-		final String lastColName = props.getRequired(AppProperties.CSV_SHIPNAME_LAST);
-
-		// First and last name
-		final String first = order.getRequired(firstColName);
-		final String last = order.getRequired(lastColName);
-		return first + " " + last;
-	}
-
-	private static void ftpCsv(String csvFile) throws IOException {
+	private static void ftpCsv(Path csvFile) throws IOException {
 		final boolean enabled = props.getRequiredBoolean(AppProperties.FTP_ENABLED);
 		if (!enabled) {
 			info("FTP Disabled");
 			return;
 		}
 		info("Sending file to FTP site...");
-		final String urlString = props.getRequired(AppProperties.FTP_URL) + csvFile + ";type=i";
+		final String urlString = props.getRequired(AppProperties.FTP_URL) + csvFile.getFileName() + ";type=i";
 		log.fine("  Remote=" + urlString);
-		final URL url = new URL(urlString);
-		final URLConnection urlConnection = url.openConnection();
-		OutputStream out = null;
-		FileInputStream in = null;
-		try {
-			out = urlConnection.getOutputStream();
-			final String localCsvFile = props.getOptional(AppProperties.CSV_DIR, "csv") + "/" + csvFile;
-			log.fine("  Local=" + localCsvFile);
-			in = new FileInputStream(localCsvFile);
-			final byte[] buf = new byte[16384];
-			int read;
-			while ((read = in.read(buf)) > 0) {
-				out.write(buf, 0, read);
-			}
-		} finally {
-			IOUtil.close(out);
-			IOUtil.close(in);
+
+		final String localCsvFile = props.getOptional(AppProperties.CSV_DIR, "csv") + "/" + csvFile;
+		log.fine("  Local=" + localCsvFile);
+		try (OutputStream out = new URL(urlString).openConnection().getOutputStream()) {
+			Files.copy(Paths.get(localCsvFile), out);
 		}
 	}
 }

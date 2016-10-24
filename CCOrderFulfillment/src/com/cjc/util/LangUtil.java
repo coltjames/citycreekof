@@ -2,9 +2,36 @@ package com.cjc.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class LangUtil {
+
+	@SafeVarargs
+	public static <K> Map<K, K> mapOf(K... data) {
+		HashMap<K, K> result = new HashMap<>();
+		if (data.length % 2 != 0) {
+			throw new IllegalArgumentException("Odd number of arguments");
+		}
+		K key = null;
+		Integer step = -1;
+		for (K value : data) {
+			step++;
+			switch (step % 2) {
+			case 0:
+				if (value == null) {
+					throw new IllegalArgumentException("Null key value");
+				}
+				key = value;
+				continue;
+			case 1:
+				result.put(key, value);
+				break;
+			}
+		}
+		return result;
+	}
 
 	/**
 	 * @return true if the string contains some text (not null and not empty)
@@ -36,8 +63,9 @@ public class LangUtil {
 	}
 
 	/**
-	 * Converts a flat string into properties. The string must seperate key/value pairs with a '&' and key/value with a
-	 * '='. key=value&key=value&key=value
+	 * Converts a flat string into properties. The string must seperate
+	 * key/value pairs with a '&' and key/value with a '='.
+	 * key=value&key=value&key=value
 	 */
 	public static Properties fromString(final String flat) {
 		final Properties props = new Properties();

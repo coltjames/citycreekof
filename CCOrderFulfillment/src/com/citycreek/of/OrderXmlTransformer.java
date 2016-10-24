@@ -1,47 +1,54 @@
 package com.citycreek.of;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
-import java.util.Properties;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.cjc.util.PropertiesUtil;
-import com.cjc.util.xml.IXmlTransformer;
 import com.cjc.util.xml.XmlTool;
 
 /**
- * 
+ *
  */
-public class OrderXmlTransformer implements IXmlTransformer {
+public class OrderXmlTransformer {
 
 	private interface Xml {
 
 		// String ROOT = "xmldata";
 		String ORDERS = "Orders";
-		String ORDER_DETAILS = OrderFulfillment.ORDER_DETAILS;
+		String ORDER_DETAILS = "OrderDetails";
 	}
 
-	public List<PropertiesUtil> fromXml(List<PropertiesUtil> orders, Node parent) throws Exception {
-		final NodeList rootNodes = parent.getChildNodes();
-		final Element e = (Element) rootNodes.item(0);
-		if (e != null) {
-			// for each 'property' element
-			for (final Element order : XmlTool.getElements(e, Xml.ORDERS)) {
-				final List<PropertiesUtil> newOrders = this.fromXmlOrder(order);
-				orders.addAll(newOrders);
+	public void fromXml(File xmlFile, List<Order> orders) throws Exception {
+		try (FileInputStream in = new FileInputStream(xmlFile)) {
+			final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			final DocumentBuilder builder = factory.newDocumentBuilder();
+			final Document doc = builder.parse(in);
+
+			final NodeList rootNodes = doc.getChildNodes();
+			final Element e = (Element) rootNodes.item(0);
+			if (e != null) {
+				// for each 'property' element
+				for (final Element order : XmlTool.getElements(e, Xml.ORDERS)) {
+					final Order newOrder = this.fromXmlOrder(order);
+					if (newOrder.isValid()) {
+						orders.add(newOrder);
+					}
+				}
 			}
 		}
-		return orders;
 	}
 
-	private List<PropertiesUtil> fromXmlOrder(Element order) {
-		final List<PropertiesUtil> orders = new ArrayList<PropertiesUtil>();
-		final PropertiesUtil shared = new PropertiesUtil(new Properties());
-		final NodeList oChildren = order.getChildNodes();
+	private Order fromXmlOrder(Element orderElement) {
+		final Order order = new Order();
+		final NodeList oChildren = orderElement.getChildNodes();
 		for (int i = 0; i < oChildren.getLength(); i++) {
 			final Node oChild = oChildren.item(i);
 			if (oChild.getNodeType() != Node.ELEMENT_NODE) {
@@ -49,7 +56,7 @@ public class OrderXmlTransformer implements IXmlTransformer {
 			}
 			final String oKey = oChild.getNodeName();
 			if (Xml.ORDER_DETAILS.equals(oKey)) {
-				final PropertiesUtil detail = new PropertiesUtil(new Properties());
+				final OrderDetail detail = new OrderDetail();
 				final NodeList odChildren = oChild.getChildNodes();
 				for (int j = 0; j < odChildren.getLength(); j++) {
 					final Node odChild = odChildren.item(j);
@@ -58,23 +65,14 @@ public class OrderXmlTransformer implements IXmlTransformer {
 						continue;
 					}
 					final String v = odChild.getTextContent();
-					detail.setProperty(odKey, v);
+					detail.add(odKey, v);
 				}
-				orders.add(detail);
+				order.add(detail);
 			} else {
 				final String v = oChild.getTextContent();
-				shared.setProperty(oKey, v);
+				order.add(oKey, v);
 			}
 		}
-		// Add the shared to each detail
-		for (PropertiesUtil orderDetail : orders) {
-			orderDetail.setFromAnother(shared.getProperties());
-		}
-		return orders;
+		return order;
 	}
-
-	public void toXml(Object source, Document doc, Node parent) throws Exception {
-		// We only read, never write.
-	}
-
 }

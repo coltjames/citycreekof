@@ -4,33 +4,19 @@
  */
 package com.cjc.util.xml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Field;
 import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import com.cjc.util.PropertiesUtil;
 
 /**
  * XmlTool is a utility class for working with xml files.
@@ -41,7 +27,9 @@ public class XmlTool {
 
 	private static final Logger log = Logger.getLogger(XmlTool.class.getName());
 
-	public static final String EMPTY = "";// the empty string is returned if a requested attribute does not exist
+	public static final String EMPTY = "";// the empty string is returned if a
+											// requested attribute does not
+											// exist
 	public static final String NIL = "nil";// null value
 	public static final char newLine = '\n';
 
@@ -52,113 +40,6 @@ public class XmlTool {
 
 	public static void log() {
 		log.config("XmlTool.factory=" + DocumentBuilderFactory.newInstance());
-	}
-
-	/**
-	 * Write the object to the given file as xml using the transformer.
-	 * 
-	 * @param xmlFile
-	 * @param source
-	 * @param transformer
-	 * @throws Exception
-	 */
-	public static void toXml(final File xmlFile, final Object source, final IXmlTransformer transformer) throws Exception {
-		final FileOutputStream out = new FileOutputStream(xmlFile);
-		try {
-			toXml(out, source, transformer);
-		} finally {
-			out.close();
-		}
-	}
-
-	/**
-	 * Write the object to the given output stream as xml using the transformer.
-	 * 
-	 * @param out
-	 * @param source
-	 * @throws Exception
-	 */
-	public static void toXml(final OutputStream out, final Object source, final IXmlTransformer transformer)
-			throws Exception {
-		// new document
-		final Document document = newDocument();
-		// convert to xml
-		transformer.toXml(source, document, document);
-		// write the doc
-		writeDocument(document, out);
-	}
-
-	/**
-	 * Helper to write a document
-	 * 
-	 * @param document
-	 * @param out
-	 * @throws Exception
-	 */
-	public static void writeDocument(final Document document, final OutputStream out) throws Exception {
-
-		// NOTES TO FORMAT PROPERLY (from http://forum.java.sun.com/thread.jspa?threadID=562510&tstart=90)
-		// (1)set the indent-number into the transformerfactory
-		// TransformerFactory tf = new TransformerFactory.newInstance();
-		// tf.setAttribute("indent-number", new Integer(2));
-		// (2)enable the indent in the transformer
-		// Transformer t = tf.newTransformer();
-		// t.setOutputProperty(OutputKeys.INDENT, "yes");
-		// (3)wrap the otuputstream with a writer (or bufferedwriter)
-		// t.transform(new DOMSource(doc), new StreamResult(new OutputStreamWriter(out, "utf-8"));
-
-		// Write the DOM document to the file
-		// Factory
-		final TransformerFactory tFactory = TransformerFactory.newInstance();
-		try {
-			tFactory.setAttribute("indent-number", new Integer(2));
-		} catch (final Exception e) {
-			log.finer("toXml: Invalid TransformerFactory attribute! indent-number!");
-		}
-		// Transformer
-		final Transformer transformer = tFactory.newTransformer();
-		try {
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		} catch (final Exception e) {
-			log.finer("toXml: Invalid Transformer output property! indent!");
-		}
-		transformer.transform(new DOMSource(document), new StreamResult(new OutputStreamWriter(out, "UTF-8")));
-	}
-
-	/**
-	 * Populate the given object from the xml file using the transformer.
-	 * 
-	 * @param xmlFile
-	 * @param target
-	 * @param transformer
-	 * @return the populated target (possibly a new instance)
-	 * @throws Exception
-	 */
-	public static List<PropertiesUtil> fromXml(final File xmlFile, List<PropertiesUtil> target, final IXmlTransformer transformer) throws Exception {
-		final FileInputStream in = new FileInputStream(xmlFile);
-		try {
-			target = fromXml(in, target, transformer);
-		} finally {
-			in.close();
-		}
-		return target;
-	}
-
-	/**
-	 * Populate the given object from the xml input stream using the transformer.
-	 * 
-	 * @param in
-	 * @param target
-	 * @param transformer
-	 * @return the populated target (possibly a new instance)
-	 * @throws Exception
-	 */
-	public static List<PropertiesUtil> fromXml(final InputStream in, final List<PropertiesUtil> target, final IXmlTransformer transformer)
-			throws Exception {
-		// parse
-		final Document document = parseDocument(in);
-		// build from xml
-		return transformer.fromXml(target, document);
 	}
 
 	/**
@@ -186,71 +67,6 @@ public class XmlTool {
 		return builder.parse(in);
 	}
 
-	/**
-	 * @param field
-	 * @return Does the field have a custom xml transformer?
-	 */
-	public static boolean hasCustomTransformer(final Field field) {
-		return field.isAnnotationPresent(XmlTransformer.class);
-	}
-
-	/**
-	 * A utility method to transform a field's source object to xml using a custom specific xml transformer. The custom
-	 * xml transformer is specified as an annotation on the Field.
-	 * 
-	 * @param doc
-	 * @param field
-	 * @param parent
-	 * @param source
-	 * @throws Exception
-	 */
-	public static void transformFieldToXml(final Document doc, final Field field, final Element parent,
-			final Object source) throws Exception {
-		final XmlTransformer xt = field.getAnnotation(XmlTransformer.class);
-		if (xt != null) {
-			// CUSTOM TRANFORMATION
-			// get the class
-			final Class<?> cl = xt.value();
-			if (IXmlTransformer.class.isAssignableFrom(cl)) {
-				final IXmlTransformer transformer = (IXmlTransformer) cl.newInstance();
-				transformer.toXml(source, doc, parent);
-			} else {
-				log.warning("toXml: Custom XML transformer is INVALID! cl=" + cl + ", field=" + field + ", parent=" + parent);
-			}
-		}
-	}
-
-	/**
-	 * A utility method to populate a field's target object from xml using a custom specific xml transformer. The custom
-	 * xml transformer is specified as an annotation on the Field.
-	 * 
-	 * @param field
-	 * @param parent
-	 * @param target
-	 * @return the populated target (possibly a new instance)
-	 * @throws Exception
-	 */
-	public static List<PropertiesUtil> transformFieldFromXml(final Field field, final Element parent, final List<PropertiesUtil> target)
-			throws Exception {
-		final XmlTransformer xt = field.getAnnotation(XmlTransformer.class);
-		if (xt != null) {
-			// CUSTOM TRANFORMATION
-			// get the class
-			final Class<?> cl = xt.value();
-			if (IXmlTransformer.class.isAssignableFrom(cl)) {
-				final IXmlTransformer transformer = (IXmlTransformer) cl.newInstance();
-				// transform
-				return transformer.fromXml(target, parent);
-
-			} else {
-				throw new TransformerException("fromXml: Custom XML transformer is INVALID! cl=" + cl + ", field=" + field
-						+ ", parent=" + parent);
-			}
-		} else {
-			return null;// there wasn't a defined xml transformer
-		}
-	}
-
 	/*
 	 * ELEMENTS
 	 */
@@ -268,8 +84,8 @@ public class XmlTool {
 	}
 
 	/**
-	 * Get an element from the parent element. If no elements then NULL is returned. If more than one than the first is
-	 * returned.
+	 * Get an element from the parent element. If no elements then NULL is
+	 * returned. If more than one than the first is returned.
 	 * 
 	 * @param e
 	 * @param tagName
@@ -332,11 +148,13 @@ public class XmlTool {
 	 * @param doc
 	 * @param parent
 	 * @param comment
-	 * @param newlines include newlines before and after the comment
+	 * @param newlines
+	 *            include newlines before and after the comment
 	 */
 	public static void addComment(final Document doc, final Node parent, String comment, final boolean newlines) {
 		if (newlines) {
-			// add the preceding and following new lines so that the comment tags are on their own lines.
+			// add the preceding and following new lines so that the comment
+			// tags are on their own lines.
 			comment = newLine + comment + newLine;
 		}
 		final Node child = doc.createComment(comment);
@@ -344,8 +162,9 @@ public class XmlTool {
 	}
 
 	/**
-	 * Helper to walk the DOM backwards looking for a comment. Continue if the previous sibling is a text node (i.e.
-	 * whitespace). If a comment node is found return the comment value. Any other node results in a NULL value.
+	 * Helper to walk the DOM backwards looking for a comment. Continue if the
+	 * previous sibling is a text node (i.e. whitespace). If a comment node is
+	 * found return the comment value. Any other node results in a NULL value.
 	 * 
 	 * @param node
 	 * @return the comment or NULL if not found
@@ -453,7 +272,8 @@ public class XmlTool {
 	 * 
 	 * @param e
 	 * @param name
-	 * @return the boolean value of the attribute of the given name; a non-existent attribute results in 'false'.
+	 * @return the boolean value of the attribute of the given name; a
+	 *         non-existent attribute results in 'false'.
 	 */
 	public static boolean getBoolean(final Element e, final String name) {
 		return Boolean.valueOf(get(e, name)).booleanValue();// NULL is false
@@ -495,7 +315,8 @@ public class XmlTool {
 			try {
 				i = new Integer(val);
 			} catch (final Exception ex) {
-				log.log(Level.WARNING, "Exception getting a Integer from xml! name=" + name + ", element=" + e + ", " + ex, ex);
+				log.log(Level.WARNING,
+						"Exception getting a Integer from xml! name=" + name + ", element=" + e + ", " + ex, ex);
 			}
 		}
 		return i;
@@ -527,7 +348,8 @@ public class XmlTool {
 			try {
 				l = new Long(val);
 			} catch (final Exception ex) {
-				log.log(Level.WARNING, "Exception getting a Long from xml! name=" + name + ", element=" + e + ", " + ex, ex);
+				log.log(Level.WARNING, "Exception getting a Long from xml! name=" + name + ", element=" + e + ", " + ex,
+						ex);
 			}
 		}
 		return l;
@@ -561,6 +383,7 @@ public class XmlTool {
 		/**
 		 * @see java.lang.Iterable#iterator()
 		 */
+		@Override
 		public Iterator<Element> iterator() {
 			return new ElementIterator(this.nodes);
 		}
@@ -587,6 +410,7 @@ public class XmlTool {
 		/**
 		 * @see java.util.Iterator#hasNext()
 		 */
+		@Override
 		public boolean hasNext() {
 			// yes if pos is < length
 			return (this.pos < this.nodes.getLength());
@@ -595,8 +419,11 @@ public class XmlTool {
 		/**
 		 * @see java.util.Iterator#next()
 		 */
+		@Override
 		public Element next() {
-			final Node node = this.nodes.item(this.pos++);// get the item at the pos and increment the pos
+			final Node node = this.nodes.item(this.pos++);// get the item at the
+															// pos and increment
+															// the pos
 			assert (node.getNodeType() == Node.ELEMENT_NODE) : "Unexpected node type=" + node.getNodeType();
 			return (Element) node;
 		}
@@ -604,6 +431,7 @@ public class XmlTool {
 		/**
 		 * @see java.util.Iterator#remove()
 		 */
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException("ElementIterator does not support remove()!");
 		}

@@ -1,0 +1,17 @@
+https://citycreek.com/admin
+
+go to inventory
+ import/export
+volusion api
+generic
+run generic orders
+reset generic orders
+select date can reset from that date so the report gets all orders after that date
+if you select RUN, you will get a downloadable file and access to the current password without resetting the generic order report (cvs for warehouse). ( I think :)
+
+
+
+
+Each imported record needs Customer ID: in the form of name of company or person space volusion account number. Bill to address: Ship to address: lines of the invoice to include Item ID: (i.e. BKT— same as volusion and quickbooks) tax, if present, shipping. invoice number  purchase order number Amount paid and method, like visa or amex. (so when the file is imported it should look like the existing invoices in QB city creek company along with payment applied to that invoice. The payments arrive in the to be deposited section of QB.
+
+
