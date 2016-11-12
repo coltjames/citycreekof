@@ -1,52 +1,51 @@
 package com.citycreek.of;
 
+import java.util.Properties;
+
 import com.cjc.util.PropertiesUtil;
 
 public class Customer {
 
-	public static final String XML_COLUMNS = //
-			"CustomerID,AccessKey,EmailAddress,FirstName,LastName,PhoneNumber,FaxNumber,CustomerType,CompanyName";
-
-	private static PropertiesUtil customer = new PropertiesUtil();
-
-	public String getCustomerId() {
-		return customer.getRequired("CustomerID");
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = (prime * result) + this.getCustomerId().hashCode();
+		return result;
 	}
 
-	public String getAccessKey() {
-		return customer.getOptional("AccessKey", "");
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (this.getClass() != obj.getClass()) {
+			return false;
+		}
+		Customer other = (Customer) obj;
+		if (!this.getCustomerId().equals(other.getCustomerId())) {
+			return false;
+		}
+		return true;
+	}
+
+	public static final String XML_COLUMNS = "CustomerID,EmailAddress";
+
+	private final PropertiesUtil customer = new PropertiesUtil(new Properties());
+
+	public String getCustomerId() {
+		return this.customer.getRequired("CustomerID");
 	}
 
 	public String getEmailAddress() {
-		return customer.getRequired("EmailAddress");
-	}
-
-	public String getFirstName() {
-		return customer.getOptional("FirstName", "");
-	}
-
-	public String getLastName() {
-		return customer.getOptional("LastName", "");
-	}
-
-	public String getPhoneNumber() {
-		return customer.getOptional("PhoneNumber", "");
-	}
-
-	public String getFaxNumber() {
-		return customer.getOptional("FaxNumber", "");
-	}
-
-	public String getCustomerType() {
-		return customer.getOptional("CustomerType", "");
-	}
-
-	public String getCompanyName() {
-		return customer.getOptional("CompanyName", "");
+		return this.customer.getOptional("EmailAddress");
 	}
 
 	public void add(String key, String value) {
-		customer.setProperty(key, value);
+		this.customer.setProperty(key, value);
 	}
 
 	public boolean isValid() {

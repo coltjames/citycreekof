@@ -7,8 +7,11 @@ import java.nio.file.StandardOpenOption;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public abstract class Exporter {
+
+	private static final Logger log = Logger.getLogger(Exporter.class.getName());
 
 	private int count = 0;
 	private char delimiter;
@@ -42,6 +45,8 @@ public abstract class Exporter {
 		Path file = this.getFilePath();
 		Files.write(file, this.data.toString().getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE,
 				StandardOpenOption.APPEND);
+		System.out.println("  Data written to file - " + this.getFilePath().toAbsolutePath());
+		log.info("Data written to file - " + this.getFilePath().toAbsolutePath());
 		return file;
 	}
 
@@ -66,7 +71,7 @@ public abstract class Exporter {
 	}
 
 	protected void rowEnd() {
-		this.data.append("\n");
+		this.data.append("\r\n");
 		this.count++;
 	}
 

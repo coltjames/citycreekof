@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+<typeInfo handle="=CCOrderFulfillment/src&lt;com.citycreek.of{AppProperties.java[AppProperties" modifiers="513" timestamp="1478962703415"/>
+<typeInfo handle="=CCOrderFulfillment/src&lt;com.citycreek.of{Exporter.java[Exporter" modifiers="1025" timestamp="1478052766559"/>
+<typeInfo handle="=CCOrderFulfillment/C:\/Program Files\/Java\/jre1.8.0_31\/lib\/rt.jar&lt;java.util(HashSet.class[HashSet" modifiers="33" timestamp="1422120857542"/>
+<typeInfo handle="=CCOrderFulfillment/src&lt;com.citycreek.of{OrderDetail.java[OrderDetail" modifiers="1" timestamp="1478970934226"/>
+</typeInfoHistroy>

@@ -15,11 +15,10 @@ public interface AppProperties {
 	String XML_ORDER_URL = "xml.order.url";
 
 	// SHIPPING CSV
-	String CSV_DIR = "csv.dir";
-	String FTP_ENABLED = "ftp.enabled";
-	String FTP_URL = "ftp.url";
+	String ORDER_FULFILLMENT_DIR = "order.fulfillment.dir";
 	String SHIPPING_EXCLUDED_PRODUCTS = "excluded.products";
 
-	// QUICKBOOKS IIF
-	String IIF_DIR = "iif.dir";
+	// QUICKBOOKS
+	String QUICKBOOKS_IIF_DIR = "quickbooks.iif.dir";
+	String QUICKBOOKS_CSV_DIR = "quickbooks.csv.dir";
 }

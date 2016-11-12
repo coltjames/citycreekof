@@ -1,10 +1,13 @@
 package com.citycreek.of;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import com.cjc.util.LangUtil;
 import com.cjc.util.PropertiesUtil;
@@ -17,7 +20,7 @@ public class Order {
 			"o.OrderID,o.CustomerID,o.PONum,o.OrderNotes,o.OrderDate,o.PaymentAmount,o.PaymentMethodID," //
 					+ "o.ShipFirstName,o.ShipLastName,o.ShipCompanyName,o.ShippingMethodID," //
 					+ "o.ShipAddress1,o.ShipAddress2,o.ShipCity,o.ShipState,o.ShipPostalCode,o.ShipCountry," //
-					+ "o.BillingFirstName,o.BillingLastName," //
+					+ "o.BillingFirstName,o.BillingLastName,o.BillingCompanyName,o.BillingPhoneNumber," //
 					+ "o.BillingAddress1,o.BillingAddress2,o.BillingCity,o.BillingState,o.BillingPostalCode,o.BillingCountry";
 
 	private static final Map<String, String> SHIPPING_METHODS = LangUtil.mapOf(//
@@ -39,8 +42,8 @@ public class Order {
 			"925", "US Mail Intl", "926", "US Mail Intl", "927", "US Mail Intl", //
 			"9001", "Priority Mail", "9011", "Priority Mail");
 
-	private PropertiesUtil order = new PropertiesUtil();
-	private List<OrderDetail> details = new ArrayList<OrderDetail>();
+	private final PropertiesUtil order = new PropertiesUtil(new Properties());
+	private final List<OrderDetail> details = new ArrayList<OrderDetail>();
 	private Customer customer;
 
 	// ORDER
@@ -52,6 +55,14 @@ public class Order {
 
 	public String getPONum() {
 		return this.order.getOptional("PONum", "");
+	}
+
+	public String getOrderName() {
+		if (LangUtil.hasValue(this.getBillingCompanyName())) {
+			return this.getBillingCompanyName() + " " + this.getOrderID();
+		} else {
+			return this.getBillingFirstName() + " " + this.getBillingLastName() + " " + this.getOrderID();
+		}
 	}
 
 	public String getOrderNotes() {
@@ -74,10 +85,17 @@ public class Order {
 	 * 13 Purchase order number <br>
 	 */
 	public String getPaymentMethod() {
-		if (Objects.equals("13", this.order.getRequired("PaymentMethodID"))) {
-			return "PURCHORD";
+		String method = this.order.getRequired("PaymentMethodID");
+		if (Objects.equals("5", method)) {
+			return "Visa";
+		} else if (Objects.equals("6", method)) {
+			return "MasterCard";
+		} else if (Objects.equals("7", method)) {
+			return "American Express";
+		} else if (Objects.equals("8", method)) {
+			return "Discover";
 		} else {
-			return "Creditcard";
+			return "";
 		}
 	}
 
@@ -95,41 +113,15 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public String getFirstName() {
-		String firstName = this.customer.getFirstName();
-		if (!LangUtil.hasValue(firstName)) {
-			firstName = this.getShipFirstName();
+	public String getCustomerName() {
+		if (LangUtil.hasValue(this.getBillingCompanyName())) {
+			return this.getBillingCompanyName() + " " + this.getCustomerID();
+		} else {
+			return this.getBillingFirstName() + " " + this.getBillingLastName() + " " + this.getCustomerID();
 		}
-		return firstName;
-	}
-
-	public String getLastName() {
-		String lastName = this.customer.getLastName();
-		if (!LangUtil.hasValue(lastName)) {
-			lastName = this.getShipLastName();
-		}
-		return lastName;
-	}
-
-	public String getCompanyName() {
-		String company = this.getCustomer().getCompanyName();
-		if (!LangUtil.hasValue(company)) {
-			company = this.getShipCompanyName();
-		}
-		return company;
 	}
 
 	// BILLING
-
-	public String getBillingName() {
-		return this.order.getRequired("BillingFirstName") + " " + this.order.getRequired("BillingLastName");
-	}
-
-	public String getBillingAddressCityStateZip() {
-		return this.order.getRequired("BillingCity") + ", " + //
-				this.order.getRequired("BillingState") + " " + //
-				this.order.getRequired("BillingPostalCode");
-	}
 
 	public String getBillingFirstName() {
 		return this.order.getOptional("BillingFirstName", "");
@@ -139,37 +131,79 @@ public class Order {
 		return this.order.getOptional("BillingLastName", "");
 	}
 
-	public String getBillingAddress1() {
+	private String getBillingAddress1() {
 		return this.order.getOptional("BillingAddress1", "");
 	}
 
-	public String getBillingAddress2() {
+	private String getBillingAddress2() {
 		return this.order.getOptional("BillingAddress2", "");
 	}
 
-	public String getBillingCity() {
+	private String getBillingCity() {
 		return this.order.getOptional("BillingCity", "");
 	}
 
-	public String getBillingState() {
+	private String getBillingState() {
 		return this.order.getOptional("BillingState", "");
 	}
 
-	public String getBillingPostalCode() {
+	private String getBillingPostalCode() {
 		return this.order.getOptional("BillingPostalCode", "");
 	}
 
-	public String getBillingCountry() {
-		return this.order.getOptional("BillingCountry", "");
+	private String getBillingCountry() {
+		String country = this.order.getOptional("BillingCountry", "");
+		if (Objects.equals("United States", country)) {
+			return "";
+		}
+		return country;
+	}
+
+	public String getBillingCompanyName() {
+		return this.order.getOptional("BillingCompanyName", "");
+	}
+
+	public String getBillingPhoneNumber() {
+		return this.order.getOptional("BillingPhoneNumber", "");
+	}
+
+	public String getBillingFirstLastName() {
+		return (this.getBillingFirstName() + " " + this.getBillingLastName()).trim();
+	}
+
+	private String getBillingAddressCityStateZip() {
+		return this.getBillingCity() + ", " + //
+				this.getBillingState() + " " + //
+				this.getBillingPostalCode();
+	}
+
+	public String getBillingAddressLineX(int x) {
+		List<String> lines = Arrays.asList( //
+				this.getBillingFirstLastName(), //
+				this.getBillingCompanyName(), //
+				this.getBillingAddress1(), //
+				this.getBillingAddress2(), //
+				this.getBillingAddressCityStateZip(), //
+				this.getBillingCountry()).stream() //
+				.filter(LangUtil::hasValue) // Remove empty lines
+				.collect(Collectors.toList());
+		if ((x == 4) && (lines.size() > 5)) {
+			log.warning("IFF WARNING: More address lines than 5; order=" + this.getOrderID());
+			System.out.println("IFF WARNING: More address lines than 5; order=" + this.getOrderID());
+		}
+		if (x < lines.size()) {
+			return lines.get(x);
+		}
+		return "";
 	}
 
 	// SHIPPING
 
-	public String getShipFirstName() {
+	private String getShipFirstName() {
 		return this.order.getOptional("ShipFirstName", "");
 	}
 
-	public String getShipLastName() {
+	private String getShipLastName() {
 		return this.order.getOptional("ShipLastName", "");
 	}
 
@@ -198,14 +232,16 @@ public class Order {
 	}
 
 	public String getShipCountry() {
-		return this.order.getOptional("ShipCountry", "");
+		String country = this.order.getOptional("ShipCountry", "");
+		if (Objects.equals("United States", country)) {
+			return "";
+		}
+		return country;
+
 	}
 
-	public String getShipName() {
-		// First and last name
-		final String first = this.order.getRequired("ShipFirstName");
-		final String last = this.order.getRequired("ShipLastName");
-		return first + " " + last;
+	public String getShipFirstLastName() {
+		return (this.getShipFirstName() + " " + this.getShipLastName()).trim();
 	}
 
 	public String getShipMethod() {
@@ -221,10 +257,26 @@ public class Order {
 		return method;
 	}
 
-	public String getShipAddressCityStateZip() {
-		return this.order.getRequired("ShipCity") + ", " + //
-				this.order.getRequired("ShipState") + " " + //
-				this.order.getRequired("ShipPostalCode");
+	private String getShipAddressCityStateZip() {
+		return this.getShipCity() + ", " + //
+				this.getShipState() + " " + //
+				this.getShipPostalCode();
+	}
+
+	public String getShipAddressLineX(int x) {
+		List<String> lines = Arrays.asList( //
+				this.getShipFirstLastName(), //
+				this.getShipCompanyName(), //
+				this.getShipAddress1(), //
+				this.getShipAddress2(), //
+				this.getShipAddressCityStateZip(), //
+				this.getShipCountry()).stream() //
+				.filter(LangUtil::hasValue) // Remove empty lines
+				.collect(Collectors.toList());
+		if (x < lines.size()) {
+			return lines.get(x);
+		}
+		return "";
 	}
 
 	// DETAIL
@@ -254,5 +306,36 @@ public class Order {
 
 	public String getColumnByName(String colName) {
 		return this.order.getOptional(colName);
+	}
+
+	public boolean isPurchaseOrder() {
+		return LangUtil.hasValue(this.getPONum());
+	}
+
+	/**
+	 * Duplicate if:
+	 * <ul>
+	 * <li>Sequential order ids</li>
+	 * <li>Same customer</li>
+	 * <li>Same number detail lines</li>
+	 * <li>Each detail line matches ProductCode and Quantity</li>
+	 * </ul>
+	 * TODO What if the customer orders one more?
+	 */
+	public boolean isDuplicate(Order order2) {
+		// Sequential order ids
+		final long prevOrderId = this.getOrderID();
+		final long currOrderId = order2.getOrderID();
+		if (prevOrderId != (currOrderId - 1)) {
+			return false;
+		}
+
+		if (!Objects.equals(this.getCustomerID(), order2.getCustomerID())) {
+			return false;
+		}
+
+		// Same number detail lines and each
+		// Each detail line matches productcode
+		return Objects.equals(this.getDetails(), order2.getDetails());
 	}
 }

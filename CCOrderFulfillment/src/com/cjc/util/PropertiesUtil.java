@@ -1,8 +1,6 @@
 /*
- * AppProperties.java
- * Created on Mar 10, 2006 by Colt Covington
- * <a href="http://www.code42.com">(c)2006 Code 42 Software, Inc.</a>
- * $Id: PropertiesUtil.java,v 1.14 2008/08/08 23:14:33 ccovingt Exp $
+ * AppProperties.java Created on Mar 10, 2006 by Colt Covington <a href="http://www.code42.com">(c)2006 Code 42
+ * Software, Inc.</a> $Id: PropertiesUtil.java,v 1.14 2008/08/08 23:14:33 ccovingt Exp $
  */
 package com.cjc.util;
 
@@ -25,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  * Application properties.
- * 
+ *
  * @author <a href="mailto:ccovingt@code42.com">ccovingt</a>
  */
 public class PropertiesUtil {
@@ -68,7 +66,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Load the given Properties from the given file.
-	 * 
+	 *
 	 * @param file
 	 * @param props
 	 * @param required
@@ -94,7 +92,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Save the properties to the given file (overwrite)
-	 * 
+	 *
 	 * @param file
 	 * @param props
 	 * @param comments identifying string to be included as the top line of the properties file; can be null
@@ -110,7 +108,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Save the properties to the given file (overwrite)
-	 * 
+	 *
 	 * @param file
 	 * @param props
 	 * @param comments identifying string to be included as the top line of the properties file; can be null
@@ -140,7 +138,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Set the properites from another instance
-	 * 
+	 *
 	 * @param another
 	 */
 	public static void setFromAnother(Properties props, Properties another) {
@@ -176,7 +174,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Load the given Properties from the given file.
-	 * 
+	 *
 	 * @param file
 	 * @param props
 	 * @param required
@@ -202,7 +200,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Set the properites from another instance
-	 * 
+	 *
 	 * @param another
 	 */
 	public void setFromAnother(Properties another) {
@@ -247,7 +245,7 @@ public class PropertiesUtil {
 	/**
 	 * Helper to get a required system property. This method saves you from having to provide a default for a property
 	 * that <b>needs</b> to exist.
-	 * 
+	 *
 	 * @param propertyName name of the property you want
 	 * @throws RuntimeException if the property is not available
 	 */
@@ -262,7 +260,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Helper to get an optional system property.
-	 * 
+	 *
 	 * @param propertyName name of the property you want
 	 */
 	public String getOptional(String propertyName) {
@@ -276,7 +274,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Helper to get an optional system property.
-	 * 
+	 *
 	 * @param propertyName name of the property you want
 	 * @param defaultValue the default that applies if propertyName doesn't exist
 	 */
@@ -287,7 +285,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Gets the optional property as an Long if it exists. Otherwise returns null.
-	 * 
+	 *
 	 * @param propertyName
 	 * @return the Integer or NULL of not found
 	 */
@@ -304,7 +302,7 @@ public class PropertiesUtil {
 	/**
 	 * Get an optional long property that will use the provided default if the property doesn't exist. If the property is
 	 * present but fails to parse, a RuntimeException will be thrown.
-	 * 
+	 *
 	 * @param propertyName
 	 * @param defaultValue
 	 * @return
@@ -326,11 +324,27 @@ public class PropertiesUtil {
 	}
 
 	/**
+	 * Gets the optional property as an Long if it exists. Otherwise returns null.
+	 *
+	 * @param propertyName
+	 * @return the Integer or NULL of not found
+	 */
+	public double getOptionalDouble(String propertyName) {
+		final String value = this.getOptional(propertyName);
+		try {
+			return (LangUtil.hasValue(value) ? Double.valueOf(value.trim()) : 0.0);
+		} catch (final NumberFormatException e) {
+			log.log(Level.WARNING, "Unable to parse property to a Double, property=" + propertyName);
+			return 0.0;
+		}
+	}
+
+	/**
 	 * Gets the required property value as an int.
-	 * 
+	 *
 	 * @param propertyName
 	 * @return
-	 * 
+	 *
 	 * @see SystemProperties.getRequired(String)
 	 */
 	public int getRequiredInt(String propertyName) {
@@ -340,7 +354,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Gets the optional property as an Integer if it exists. Otherwise returns null.
-	 * 
+	 *
 	 * @param propertyName
 	 * @return the Integer or NULL of not found
 	 */
@@ -356,7 +370,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Gets the optional property as an Integer if it exists. Otherwise returns null.
-	 * 
+	 *
 	 * @param propertyName
 	 * @return
 	 */
@@ -372,10 +386,10 @@ public class PropertiesUtil {
 
 	/**
 	 * Gets the required property value as a long.
-	 * 
+	 *
 	 * @param propertyName
 	 * @return
-	 * 
+	 *
 	 * @see SystemProperties.getRequired(String)
 	 */
 	public long getRequiredLong(String propertyName) {
@@ -385,10 +399,10 @@ public class PropertiesUtil {
 
 	/**
 	 * Gets the required property value as a boolean.
-	 * 
+	 *
 	 * @param propertyName
 	 * @return boolean
-	 * 
+	 *
 	 * @see SystemProperties.getRequired(String)
 	 */
 	public boolean getRequiredBoolean(String propertyName) {
@@ -398,7 +412,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Retrieve an optional Boolean value. Null if not found.
-	 * 
+	 *
 	 * @param propertyName
 	 * @return
 	 */
@@ -414,7 +428,7 @@ public class PropertiesUtil {
 
 	/**
 	 * Evaluate the optional boolean parameter. If parameter is not present the default will be returned.
-	 * 
+	 *
 	 * @param propertyName
 	 * @param defaultValue
 	 * @return
@@ -430,7 +444,7 @@ public class PropertiesUtil {
 
 	/**
 	 * A handy method for dumping all SystemProperties. The possibilities for debugging should be obvious.
-	 * 
+	 *
 	 */
 	public void dumpProperties() {
 		final Set<Object> keys = new TreeSet<Object>(this.props.keySet());
@@ -441,7 +455,7 @@ public class PropertiesUtil {
 
 	/**
 	 * A handy method for dumping all SystemProperties. The possibilities for debugging should be obvious.
-	 * 
+	 *
 	 */
 	public void dumpProperties(Logger lLogger, Level lvl) {
 		if (lLogger.isLoggable(lvl)) {

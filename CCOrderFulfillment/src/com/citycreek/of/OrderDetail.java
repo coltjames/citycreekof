@@ -1,7 +1,9 @@
 package com.citycreek.of;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Properties;
 
 import com.cjc.util.LangUtil;
 import com.cjc.util.PropertiesUtil;
@@ -11,9 +13,20 @@ public class OrderDetail {
 	public static final String XML_COLUMNS = //
 			"od.ProductCode,od.ProductName,od.ProductPrice,od.Quantity,od.TotalPrice,od.TaxableProduct";
 
-	public static final List<String> EXCLUDED_PRODUCTS = Arrays.asList();
+	public static final List<String> EXCLUDED_PRODUCTS = new ArrayList<>();
 
-	private final PropertiesUtil detail = new PropertiesUtil();
+	private final PropertiesUtil detail = new PropertiesUtil(new Properties());
+
+	private String productCode = "";
+	private String quantity = "";
+
+	public OrderDetail() {
+	}
+
+	public OrderDetail(String productCode, String paymentAmount) {
+		this.add("ProductCode", productCode);
+		this.add("TotalPrice", paymentAmount);
+	}
 
 	public static void loadShippingExcludedProducts(PropertiesUtil props) {
 		// Load the exclude column and values
@@ -25,37 +38,92 @@ public class OrderDetail {
 		}
 	}
 
+	public boolean isPayment() {
+		return false;
+	}
+
+	public boolean isPurchaseOrder() {
+		return false;
+	}
+
 	public String getProductCode() {
-		return this.detail.getOptional("ProductCode", "");
+		return this.productCode;
 	}
 
 	public String getProductName() {
 		return this.detail.getOptional("ProductName", "");
 	}
 
-	public String getProductPrice() {
-		return this.detail.getOptional("ProductPrice", "");
+	// public double getProductPrice() {
+	// return this.detail.getOptionalDouble("ProductPrice");
+	// }
+
+	public String getQuantity() {
+		return this.quantity;
 	}
 
-	public int getQuantity() {
-		return this.detail.getOptionalInt("Quantity", 0);
-	}
-
-	public String getTotalPrice() {
-		return this.detail.getOptional("TotalPrice", "");
-	}
+	// public String getTotalPrice() {
+	// return this.detail.getOptional("TotalPrice", "");
+	// }
 
 	public String getTaxableProduct() {
-		return this.detail.getOptional("TaxableProduct", "");
+		return this.detail.getOptional("TaxableProduct", "N");
+	}
+
+	public boolean isTaxable() {
+		return Objects.equals(this.getTaxableProduct(), "Y");
 	}
 
 	public void add(String key, String value) {
+		if (Objects.equals(key, "ProductCode")) {
+			this.productCode = value;
+		} else if (Objects.equals(key, "Quantity")) {
+			this.quantity = value;
+		}
 		this.detail.setProperty(key, value);
 	}
 
 	public boolean isExcludedFromShipping() {
 		boolean excluded = EXCLUDED_PRODUCTS.contains(this.getProductCode());
-		excluded |= (this.getQuantity() < 1);
+		excluded |= (this.detail.getOptionalInt("Quantity", 0) < 1);
 		return excluded;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = (prime * result) + ((this.productCode == null) ? 0 : this.productCode.hashCode());
+		result = (prime * result) + ((this.quantity == null) ? 0 : this.quantity.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (this.getClass() != obj.getClass()) {
+			return false;
+		}
+		OrderDetail other = (OrderDetail) obj;
+		if (this.productCode == null) {
+			if (other.productCode != null) {
+				return false;
+			}
+		} else if (!this.productCode.equals(other.productCode)) {
+			return false;
+		}
+		if (this.quantity == null) {
+			if (other.quantity != null) {
+				return false;
+			}
+		} else if (!this.quantity.equals(other.quantity)) {
+			return false;
+		}
+		return true;
 	}
 }
