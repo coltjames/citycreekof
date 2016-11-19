@@ -16,7 +16,16 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
+import com.citycreek.of.customer.Customer;
+import com.citycreek.of.customer.CustomerXmlTransformer;
+import com.citycreek.of.exporter.OrderFulfillmentExporter;
+import com.citycreek.of.exporter.QuickBooksIIFExporter;
+import com.citycreek.of.exporter.QuickBooksTableImportExporter;
+import com.citycreek.of.order.Order;
+import com.citycreek.of.order.OrderDetail;
+import com.citycreek.of.order.OrderXmlTransformer;
 import com.cjc.util.AppUtil;
 import com.cjc.util.Format42;
 import com.cjc.util.LangUtil;
@@ -26,9 +35,10 @@ public class VolusionExtractor {
 
 	private static final Logger log = Logger.getLogger(VolusionExtractor.class.getName());
 
-	private static final String VERSION = "v1.1.1 - 12 November 2016";
+	private static final String VERSION = "v1.1.2 - 19 November 2016";
 	public static final String DATETIME = LangUtil.getDateTimeString(new Date(), "yyyyMMddHHmm");
 
+	private static String password;
 	private static PropertiesUtil props = new PropertiesUtil();
 	private static List<Order> orders = new ArrayList<Order>();
 	private static Map<String, Customer> customers = new HashMap<>();
@@ -40,8 +50,11 @@ public class VolusionExtractor {
 			readOrderXml();
 			if (!orders.isEmpty()) {
 				orders.forEach(VolusionExtractor::associateCustomerToOrder);
+				orders.forEach(Order::addShipDetail);
 				final List<String> removeDuplicates = removeDuplicates();
-				writeQuickBooksIFF();
+
+				writeQuickBooksIFF(true);
+				writeQuickBooksIFF(false);
 				writeQuickBooksCSV();
 				writeOrderFulfillment();
 
@@ -50,7 +63,7 @@ public class VolusionExtractor {
 					info("*************************************************************************");
 					info("Duplicate Orders");
 					for (String dup : removeDuplicates) {
-						info(dup);
+						info("  " + dup);
 					}
 				} else {
 					info("No Duplicates");
@@ -62,6 +75,8 @@ public class VolusionExtractor {
 			info("Unknown serious error", e);
 		}
 		info("*************************************************************************");
+		info(orders.size() + " order(s) processed - " + //
+				orders.stream().map(Order::getOrderID).sorted().collect(Collectors.toList()));
 		info("DONE!");
 		info("*************************************************************************");
 	}
@@ -82,8 +97,10 @@ public class VolusionExtractor {
 
 	/**
 	 * Setup the application; properties, logging, etc.
+	 *
+	 * @throws IOException
 	 */
-	private static void setup(String[] args) {
+	private static void setup(String[] args) throws IOException {
 		// Command-line arguments
 		final Properties argProps = AppUtil.getCommandLineProperties(args);
 		props.setFromAnother(argProps);
@@ -102,6 +119,9 @@ public class VolusionExtractor {
 			info("Unable to read logging properties, using VM defaults.");
 		}
 		Format42.use(props.getProperties());
+
+		// Read password from file
+		password = new String(Files.readAllBytes(Paths.get("password.txt")));
 
 		OrderDetail.loadShippingExcludedProducts(props);
 
@@ -155,7 +175,6 @@ public class VolusionExtractor {
 
 	private static void readOrdersFromUrl() throws Exception {
 		final String username = props.getRequired(AppProperties.VOLUSION_USERNAME);
-		final String password = props.getRequired(AppProperties.VOLUSION_PASSWORD);
 
 		// Determine the XML file URL from properties.
 		final String xmlUrl;
@@ -183,7 +202,6 @@ public class VolusionExtractor {
 
 	private static void readCustomersFromUrl() throws Exception {
 		final String username = props.getRequired(AppProperties.VOLUSION_USERNAME);
-		final String password = props.getRequired(AppProperties.VOLUSION_PASSWORD);
 
 		// Determine the XML file URL from properties.
 		String xmlUrl;
@@ -221,7 +239,8 @@ public class VolusionExtractor {
 
 			if (prevOrder.isDuplicate(order)) {
 				removals.add(order.getOrderID());
-				removalLogs.add(prevOrder.getCustomerName() + " - " + prevOrder.getOrderID() + " = " + order.getOrderID());
+				removalLogs.add(prevOrder.getCustomer().getCustomerName() //
+						+ " :: " + prevOrder.getOrderID() + " = " + order.getOrderID());
 			}
 
 			prevOrder = order;
@@ -233,16 +252,13 @@ public class VolusionExtractor {
 		return removalLogs;
 	}
 
-	private static Path writeQuickBooksIFF() throws IOException {
+	private static Path writeQuickBooksIFF(boolean writeOrders) throws IOException {
 		info("Creating QuickBooks IIF file...");
 		Path parentPath = Paths.get(props.getRequired(AppProperties.QUICKBOOKS_IIF_DIR));
-		QuickBooksIIFExporter exporter = new QuickBooksIIFExporter(parentPath).exportOrders(orders);
 
+		QuickBooksIIFExporter exporter = new QuickBooksIIFExporter(parentPath, writeOrders).exportOrders(orders);
 		exporter.ensureFileExistsWithHeader();
-
-		// write to disk
 		Path file = exporter.write();
-		// info(" Orders: " + exporter.getOrderIds());
 		info("  Wrote " + exporter.getCount() + " lines to " + file);
 		return file;
 	}
@@ -256,7 +272,6 @@ public class VolusionExtractor {
 
 		// write to disk
 		Path file = exporter.write();
-		info("  Orders: " + exporter.getOrderIds());
 		info("  Wrote " + exporter.getCount() + " lines to " + file);
 		return file;
 	}
@@ -275,7 +290,6 @@ public class VolusionExtractor {
 		// write to disk
 		Path file = exporter.write();
 		info("  Excluded: " + OrderDetail.EXCLUDED_PRODUCTS);
-		info("  Orders:   " + exporter.getOrderIds());
 		info("  Wrote " + exporter.getCount() + " lines to " + file);
 		return file;
 	}

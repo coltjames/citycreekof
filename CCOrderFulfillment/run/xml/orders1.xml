@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmldata>
+
   <Orders>
+  	<!-- 85807 -->
     <OrderID>100000</OrderID>
     <BillingAddress1>404 Hawthorne Ln W</BillingAddress1>
     <BillingAddress2 />
@@ -13,10 +15,11 @@
     <BillingPhoneNumber>222-333-4444</BillingPhoneNumber>
     <BillingCompanyName></BillingCompanyName>
     <CustomerID>11381</CustomerID>
-    <OrderDate>11/01/2016 9:15:00 PM</OrderDate>
+    <OrderDate>7/25/2016 1:57:00 AM</OrderDate>
     <PaymentAmount>118.7500</PaymentAmount>
     <PaymentMethodID>5</PaymentMethodID>
-    <PONum>12341234</PONum>
+    <PONum />
+    <TotalShippingCost>14.95</TotalShippingCost>
     <ShipAddress1>404 Hawthorne Ln W</ShipAddress1>
     <ShipAddress2 />
     <ShipCity>Wilson</ShipCity>
@@ -35,7 +38,6 @@
       <ProductName>Times Alive Trial</ProductName>
       <ProductPrice>15.0000</ProductPrice>
       <Quantity>1</Quantity>
-      <TaxableProduct>Y</TaxableProduct>
       <TotalPrice>15.0000</TotalPrice>
     </OrderDetails>
     <OrderDetails>
@@ -46,7 +48,6 @@
       <ProductName>Times Alive Software for MAC and PC</ProductName>
       <ProductPrice>58.9500</ProductPrice>
       <Quantity>1</Quantity>
-      <TaxableProduct>Y</TaxableProduct>
       <TotalPrice>58.9500</TotalPrice>
     </OrderDetails>
     <OrderDetails>
@@ -57,7 +58,6 @@
       <ProductName>Times Clue Cards</ProductName>
       <ProductPrice>9.9500</ProductPrice>
       <Quantity>1</Quantity>
-      <TaxableProduct>Y</TaxableProduct>
       <TotalPrice>9.9500</TotalPrice>
     </OrderDetails>
     <OrderDetails>
@@ -68,7 +68,6 @@
       <ProductName>Division Cards</ProductName>
       <ProductPrice>10.9500</ProductPrice>
       <Quantity>1</Quantity>
-      <TaxableProduct>Y</TaxableProduct>
       <TotalPrice>10.9500</TotalPrice>
     </OrderDetails>
     <OrderDetails>
@@ -79,8 +78,313 @@
       <ProductName>Times Downloadable Activity Sheets</ProductName>
       <ProductPrice>8.9500</ProductPrice>
       <Quantity>1</Quantity>
-      <TaxableProduct>Y</TaxableProduct>
       <TotalPrice>8.9500</TotalPrice>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+  	<!-- 85873 -->
+    <OrderID>100001</OrderID>
+    <BillingAddress1>Attn: Destiny Deaton</BillingAddress1>
+    <BillingAddress2>1451 River Park Drive, Suite 180</BillingAddress2>
+    <BillingCity>Sacramento</BillingCity>
+    <BillingCountry>United States</BillingCountry>
+    <BillingFirstName>Golden Valley</BillingFirstName>
+    <BillingLastName>Charter School</BillingLastName>
+    <BillingPostalCode>95815</BillingPostalCode>
+    <BillingState>CA</BillingState>
+    <BillingPhoneNumber>222-333-4444</BillingPhoneNumber>
+    <BillingCompanyName>Tamie Stewart</BillingCompanyName>
+    <CustomerID>11960</CustomerID>
+    <OrderDate>8/17/2016 1:05:00 PM</OrderDate>
+    <PaymentAmount>110.6500</PaymentAmount>
+    <PaymentMethodID>13</PaymentMethodID>
+    <PONum>23310</PONum>
+    <TotalShippingCost>12.95</TotalShippingCost>
+    <ShipAddress1>8200 Medford St.</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Ventura</ShipCity>
+    <ShipCompanyName>Tamie Stewart</ShipCompanyName>
+    <ShipCountry>United States</ShipCountry>
+    <ShipFirstName>Golden Valley</ShipFirstName>
+    <ShipLastName>Charter School</ShipLastName>
+    <ShippingMethodID>9012</ShippingMethodID>
+    <ShipPostalCode>93004</ShipPostalCode>
+    <ShipState>CA</ShipState>
+    <OrderDetails>
+      <OrderDetailID>32756</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>WBA</ProductCode>
+      <ProductID>57</ProductID>
+      <ProductName>Addition Student Workbook</ProductName>
+      <ProductPrice>12.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>12.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32757</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>FCS</ProductCode>
+      <ProductID>70</ProductID>
+      <ProductName>Subtraction Cards</ProductName>
+      <ProductPrice>10.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>10.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32758</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>WBT</ProductCode>
+      <ProductID>78</ProductID>
+      <ProductName>Times Student Workbook</ProductName>
+      <ProductPrice>12.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>12.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32759</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>FCD</ProductCode>
+      <ProductID>65</ProductID>
+      <ProductName>Division Cards</ProductName>
+      <ProductPrice>10.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>10.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32760</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>TMA</ProductCode>
+      <ProductID>58</ProductID>
+      <ProductName>Addition Teacher's Manual</ProductName>
+      <ProductPrice>24.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>24.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32761</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>TMT</ProductCode>
+      <ProductID>77</ProductID>
+      <ProductName>Times Teacher's Manual</ProductName>
+      <ProductPrice>24.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>24.9500</TotalPrice>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+  	<!-- 85873 -->
+    <OrderID>100002</OrderID>
+    <BillingAddress1>Attn: Destiny Deaton</BillingAddress1>
+    <BillingAddress2>1451 River Park Drive, Suite 180</BillingAddress2>
+    <BillingCity>Sacramento</BillingCity>
+    <BillingCountry>United States</BillingCountry>
+    <BillingFirstName>Golden Valley</BillingFirstName>
+    <BillingLastName>Charter School</BillingLastName>
+    <BillingPostalCode>95815</BillingPostalCode>
+    <BillingState>CA</BillingState>
+    <BillingPhoneNumber>222-333-4444</BillingPhoneNumber>
+    <BillingCompanyName>Tamie Stewart</BillingCompanyName>
+    <CustomerID>11960</CustomerID>
+    <OrderDate>8/17/2016 1:05:00 PM</OrderDate>
+    <PaymentAmount>110.6500</PaymentAmount>
+    <PaymentMethodID>13</PaymentMethodID>
+    <PONum>23310</PONum>
+    <TotalShippingCost>14.95</TotalShippingCost>
+    <ShipAddress1>8200 Medford St.</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Ventura</ShipCity>
+    <ShipCompanyName>Tamie Stewart</ShipCompanyName>
+    <ShipCountry>United States</ShipCountry>
+    <ShipFirstName>Golden Valley</ShipFirstName>
+    <ShipLastName>Charter School</ShipLastName>
+    <ShippingMethodID>9012</ShippingMethodID>
+    <ShipPostalCode>93004</ShipPostalCode>
+    <ShipState>CA</ShipState>
+    <OrderDetails>
+      <OrderDetailID>32756</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>WBA</ProductCode>
+      <ProductID>57</ProductID>
+      <ProductName>Addition Student Workbook</ProductName>
+      <ProductPrice>12.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>12.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32757</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>FCS</ProductCode>
+      <ProductID>70</ProductID>
+      <ProductName>Subtraction Cards</ProductName>
+      <ProductPrice>10.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>10.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32758</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>WBT</ProductCode>
+      <ProductID>78</ProductID>
+      <ProductName>Times Student Workbook</ProductName>
+      <ProductPrice>12.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>12.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32759</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>FCD</ProductCode>
+      <ProductID>65</ProductID>
+      <ProductName>Division Cards</ProductName>
+      <ProductPrice>10.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>10.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32760</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>TMA</ProductCode>
+      <ProductID>58</ProductID>
+      <ProductName>Addition Teacher's Manual</ProductName>
+      <ProductPrice>24.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>24.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32761</OrderDetailID>
+      <OrderID>85873</OrderID>
+      <ProductCode>TMT</ProductCode>
+      <ProductID>77</ProductID>
+      <ProductName>Times Teacher's Manual</ProductName>
+      <ProductPrice>24.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>24.9500</TotalPrice>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+  	<!-- 85842 -->
+    <OrderID>100003</OrderID>
+    <BillingAddress1>4255 Anson Blvd.</BillingAddress1>
+    <BillingAddress2 />
+    <BillingCity>Whitestown</BillingCity>
+    <BillingCountry>United States</BillingCountry>
+    <BillingFirstName>Amazon.</BillingFirstName>
+    <BillingLastName>com</BillingLastName>
+    <BillingPostalCode>46075</BillingPostalCode>
+    <BillingState>IN</BillingState>
+    <BillingPhoneNumber>222-333-4444</BillingPhoneNumber>
+    <BillingCompanyName>INVENTORY</BillingCompanyName>
+    <CustomerID>306</CustomerID>
+    <OrderDate>8/8/2016 8:16:00 AM</OrderDate>
+    <PaymentAmount>259.9000</PaymentAmount>
+    <PaymentMethodID>13</PaymentMethodID>
+    <PONum>1ZLGUQQW</PONum>
+    <TotalShippingCost>0.00</TotalShippingCost>
+    <ShipAddress1>3680 Langley Dr.</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Hebron</ShipCity>
+    <ShipCompanyName>INVENTORY</ShipCompanyName>
+    <ShipCountry>United States</ShipCountry>
+    <ShipFirstName>Amazon.com </ShipFirstName>
+    <ShipLastName>kydc LLC</ShipLastName>
+    <ShippingMethodID>502</ShippingMethodID>
+    <ShipPostalCode>41048</ShipPostalCode>
+    <ShipState>KY</ShipState>
+    <OrderDetails>
+      <OrderDetailID>32704</OrderDetailID>
+      <OrderID>85842</OrderID>
+      <ProductCode>1001</ProductCode>
+      <ProductID>204</ProductID>
+      <ProductName>Times Alive Software and Times Book for Kids Kit #1001</ProductName>
+      <ProductPrice>68.9000</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>68.9000</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32705</OrderDetailID>
+      <OrderID>85842</OrderID>
+      <ProductCode>SUNL</ProductCode>
+      <ProductID>163</ProductID>
+      <ProductName>Sunlight on My Shadow: A Memoir</ProductName>
+      <ProductPrice>16.9500</ProductPrice>
+      <Quantity>10</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>169.5000</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32706</OrderDetailID>
+      <OrderID>85842</OrderID>
+      <ProductCode>BKT</ProductCode>
+      <ProductID>76</ProductID>
+      <ProductName>Times Tables the Fun Way Book for Kids (main text)</ProductName>
+      <ProductPrice>19.9500</ProductPrice>
+      <Quantity>17</Quantity>
+      <TaxableProduct>Y</TaxableProduct>
+      <TotalPrice>339.1500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>32707</OrderDetailID>
+      <OrderID>85842</OrderID>
+      <ProductCode>DSC-18</ProductCode>
+      <ProductID>101</ProductID>
+      <ProductName>Reseller's Discount</ProductName>
+      <ProductPrice>-317.6500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TaxableProduct>N</TaxableProduct>
+      <TotalPrice>-317.6500</TotalPrice>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+  	<!-- 85881 -->
+    <OrderID>100004</OrderID>
+    <BillingAddress1>146 Grape Lane</BillingAddress1>
+    <BillingAddress2 />
+    <BillingCity>Branson</BillingCity>
+    <BillingCountry>United States</BillingCountry>
+    <BillingFirstName>Kym</BillingFirstName>
+    <BillingLastName>Haynes</BillingLastName>
+    <BillingPostalCode>65616</BillingPostalCode>
+    <BillingState>MO</BillingState>
+    <BillingPhoneNumber>222-333-4444</BillingPhoneNumber>
+    <BillingCompanyName>Buchanan Intermediate School</BillingCompanyName>
+    <CustomerID>13581</CustomerID>
+    <OrderDate>8/19/2016 10:38:00 AM</OrderDate>
+    <PaymentAmount>52.9000</PaymentAmount>
+    <PaymentMethodID>6</PaymentMethodID>
+    <PONum />
+    <TotalShippingCost>7.95</TotalShippingCost>
+    <ShipAddress1>766 Buchanan Road</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Branson</ShipCity>
+    <ShipCompanyName>Buchanan Intermediate School</ShipCompanyName>
+    <ShipCountry>United States</ShipCountry>
+    <ShipFirstName>Kym</ShipFirstName>
+    <ShipLastName>Haynes</ShipLastName>
+    <ShippingMethodID>900</ShippingMethodID>
+    <ShipPostalCode>65616</ShipPostalCode>
+    <ShipState>MO</ShipState>
+    <OrderDetails>
+      <OrderDetailID>32773</OrderDetailID>
+      <OrderID>85881</OrderID>
+      <ProductCode>PST</ProductCode>
+      <ProductID>79</ProductID>
+      <ProductName>Times Tables the Fun Way Posters</ProductName>
+      <ProductPrice>44.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TotalPrice>44.9500</TotalPrice>
     </OrderDetails>
   </Orders>
 </xmldata>

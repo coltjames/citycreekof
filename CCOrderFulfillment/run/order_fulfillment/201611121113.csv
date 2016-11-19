@@ -1,5 +1,0 @@
-"OrderID","PONum","ShipName","ShipCompanyName","ShipAddress1","ShipAddress2","ShipCity","ShipState","ShipPostalCode","ShipCountry","ShipMethod","ProductCode","Quantity","EmailAddress",
-100000,"12341234","Melanie Hewitt","","404 Hawthorne Ln W","","Wilson","NC","27893","","UPS","SOTTRIAL","1","kdothewitt@gmail.com",
-100000,"12341234","Melanie Hewitt","","404 Hawthorne Ln W","","Wilson","NC","27893","","UPS","SOT1","1","kdothewitt@gmail.com",
-100000,"12341234","Melanie Hewitt","","404 Hawthorne Ln W","","Wilson","NC","27893","","UPS","FCT","1","kdothewitt@gmail.com",
-100000,"12341234","Melanie Hewitt","","404 Hawthorne Ln W","","Wilson","NC","27893","","UPS","FCD","1","kdothewitt@gmail.com",

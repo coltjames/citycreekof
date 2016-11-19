@@ -4,7 +4,6 @@ public interface AppProperties {
 
 	// VOLUSION
 	String VOLUSION_USERNAME = "volusion.username";
-	String VOLUSION_PASSWORD = "volusion.password";
 
 	// XML Import
 	String XML_DIR = "xml.dir";

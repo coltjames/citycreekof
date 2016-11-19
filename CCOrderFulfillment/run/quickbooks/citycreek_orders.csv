@@ -1,7 +1,0 @@
-AR Account,Customer: Job,Date,Sales Tax,Number,Class,Item,Description,Quantity,Rate,Amount,Taxable
-"Accounts Receivable","Melanie Hewitt 11381","11/01/2016 9:15:00 PM","Minnesota",100000,,"SOTTRIAL",,"1",,,"Y",
-"Accounts Receivable","Melanie Hewitt 11381","11/01/2016 9:15:00 PM","Minnesota",100000,,"SOT1",,"1",,,"Y",
-"Accounts Receivable","Melanie Hewitt 11381","11/01/2016 9:15:00 PM","Minnesota",100000,,"FCT",,"1",,,"Y",
-"Accounts Receivable","Melanie Hewitt 11381","11/01/2016 9:15:00 PM","Minnesota",100000,,"FCD",,"1",,,"Y",
-"Accounts Receivable","Melanie Hewitt 11381","11/01/2016 9:15:00 PM","Minnesota",100000,,"ABTEBOOK",,"1",,,"Y",
-"Accounts Receivable","Melanie Hewitt 11381","11/01/2016 9:15:00 PM","Minnesota",100000,,"PONUM","12341234","",,,"N",
