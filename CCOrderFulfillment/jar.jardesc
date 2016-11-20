@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="CCOrderFulfillment/CCOrderFulfillment/CCOrderFulfillment.jar"/>
+    <jar path="CCOrderFulfillment/releases/VolusionExtractor/VolusionExtractor.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/CCOrderFulfillment/jar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
-    <manifest generateManifest="true" mainClassHandleIdentifier="=CCOrderFulfillment/src&lt;com.citycreek.of{OrderFulfillment.java[OrderFulfillment" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+    <manifest generateManifest="true" mainClassHandleIdentifier="=CCOrderFulfillment/src&lt;com.citycreek.of{VolusionExtractor.java[VolusionExtractor" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
         <sealing sealJar="false">
             <packagesToSeal/>
             <packagesToUnSeal/>

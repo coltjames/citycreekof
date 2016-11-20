@@ -33,10 +33,16 @@ import com.cjc.util.PropertiesUtil;
 
 public class VolusionExtractor {
 
+	private static final String XML_DIR = "xml";
+
+	private static final String QUICKBOOKS_DIR = "quickbooks";
+
 	private static final Logger log = Logger.getLogger(VolusionExtractor.class.getName());
 
-	private static final String VERSION = "v1.1.2 - 19 November 2016";
+	private static final String VERSION = "v2.0.0 - 19 November 2016";
 	public static final String DATETIME = LangUtil.getDateTimeString(new Date(), "yyyyMMddHHmm");
+
+	private static final String ORDER_FULFILLMENT_DIR = "order_fulfillment";
 
 	private static String password;
 	private static PropertiesUtil props = new PropertiesUtil();
@@ -53,7 +59,7 @@ public class VolusionExtractor {
 				orders.forEach(Order::addShipDetail);
 				final List<String> removeDuplicates = removeDuplicates();
 
-				writeQuickBooksIFF(true);
+				// writeQuickBooksIFF(true);
 				writeQuickBooksIFF(false);
 				writeQuickBooksCSV();
 				writeOrderFulfillment();
@@ -147,7 +153,7 @@ public class VolusionExtractor {
 		info("Retrieving ORDERS XML file...");
 		String xmlFile = props.getOptional(AppProperties.XML_ORDER_FILE);
 		if (LangUtil.hasValue(xmlFile)) {
-			xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + xmlFile;
+			xmlFile = props.getOptional(AppProperties.XML_DIR, XML_DIR) + "/" + xmlFile;
 			info("  Read from file, " + xmlFile);
 			final File file = new File(xmlFile);
 			if (file.length() > 0) {
@@ -162,7 +168,7 @@ public class VolusionExtractor {
 		info("Retrieving CUSTOMERS XML file...");
 		String xmlFile = props.getOptional(AppProperties.XML_CUSTOMER_FILE);
 		if (LangUtil.hasValue(xmlFile)) {
-			xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + xmlFile;
+			xmlFile = props.getOptional(AppProperties.XML_DIR, XML_DIR) + "/" + xmlFile;
 			info("  Read from file, " + xmlFile);
 			final File file = new File(xmlFile);
 			if (file.length() > 0) {
@@ -185,18 +191,19 @@ public class VolusionExtractor {
 			info("  Read ORDERS from URL, " + urlProperty);
 		}
 		// Output filename
-		final String xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + DATETIME + "_order.xml";
+		final Path xmlFile = Paths.get(//
+				props.getOptional(AppProperties.XML_DIR, XML_DIR) + "/" + DATETIME + "_order.xml");
 		info("  Write to file, " + xmlFile);
+		Files.createDirectories(xmlFile.getParent());
 
 		// Read in the orders from Volution.
 		try (InputStream in = new URL(xmlUrl).openStream()) {
-			Files.copy(in, Paths.get(xmlFile));
+			Files.copy(in, xmlFile);
 		}
 
 		log.fine("  Parsing XML file...");
-		final File file = new File(xmlFile);
-		if (file.length() > 0) {
-			new OrderXmlTransformer().fromXml(file, orders);
+		if (xmlFile.toFile().length() > 0) {
+			new OrderXmlTransformer().fromXml(xmlFile.toFile(), orders);
 		}
 	}
 
@@ -211,17 +218,18 @@ public class VolusionExtractor {
 			info("  Read CUSTOMERS from URL, " + urlProperty);
 		}
 		// Output filename
-		final String xmlFile = props.getOptional(AppProperties.XML_DIR, "xml") + "/" + DATETIME + "_customer.xml";
+		final Path xmlFile = Paths.get(//
+				props.getOptional(AppProperties.XML_DIR, XML_DIR) + "/customers.xml");
 		info("  Write to file, " + xmlFile);
+		Files.createDirectories(xmlFile.getParent());
 
 		// Read in the orders from Volution.
 		try (InputStream in = new URL(xmlUrl).openStream()) {
-			Files.copy(in, Paths.get(xmlFile));
+			Files.copy(in, xmlFile);
 		}
 		log.fine("  Parsing XML file...");
-		final File file = new File(xmlFile);
-		if (file.length() > 0) {
-			new CustomerXmlTransformer().fromXml(file, customers);
+		if (xmlFile.toFile().length() > 0) {
+			new CustomerXmlTransformer().fromXml(xmlFile.toFile(), customers);
 		}
 	}
 
@@ -254,7 +262,7 @@ public class VolusionExtractor {
 
 	private static Path writeQuickBooksIFF(boolean writeOrders) throws IOException {
 		info("Creating QuickBooks IIF file...");
-		Path parentPath = Paths.get(props.getRequired(AppProperties.QUICKBOOKS_IIF_DIR));
+		Path parentPath = Paths.get(props.getOptional(AppProperties.QUICKBOOKS_IIF_DIR, QUICKBOOKS_DIR));
 
 		QuickBooksIIFExporter exporter = new QuickBooksIIFExporter(parentPath, writeOrders).exportOrders(orders);
 		exporter.ensureFileExistsWithHeader();
@@ -265,7 +273,7 @@ public class VolusionExtractor {
 
 	private static Path writeQuickBooksCSV() throws IOException {
 		info("Creating QuickBooks CSV file...");
-		Path parentPath = Paths.get(props.getRequired(AppProperties.QUICKBOOKS_CSV_DIR));
+		Path parentPath = Paths.get(props.getOptional(AppProperties.QUICKBOOKS_CSV_DIR, QUICKBOOKS_DIR));
 		QuickBooksTableImportExporter exporter = new QuickBooksTableImportExporter(parentPath).exportOrders(orders);
 
 		exporter.ensureFileExistsWithHeader();
@@ -278,7 +286,7 @@ public class VolusionExtractor {
 
 	private static Path writeOrderFulfillment() throws IOException {
 		info("Creating order fulfillment CSV file...");
-		Path parentPath = Paths.get(props.getRequired(AppProperties.ORDER_FULFILLMENT_DIR));
+		Path parentPath = Paths.get(props.getOptional(AppProperties.ORDER_FULFILLMENT_DIR, ORDER_FULFILLMENT_DIR));
 
 		if (!Files.exists(parentPath)) {
 			log.fine("FUL:: Parent missing, creating parent - " + parentPath.toAbsolutePath());

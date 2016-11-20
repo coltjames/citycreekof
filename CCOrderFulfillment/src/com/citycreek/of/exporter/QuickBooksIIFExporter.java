@@ -80,7 +80,6 @@ public class QuickBooksIIFExporter extends Exporter {
 			this.writeTransactionLine(order);
 			order.getDetails().forEach(detail -> this.writeDetailLine(order, detail));
 			this.data.append("ENDTRNS\n");
-			this.addOrderId(order.getOrderID());
 		}
 	}
 

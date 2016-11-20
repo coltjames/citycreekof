@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import com.citycreek.of.order.Order;
@@ -17,7 +15,6 @@ public abstract class Exporter {
 
 	private int count = 0;
 	private char delimiter;
-	private final Set<Long> orderIds = new LinkedHashSet<>();
 	protected final StringBuilder data = new StringBuilder();
 	private final Path parentPath;
 
@@ -46,10 +43,6 @@ public abstract class Exporter {
 		System.out.println("  Data written to file - " + this.getFilePath().toAbsolutePath());
 		log.info("Data written to file - " + this.getFilePath().toAbsolutePath());
 		return file;
-	}
-
-	final protected void addOrderId(long orderId) {
-		this.orderIds.add(orderId);
 	}
 
 	protected void column(String value, boolean quotes) {

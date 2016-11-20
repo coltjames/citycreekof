@@ -79,7 +79,7 @@ public class OrderDetail {
 	}
 
 	public boolean isExcludedFromShipping() {
-		boolean excluded = EXCLUDED_PRODUCTS.contains(this.getProductCode());
+		boolean excluded = EXCLUDED_PRODUCTS.contains(this.getProductCode().trim().toUpperCase());
 		excluded |= (this.detail.getOptionalInt("Quantity", 0) < 1);
 		return excluded;
 	}

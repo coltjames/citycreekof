@@ -94,7 +94,5 @@ public class OrderFulfillmentExporter extends Exporter {
 		this.column(order.getCustomer().getEmailAddress());
 
 		this.rowEnd();
-
-		this.addOrderId(order.getOrderID());
 	}
 }

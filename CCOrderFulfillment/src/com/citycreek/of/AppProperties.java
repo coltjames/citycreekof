@@ -7,7 +7,6 @@ public interface AppProperties {
 
 	// XML Import
 	String XML_DIR = "xml.dir";
-	String XML_DUPLICATE_COLUMNS = "xml.duplicate.columns";
 	String XML_CUSTOMER_FILE = "xml.customer.file";
 	String XML_ORDER_FILE = "xml.order.file";
 	String XML_CUSTOMER_URL = "xml.customer.url";

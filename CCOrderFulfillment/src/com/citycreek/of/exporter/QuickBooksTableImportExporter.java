@@ -25,7 +25,6 @@ public class QuickBooksTableImportExporter extends Exporter {
 		orders.forEach(order -> { //
 			this.prepareOrder(order);
 			order.getDetails().forEach(detail -> this.writeLine(order, detail));
-			this.addOrderId(order.getOrderID());
 		});
 		return this;
 	}

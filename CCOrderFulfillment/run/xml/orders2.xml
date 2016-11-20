@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmldata>
+  <Orders>
+    <OrderID>86298</OrderID>
+    <BillingAddress1>34861 Berkshire Ct</BillingAddress1>
+    <BillingAddress2 />
+    <BillingCity>Farmington Hills</BillingCity>
+    <BillingCompanyName>Harpco Systems</BillingCompanyName>
+    <BillingCountry>United States</BillingCountry>
+    <BillingFirstName>Richard</BillingFirstName>
+    <BillingLastName>Harpster</BillingLastName>
+    <BillingPhoneNumber>2484785966</BillingPhoneNumber>
+    <BillingPostalCode>48331</BillingPostalCode>
+    <BillingState>MI</BillingState>
+    <CustomerID>13893</CustomerID>
+    <OrderDate>11/18/2016 1:36:00 PM</OrderDate>
+    <PaymentAmount>377.1400</PaymentAmount>
+    <PaymentMethodID>7</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>34861 Berkshire Ct</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Farmington Hills</ShipCity>
+    <ShipCompanyName>Harpco Systems</ShipCompanyName>
+    <ShipCountry>United States</ShipCountry>
+    <ShipFirstName>Richard</ShipFirstName>
+    <ShipLastName>Harpster</ShipLastName>
+    <ShippingMethodID>907</ShippingMethodID>
+    <ShipPostalCode>48331</ShipPostalCode>
+    <ShipState>MI</ShipState>
+    <TotalShippingCost>34.95</TotalShippingCost>
+    <OrderDetails>
+      <OrderDetailID>33474</OrderDetailID>
+      <OrderID>86298</OrderID>
+      <ProductCode>10100</ProductCode>
+      <ProductID>176</ProductID>
+      <ProductName>Super Kit Math Essentials Program</ProductName>
+      <ProductPrice>257.2900</ProductPrice>
+      <Quantity>1</Quantity>
+      <TotalPrice>257.2900</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>33475</OrderDetailID>
+      <OrderID>86298</OrderID>
+      <ProductCode>PSA</ProductCode>
+      <ProductID>56</ProductID>
+      <ProductName>Addition the Fun Way Posters</ProductName>
+      <ProductPrice>39.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TotalPrice>39.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>33476</OrderDetailID>
+      <OrderID>86298</OrderID>
+      <ProductCode>PST</ProductCode>
+      <ProductID>79</ProductID>
+      <ProductName>Times Tables the Fun Way Posters</ProductName>
+      <ProductPrice>44.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TotalPrice>44.9500</TotalPrice>
+    </OrderDetails>
+  </Orders>
+  <Orders>
+    <OrderID>86299</OrderID>
+    <BillingAddress1>1811 W. Tokay</BillingAddress1>
+    <BillingAddress2 />
+    <BillingCity>Lodi</BillingCity>
+    <BillingCompanyName />
+    <BillingCountry>United States</BillingCountry>
+    <BillingFirstName>Donna</BillingFirstName>
+    <BillingLastName>Cima</BillingLastName>
+    <BillingPhoneNumber>2093680434 </BillingPhoneNumber>
+    <BillingPostalCode>95242</BillingPostalCode>
+    <BillingState>CA</BillingState>
+    <CustomerID>13894</CustomerID>
+    <OrderDate>11/18/2016 8:12:00 PM</OrderDate>
+    <PaymentAmount>47.8500</PaymentAmount>
+    <PaymentMethodID>5</PaymentMethodID>
+    <PONum />
+    <ShipAddress1>1811 W. Tokay</ShipAddress1>
+    <ShipAddress2 />
+    <ShipCity>Lodi</ShipCity>
+    <ShipCompanyName />
+    <ShipCountry>United States</ShipCountry>
+    <ShipFirstName>Donna</ShipFirstName>
+    <ShipLastName>Cima</ShipLastName>
+    <ShippingMethodID>900</ShippingMethodID>
+    <ShipPostalCode>95242</ShipPostalCode>
+    <ShipState>CA</ShipState>
+    <TotalShippingCost>7.95</TotalShippingCost>
+    <OrderDetails>
+      <OrderDetailID>33477</OrderDetailID>
+      <OrderID>86299</OrderID>
+      <ProductCode>BKT</ProductCode>
+      <ProductID>76</ProductID>
+      <ProductName>Times Tables the Fun Way Book for Kids (main text)</ProductName>
+      <ProductPrice>19.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TotalPrice>19.9500</TotalPrice>
+    </OrderDetails>
+    <OrderDetails>
+      <OrderDetailID>33478</OrderDetailID>
+      <OrderID>86299</OrderID>
+      <ProductCode>BKA</ProductCode>
+      <ProductID>53</ProductID>
+      <ProductName>Addition the Fun Way Book for Kids (main text)</ProductName>
+      <ProductPrice>19.9500</ProductPrice>
+      <Quantity>1</Quantity>
+      <TotalPrice>19.9500</TotalPrice>
+    </OrderDetails>
+  </Orders>
+</xmldata>

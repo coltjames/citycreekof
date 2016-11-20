@@ -19,7 +19,7 @@ public class Order {
 
 	public static final String XML_COLUMNS = //
 			"o.OrderID,o.CustomerID,o.PONum,o.OrderNotes,o.OrderDate,o.PaymentAmount,o.PaymentMethodID," //
-					+ "o.ShipFirstName,o.ShipLastName,o.ShipCompanyName,o.ShippingMethodID,TotalShippingCost," //
+					+ "o.ShipFirstName,o.ShipLastName,o.ShipCompanyName,o.ShippingMethodID,o.TotalShippingCost," //
 					+ "o.ShipAddress1,o.ShipAddress2,o.ShipCity,o.ShipState,o.ShipPostalCode,o.ShipCountry," //
 					+ "o.BillingFirstName,o.BillingLastName,o.BillingCompanyName,o.BillingPhoneNumber," //
 					+ "o.BillingAddress1,o.BillingAddress2,o.BillingCity,o.BillingState,o.BillingPostalCode,o.BillingCountry";
@@ -124,9 +124,9 @@ public class Order {
 	 */
 	public String getCustomerName() {
 		if (LangUtil.hasValue(this.getBillingCompanyName())) {
-			return this.getBillingCompanyName();
+			return this.getBillingCompanyName() + " " + this.getCustomer().getCustomerId();
 		} else {
-			return this.getBillingFirstName() + " " + this.getBillingLastName();
+			return this.getBillingFirstName() + " " + this.getBillingLastName() + " " + this.getCustomer().getCustomerId();
 		}
 	}
 

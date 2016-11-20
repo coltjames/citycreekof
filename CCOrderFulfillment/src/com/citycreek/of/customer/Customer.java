@@ -51,9 +51,9 @@ public class Customer {
 	 */
 	public String getCustomerName() {
 		if (LangUtil.hasValue(this.getCompanyName())) {
-			return this.getCompanyName() + " - " + this.getCustomerId();
+			return this.getCompanyName() + " " + this.getCustomerId();
 		} else {
-			return this.getFirstName() + " " + this.getLastName() + " - " + this.getCustomerId();
+			return this.getFirstName() + " " + this.getLastName() + " " + this.getCustomerId();
 		}
 	}
 
