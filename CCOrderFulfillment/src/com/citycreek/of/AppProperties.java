@@ -15,6 +15,7 @@ public interface AppProperties {
 	// SHIPPING CSV
 	String ORDER_FULFILLMENT_DIR = "order.fulfillment.dir";
 	String SHIPPING_EXCLUDED_PRODUCTS = "excluded.products";
+	String SHIPPING_METHOD_MAP = "csv.ShipMethodMap";
 
 	// QUICKBOOKS
 	String QUICKBOOKS_IIF_DIR = "quickbooks.iif.dir";

@@ -7,6 +7,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,6 +57,7 @@ public class VolusionExtractor {
 			readOrderXml();
 			if (!orders.isEmpty()) {
 				orders.forEach(VolusionExtractor::associateCustomerToOrder);
+				orders.removeIf(order -> order.getCustomer() == null);
 				orders.forEach(Order::addShipDetail);
 				final List<String> removeDuplicates = removeDuplicates();
 
@@ -101,6 +103,20 @@ public class VolusionExtractor {
 		}
 	}
 
+	private static void warn(String msg) {
+		warn(msg, null);
+	}
+
+	private static void warn(String msg, Throwable e) {
+		if (e != null) {
+			log.log(Level.WARNING, msg, e);
+			System.out.println("ERROR: " + msg + "; " + e);
+		} else {
+			log.warning(msg);
+			System.out.println("WARNING: " + msg);
+		}
+	}
+
 	/**
 	 * Setup the application; properties, logging, etc.
 	 *
@@ -129,6 +145,7 @@ public class VolusionExtractor {
 		// Read password from file
 		password = new String(Files.readAllBytes(Paths.get("password.txt")));
 
+		Order.loadShippingMethodMap(props);
 		OrderDetail.loadShippingExcludedProducts(props);
 
 		info("*************************************************************************");
@@ -142,10 +159,10 @@ public class VolusionExtractor {
 
 	public static void associateCustomerToOrder(Order o) {
 		String customerId = o.getCustomerID();
-		if (LangUtil.hasValue(customerId)) {
+		if (LangUtil.hasValue(customerId) && customers.containsKey(customerId)) {
 			o.setCustomer(customers.get(customerId));
 		} else {
-			log.warning("No customer found for order=" + customerId);
+			warn("No customer found for order=" + customerId + ". Order will be skipped. Manually process order.");
 		}
 	}
 
@@ -177,6 +194,9 @@ public class VolusionExtractor {
 		} else {
 			readCustomersFromUrl();
 		}
+		if (customers.isEmpty()) {
+			throw new RuntimeException("NO CUSTOMERS - check the API password file.");
+		}
 	}
 
 	private static void readOrdersFromUrl() throws Exception {
@@ -198,7 +218,7 @@ public class VolusionExtractor {
 
 		// Read in the orders from Volution.
 		try (InputStream in = new URL(xmlUrl).openStream()) {
-			Files.copy(in, xmlFile);
+			Files.copy(in, xmlFile, StandardCopyOption.REPLACE_EXISTING);
 		}
 
 		log.fine("  Parsing XML file...");
@@ -225,7 +245,7 @@ public class VolusionExtractor {
 
 		// Read in the orders from Volution.
 		try (InputStream in = new URL(xmlUrl).openStream()) {
-			Files.copy(in, xmlFile);
+			Files.copy(in, xmlFile, StandardCopyOption.REPLACE_EXISTING);
 		}
 		log.fine("  Parsing XML file...");
 		if (xmlFile.toFile().length() > 0) {
@@ -247,7 +267,7 @@ public class VolusionExtractor {
 
 			if (prevOrder.isDuplicate(order)) {
 				removals.add(order.getOrderID());
-				removalLogs.add(prevOrder.getCustomer().getCustomerName() //
+				removalLogs.add(prevOrder.getCustomerName() //
 						+ " :: " + prevOrder.getOrderID() + " = " + order.getOrderID());
 			}
 

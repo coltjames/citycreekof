@@ -3,12 +3,12 @@ package com.citycreek.of.order;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import com.citycreek.of.AppProperties;
 import com.citycreek.of.customer.Customer;
 import com.cjc.util.LangUtil;
 import com.cjc.util.PropertiesUtil;
@@ -24,28 +24,17 @@ public class Order {
 					+ "o.BillingFirstName,o.BillingLastName,o.BillingCompanyName,o.BillingPhoneNumber," //
 					+ "o.BillingAddress1,o.BillingAddress2,o.BillingCity,o.BillingState,o.BillingPostalCode,o.BillingCountry";
 
-	private static final Map<String, String> SHIPPING_METHODS = LangUtil.mapOf(//
-			"105", "UPS 2nd Day Air A.M.", "106", "UPS 2nd Day Air", //
-			"107", "UPS 3 Day Select", //
-			"108", "UPS Ground", //
-			"104", "UPS Next Day Air Saver", "102", "UPS Next Day Air", "101", "UPS Next Day Air Early A.M.", //
-			"109", "UPS Standard", //
-			"113", "UPS World Wide Saver", "112", "UPS Worldwide Expedited", //
-			"111", "UPS Worldwide Express Plus", "110", "UPS Worldwide Express", //
-			"204", "USPS Parcel", "205", "USPS Priority Box", //
-			"211", "PMI", "214", "EMI", //
-			"501", "US Mail", "900", "US Mail", "901", "US Mail", //
-			"502", "UPS", "902", "UPS", "903", "UPS", "904", "UPS", "905", "UPS", "906", "UPS", "907", "UPS", //
-			"908", "UPS", "909", "UPS", "910", "UPS", "911", "UPS", "912", "UPS", "913", "UPS", "914", "UPS", //
-			"915", "UPS", "9012", "UPS", "916", "UPS", //
-			"917", "US Mail Intl", "918", "US Mail Intl", "919", "US Mail Intl", "920", "US Mail Intl", //
-			"921", "US Mail Intl", "922", "US Mail Intl", "923", "US Mail Intl", "924", "US Mail Intl", //
-			"925", "US Mail Intl", "926", "US Mail Intl", "927", "US Mail Intl", //
-			"9001", "Priority Mail", "9011", "Priority Mail");
+	private static Properties SHIPPING_METHODS = new Properties();
 
 	private final PropertiesUtil order = new PropertiesUtil(new Properties());
 	private final List<OrderDetail> details = new ArrayList<OrderDetail>();
 	private Customer customer;
+
+	public static void loadShippingMethodMap(PropertiesUtil props) {
+		// Load the exclude column and values
+		final String mapAsString = props.getRequired(AppProperties.SHIPPING_METHOD_MAP);
+		SHIPPING_METHODS = LangUtil.fromString(mapAsString);
+	}
 
 	// ORDER
 
@@ -123,10 +112,13 @@ public class Order {
 	 * included in Quickbooks even if there are two accounts for the same person.
 	 */
 	public String getCustomerName() {
+		if (this.customer != null) {
+			return this.customer.getCustomerName();
+		}
 		if (LangUtil.hasValue(this.getBillingCompanyName())) {
-			return this.getBillingCompanyName() + " " + this.getCustomer().getCustomerId();
+			return this.getBillingCompanyName();
 		} else {
-			return this.getBillingFirstName() + " " + this.getBillingLastName() + " " + this.getCustomer().getCustomerId();
+			return this.getBillingFirstName() + " " + this.getBillingLastName();
 		}
 	}
 
@@ -257,9 +249,10 @@ public class Order {
 		String method = null;
 		final String methodId = this.order.getOptional("ShippingMethodID");
 		if (LangUtil.hasValue(methodId)) {
-			method = SHIPPING_METHODS.get(methodId);
+			method = SHIPPING_METHODS.getProperty(methodId);
 			if (!LangUtil.hasValue(method)) {
 				method = methodId;
+				System.out.println("WARNING: Unknown shipping method: " + methodId);
 				log.warning("Missing shipping method id: " + methodId);
 			}
 		}
