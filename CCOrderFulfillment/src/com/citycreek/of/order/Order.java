@@ -322,8 +322,10 @@ public class Order {
 	}
 
 	public void addShipDetail() {
-		ShipOrderDetail detail = new ShipOrderDetail(this.getShipMethod(), this.getTotalShippingCost());
-		this.details.add(detail);
+		if (this.order.getOptionalDouble("TotalShippingCost") > 0.0) {
+			ShipOrderDetail detail = new ShipOrderDetail(this.getShipMethod(), this.getTotalShippingCost());
+			this.details.add(detail);
+		}
 	}
 
 	public boolean isPurchaseOrder() {
