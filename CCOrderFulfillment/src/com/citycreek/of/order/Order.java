@@ -18,7 +18,7 @@ public class Order {
 	private static final Logger log = Logger.getLogger(Order.class.getName());
 
 	public static final String XML_COLUMNS = //
-			"o.OrderID,o.CustomerID,o.PONum,o.OrderNotes,o.OrderDate,o.PaymentAmount,o.PaymentMethodID," //
+			"o.OrderID,o.CustomerID,o.PONum,o.OrderNotes,o.OrderDate,o.OrderStatus,o.PaymentAmount,o.PaymentMethodID," //
 					+ "o.ShipFirstName,o.ShipLastName,o.ShipCompanyName,o.ShippingMethodID,o.TotalShippingCost," //
 					+ "o.ShipAddress1,o.ShipAddress2,o.ShipCity,o.ShipState,o.ShipPostalCode,o.ShipCountry," //
 					+ "o.BillingFirstName,o.BillingLastName,o.BillingCompanyName,o.BillingPhoneNumber," //
@@ -55,6 +55,15 @@ public class Order {
 		}
 	}
 
+	/**
+	 * Generate a report with orders of a particular status type (Not Cancelled, Open, Shipped, Returned, or Cancelled).
+	 */
+	public boolean isCancelled() {
+		String status = this.order.getOptional("OrderStatus");
+		boolean cancelled = Objects.equals("cancelled", status.toLowerCase());
+		return cancelled;
+	}
+
 	public String getOrderNotes() {
 		return this.order.getOptional("OrderNotes", "");
 	}
@@ -63,8 +72,8 @@ public class Order {
 		return this.order.getOptional("OrderDate", "");
 	}
 
-	public String getPaymentAmount() {
-		return this.order.getOptional("PaymentAmount", "");
+	public double getPaymentAmount() {
+		return this.order.getOptionalDouble("PaymentAmount");
 	}
 
 	/**
@@ -281,8 +290,8 @@ public class Order {
 		return "";
 	}
 
-	public String getTotalShippingCost() {
-		return this.order.getOptional("TotalShippingCost");
+	public double getTotalShippingCost() {
+		return this.order.getOptionalDouble("TotalShippingCost");
 	}
 
 	/**
@@ -322,8 +331,9 @@ public class Order {
 	}
 
 	public void addShipDetail() {
-		if (this.order.getOptionalDouble("TotalShippingCost") > 0.0) {
-			ShipOrderDetail detail = new ShipOrderDetail(this.getShipMethod(), this.getTotalShippingCost());
+		double totalShippingCost = this.getTotalShippingCost();
+		if (totalShippingCost > 0.0) {
+			ShipOrderDetail detail = new ShipOrderDetail(this.getShipMethod(), totalShippingCost);
 			this.details.add(detail);
 		}
 	}

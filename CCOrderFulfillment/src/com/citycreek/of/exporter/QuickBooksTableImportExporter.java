@@ -23,7 +23,7 @@ public class QuickBooksTableImportExporter extends Exporter {
 	@Override
 	public QuickBooksTableImportExporter exportOrders(List<Order> orders) {
 		orders.forEach(order -> { //
-			this.prepareOrder(order);
+			this.addPurchaseDetail(order);
 			order.getDetails().forEach(detail -> this.writeLine(order, detail));
 		});
 		return this;
@@ -54,10 +54,13 @@ public class QuickBooksTableImportExporter extends Exporter {
 		log.info("CSV:: File created with header, file=" + filePath);
 	}
 
-	private void prepareOrder(Order order) {
+	private void addPurchaseDetail(Order order) {
 		final OrderDetail detail;
 		if (order.isPurchaseOrder()) {
 			detail = new PurchaseOrderDetail(order.getPONum());
+		} else if (order.getPaymentAmount() <= 0.0) {
+			// Don't add payment detail if no payment was necessary.
+			return;
 		} else {
 			detail = new PaymentOrderDetail(order.getPaymentMethod(), order.getPaymentAmount());
 		}

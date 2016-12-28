@@ -40,7 +40,7 @@ public class VolusionExtractor {
 
 	private static final Logger log = Logger.getLogger(VolusionExtractor.class.getName());
 
-	private static final String VERSION = "v2.0.0 - 19 November 2016";
+	private static final String VERSION = "v2.0.1 - 28 December 2016";
 	public static final String DATETIME = LangUtil.getDateTimeString(new Date(), "yyyyMMddHHmm");
 
 	private static final String ORDER_FULFILLMENT_DIR = "order_fulfillment";
@@ -57,9 +57,8 @@ public class VolusionExtractor {
 			readOrderXml();
 			if (!orders.isEmpty()) {
 				orders.forEach(VolusionExtractor::associateCustomerToOrder);
-				orders.removeIf(order -> order.getCustomer() == null);
 				orders.forEach(Order::addShipDetail);
-				final List<String> removeDuplicates = removeDuplicates();
+				final List<String> removeDuplicates = removeDuplicatesOrCancelledOrders();
 
 				// writeQuickBooksIFF(true);
 				writeQuickBooksIFF(false);
@@ -69,12 +68,12 @@ public class VolusionExtractor {
 				// Print dups at the end.
 				if (!removeDuplicates.isEmpty()) {
 					info("*************************************************************************");
-					info("Duplicate Orders");
+					info("Ignored Orders");
 					for (String dup : removeDuplicates) {
 						info("  " + dup);
 					}
 				} else {
-					info("No Duplicates");
+					info("No orders ignored");
 				}
 			} else {
 				info("No orders found - no files written.");
@@ -253,13 +252,25 @@ public class VolusionExtractor {
 		}
 	}
 
-	private static List<String> removeDuplicates() {
+	private static List<String> removeDuplicatesOrCancelledOrders() {
 		// For each order, look to see if the current order is the same as the previous.
 		final List<Long> removals = new ArrayList<>();
 		final List<String> removalLogs = new ArrayList<>();
 
 		Order prevOrder = null;
 		for (Order order : orders) {
+			if (order.isCancelled()) {
+				removals.add(order.getOrderID());
+				removalLogs.add(order.getCustomerName() //
+						+ " :: " + order.getOrderID() + " - cancelled");
+				continue;
+			}
+			if (order.getCustomer() == null) {
+				removals.add(order.getOrderID());
+				removalLogs.add(order.getCustomerID() //
+						+ " :: " + order.getOrderID() + " - unknown customer");
+				continue;
+			}
 			if (prevOrder == null) {
 				prevOrder = order;
 				continue; // skip first one
@@ -268,7 +279,7 @@ public class VolusionExtractor {
 			if (prevOrder.isDuplicate(order)) {
 				removals.add(order.getOrderID());
 				removalLogs.add(prevOrder.getCustomerName() //
-						+ " :: " + prevOrder.getOrderID() + " = " + order.getOrderID());
+						+ " :: " + prevOrder.getOrderID() + " = " + order.getOrderID() + " - duplicate");
 			}
 
 			prevOrder = order;

@@ -24,10 +24,10 @@ public class OrderDetail {
 	public OrderDetail() {
 	}
 
-	public OrderDetail(String productCode, String paymentAmount) {
+	public OrderDetail(String productCode, double paymentAmount) {
 		this.add("ProductCode", productCode);
-		if (LangUtil.hasValue(paymentAmount)) {
-			this.add("TotalPrice", paymentAmount);
+		if (paymentAmount > 0.0) {
+			this.add("TotalPrice", Double.toString(paymentAmount));
 		}
 	}
 
