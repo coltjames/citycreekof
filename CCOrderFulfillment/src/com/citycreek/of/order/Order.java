@@ -18,7 +18,7 @@ public class Order {
 	private static final Logger log = Logger.getLogger(Order.class.getName());
 
 	public static final String XML_COLUMNS = //
-			"o.OrderID,o.CustomerID,o.PONum,o.OrderNotes,o.OrderDate,o.OrderStatus,o.PaymentAmount,o.PaymentMethodID," //
+			"o.OrderID,o.CustomerID,o.PONum,o.OrderNotes,o.OrderDate,o.OrderStatus,o.PaymentAmount,o.PaymentMethodID,o.SalesTax1," //
 					+ "o.ShipFirstName,o.ShipLastName,o.ShipCompanyName,o.ShippingMethodID,o.TotalShippingCost," //
 					+ "o.ShipAddress1,o.ShipAddress2,o.ShipCity,o.ShipState,o.ShipPostalCode,o.ShipCountry," //
 					+ "o.BillingFirstName,o.BillingLastName,o.BillingCompanyName,o.BillingPhoneNumber," //
@@ -298,7 +298,8 @@ public class Order {
 	 * Taxable if any detail lines are taxable.
 	 */
 	public boolean isTaxable() {
-		return this.details.stream().anyMatch(OrderDetail::isTaxable);
+		double salesTax = this.order.getOptionalDouble("SalesTax1");
+		return salesTax > 0;
 	}
 
 	// DETAIL

@@ -40,7 +40,7 @@ public class VolusionExtractor {
 
 	private static final Logger log = Logger.getLogger(VolusionExtractor.class.getName());
 
-	private static final String VERSION = "v2.0.1 - 28 December 2016";
+	private static final String VERSION = "v2.0.2 - 29 January 2017";
 	public static final String DATETIME = LangUtil.getDateTimeString(new Date(), "yyyyMMddHHmm");
 
 	private static final String ORDER_FULFILLMENT_DIR = "order_fulfillment";

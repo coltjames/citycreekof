@@ -140,11 +140,19 @@ public class QuickBooksIIFExporter extends Exporter {
 		// N or Y
 		this.column(order.isTaxable() ? "Y" : "N", false);
 
-		// LIMIT RESALENUM REP TAXITEM NOTEPAD SALUTATION
+		// LIMIT RESALENUM REP
 		this.skip();
 		this.skip();
 		this.skip();
-		this.skip();
+
+		// TAXITEM
+		if (order.isTaxable()) {
+			this.column("Minnesota");
+		} else {
+			this.skip();
+		}
+
+		// NOTEPAD SALUTATION
 		this.skip();
 		this.skip();
 
@@ -263,7 +271,7 @@ public class QuickBooksIIFExporter extends Exporter {
 		this.column(detail.getProductCode());
 
 		// TAXABLE - od.TaxableProduct
-		this.column(detail.getTaxableProduct(), false);
+		this.skip();
 
 		// EXTRA
 		this.skip();

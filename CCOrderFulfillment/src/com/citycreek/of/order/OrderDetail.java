@@ -12,7 +12,7 @@ import com.cjc.util.PropertiesUtil;
 public class OrderDetail {
 
 	public static final String XML_COLUMNS = //
-			"od.ProductCode,od.ProductName,od.ProductPrice,od.Quantity,od.TotalPrice,od.TaxableProduct";
+			"od.ProductCode,od.ProductName,od.ProductPrice,od.Quantity,od.TotalPrice";
 
 	public static final List<String> EXCLUDED_PRODUCTS = new ArrayList<>();
 
@@ -59,14 +59,6 @@ public class OrderDetail {
 
 	public double getTotalPrice() {
 		return this.detail.getOptionalDouble("TotalPrice");
-	}
-
-	public String getTaxableProduct() {
-		return this.detail.getOptional("TaxableProduct", "N");
-	}
-
-	public boolean isTaxable() {
-		return Objects.equals(this.getTaxableProduct(), "Y");
 	}
 
 	public void add(String key, String value) {
