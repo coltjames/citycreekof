@@ -35,6 +35,8 @@ public class Customer {
 
 	public static final String XML_COLUMNS = "CustomerID,FirstName,LastName,CompanyName,BillingAddress1,BillingAddress2,City,State,PostalCode,EmailAddress";
 
+	private static final int MAX_CUSTOMER_NAME_LENGTH = 30;
+
 	private final PropertiesUtil customer = new PropertiesUtil(new Properties());
 
 	public String getCustomerId() {
@@ -50,11 +52,20 @@ public class Customer {
 	 * included in Quickbooks even if there are two accounts for the same person.
 	 */
 	public String getCustomerName() {
-		if (LangUtil.hasValue(this.getCompanyName())) {
-			return this.getCompanyName() + " " + this.getCustomerId();
-		} else {
-			return this.getFirstName() + " " + this.getLastName() + " " + this.getCustomerId();
+		final String postfix = " " + this.getCustomerId();
+		String name = this.getCompanyName();
+		if (!LangUtil.hasValue(name)) {
+			name = this.getFirstName() + " " + this.getLastName();
+			if (!LangUtil.hasValue(name) || name.matches("[0-9]+")) {
+				name = "Unknown";
+			}
 		}
+		name = name.trim();
+		final int MAX_LENGTH = MAX_CUSTOMER_NAME_LENGTH - postfix.length();
+		if (name.length() > MAX_LENGTH) {
+			name = name.substring(0, MAX_LENGTH);
+		}
+		return name + postfix;
 	}
 
 	public String getFirstName() {

@@ -76,13 +76,6 @@ public class Order {
 		return this.order.getOptionalDouble("PaymentAmount");
 	}
 
-	/**
-	 * 5 Visa <br>
-	 * 6 MasterCard <br>
-	 * 7 American Express <br>
-	 * 8 Discover <br>
-	 * 13 Purchase order number <br>
-	 */
 	public String getPaymentMethod() {
 		String method = this.order.getRequired("PaymentMethodID");
 		if (Objects.equals("5", method)) {
@@ -93,6 +86,8 @@ public class Order {
 			return "American Express";
 		} else if (Objects.equals("8", method)) {
 			return "Discover";
+		} else if (Objects.equals("12", method)) {
+			return "PayPal Express Upgrade";
 		} else {
 			return "";
 		}
